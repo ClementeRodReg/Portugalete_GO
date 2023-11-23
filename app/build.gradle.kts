@@ -29,8 +29,6 @@ android {
 }
 
 dependencies {
-    implementation ("de.westnordost:osmapi-map:2.3")
-    implementation ("de.westnordost:osmapi-traces:2.0")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.22")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
