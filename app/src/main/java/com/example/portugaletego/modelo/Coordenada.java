@@ -1,10 +1,10 @@
 package com.example.portugaletego.modelo;
 
-public class Coordenadas {
+public class Coordenada {
     private String lugar;
     private String coordX;
     private String coordY;
-    public Coordenadas(String lugar, String coordX, String coordY) {
+    public Coordenada(String lugar, String coordX, String coordY) {
         this.lugar = lugar;
         this.coordX = coordX;
         this.coordY = coordY;
