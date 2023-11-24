@@ -1,40 +1,27 @@
 package com.example.portugaletego.modelo;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.List;
 
+@Entity
 public class Pregunta {
+
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="Id")
     private int id;
+
+    @NonNull
+    @ColumnInfo(name="Nombre")
     private String nombre;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public List<Respuesta> getRespuestas() {
-        return respuestas;
-    }
-
-    public void setRespuestas(List<Respuesta> respuestas) {
-        this.respuestas = respuestas;
-    }
-
+    @NonNull
+    @ColumnInfo(name="Respuestas")
     private List<Respuesta> respuestas;
 
-    public Pregunta(int id, String nombre, List<Respuesta> respuestas) {
-        this.id = id;
-        this.nombre = nombre;
-        this.respuestas = respuestas;
-    }
+
 }

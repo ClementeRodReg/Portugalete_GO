@@ -1,22 +1,24 @@
 package com.example.portugaletego.modelo;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Respuesta {
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="Id")
     private int id;
+
+    @NonNull
+    @ColumnInfo(name="Texto")
     private String texto;
 
-    public boolean isIscorrect() {
-        return iscorrect;
-    }
-
-    public void setIscorrect(boolean iscorrect) {
-        this.iscorrect = iscorrect;
-    }
-
+    @NonNull
+    @ColumnInfo(name="EsCorrecto")
     private boolean iscorrect;
 
-    public Respuesta(int id, String texto, boolean iscorrect) {
-        this.id = id;
-        this.texto = texto;
-        this.iscorrect = iscorrect;
-    }
+
 }

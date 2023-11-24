@@ -1,27 +1,19 @@
 package com.example.portugaletego.modelo;
 
-public class Juego {
-    public String getId() {
-        return id;
-    }
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+@Entity
+public class Juego extends Contenido{
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    private String id;
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="Id")
+    private int id;
+    @NonNull
+    @ColumnInfo(name="Descripcion")
     private String descripcion;
 
-    public Juego(String id, String descripcion) {
-        this.id = id;
-        this.descripcion = descripcion;
-    }
 }

@@ -1,38 +1,24 @@
 package com.example.portugaletego.modelo;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Coordenada {
-    private String lugar;
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="Id")
+    private String id;
+    @NonNull
+    @ColumnInfo(name="CoordX")
     private String coordX;
+    @NonNull
+    @ColumnInfo(name="CoordY")
     private String coordY;
-    public Coordenada(String lugar, String coordX, String coordY) {
-        this.lugar = lugar;
-        this.coordX = coordX;
-        this.coordY = coordY;
-    }
 
-    public String getLugar() {
-        return lugar;
-    }
 
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }
-
-    public String getCoordX() {
-        return coordX;
-    }
-
-    public void setCoordX(String coordX) {
-        this.coordX = coordX;
-    }
-
-    public String getCoordY() {
-        return coordY;
-    }
-
-    public void setCoordY(String coordY) {
-        this.coordY = coordY;
-    }
 
 }
 
