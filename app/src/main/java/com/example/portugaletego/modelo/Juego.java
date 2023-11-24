@@ -8,6 +8,23 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Juego extends Contenido{
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @NonNull
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(@NonNull String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @PrimaryKey
     @NonNull
     @ColumnInfo(name="Id")

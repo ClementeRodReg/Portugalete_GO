@@ -14,7 +14,25 @@ public class Lugar {
     private String nombre;
 
     @NonNull
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(@NonNull String nombre) {
+        this.nombre = nombre;
+    }
+/*
+    @NonNull
+    public Coordenada getCoordenada() {
+        return coordenada;
+    }
+
+    public void setCoordenada(@NonNull Coordenada coordenada) {
+        this.coordenada = coordenada;
+    }
+
+    @NonNull
     @ColumnInfo(name="Coordenada")
     private Coordenada coordenada;
-
+*/
 }
