@@ -10,105 +10,109 @@
         android:id="@+id/txtTransbordadorea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/transbordadorea"
+        android:text="transbordador"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintEnd_toStartOf="@+id/imgAscensor"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintVertical_bias="0.132" />
 
     <TextView
         android:id="@+id/txtIgogailua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/igogailua"
+        android:text="ascensor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintEnd_toStartOf="@+id/imgTransbordador"
+        app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTransbordadorea"
-        app:layout_constraintVertical_bias="0.218" />
+        app:layout_constraintVertical_bias="0.219" />
 
     <TextView
         android:id="@+id/txtPasarela"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pasarela"
+        android:text="pasarela"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintEnd_toStartOf="@+id/imgPuenteColgante"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtIgogailua"
-        app:layout_constraintVertical_bias="0.298" />
+        app:layout_constraintVertical_bias="0.305" />
 
     <TextView
         android:id="@+id/txtTentsorea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="140dp"
-        android:text="@string/tentsorea"
+        android:text="tensor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintEnd_toStartOf="@+id/imgPasarela"
+        app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPasarela"
-        app:layout_constraintVertical_bias="0.805" />
+        app:layout_constraintVertical_bias="0.848" />
 
     <Button
         android:id="@+id/btnConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/konfirmatu"
+        android:text="confirmar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.734"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPasarela"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <ImageView
+        android:id="@+id/imgPasarela"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPuenteColgante"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/puentecolgantepasarela" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgPuenteColgante"
         android:layout_width="175dp"
         android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imgTransbordador"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/puentecolgante1" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgAscensor"
         android:layout_width="175dp"
         android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="175dp"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintVertical_bias="0.056"
+        app:srcCompat="@drawable/bizkaikozubiaigogailua" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imgTransbordador"
         android:layout_width="175dp"
         android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.002" />
+        app:layout_constraintTop_toBottomOf="@+id/imgAscensor"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/puentecolgantetransbordador" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
