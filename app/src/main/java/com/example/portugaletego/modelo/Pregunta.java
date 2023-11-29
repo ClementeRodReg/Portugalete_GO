@@ -18,7 +18,8 @@ public class Pregunta {
     @NonNull
     @ColumnInfo(name="Nombre")
     private String nombre;
-/*
+
+    /*
     @NonNull
     @ColumnInfo(name="Respuestas")
     private List<Respuesta> respuestas;
@@ -31,7 +32,7 @@ public class Pregunta {
     public void setRespuestas(@NonNull List<Respuesta> respuestas) {
         this.respuestas = respuestas;
     }
-*/
+    */
 
     public int getId() {
         return id;

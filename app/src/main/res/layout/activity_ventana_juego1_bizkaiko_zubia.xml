@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista.ventanaJuego1BizkaikoZubia">
+
+    <TextView
+        android:id="@+id/txtTransbordadorea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transbordador"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgAscensor"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132" />
+
+    <TextView
+        android:id="@+id/txtIgogailua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ascensor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgTransbordador"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTransbordadorea"
+        app:layout_constraintVertical_bias="0.219" />
+
+    <TextView
+        android:id="@+id/txtPasarela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pasarela"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgPuenteColgante"
+        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtIgogailua"
+        app:layout_constraintVertical_bias="0.305" />
+
+    <TextView
+        android:id="@+id/txtTentsorea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="140dp"
+        android:text="@string/tensor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgPasarela"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPasarela"
+        app:layout_constraintVertical_bias="0.848" />
+
+    <Button
+        android:id="@+id/btnConfirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirmar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.734"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPasarela"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <ImageView
+        android:id="@+id/imgPasarela"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPuenteColgante"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/puentecolgantepasarela" />
+
+    <ImageView
+        android:id="@+id/imgPuenteColgante"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgTransbordador"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/puentecolgante1" />
+
+    <ImageView
+        android:id="@+id/imgAscensor"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056"
+        app:srcCompat="@drawable/bizkaikozubiaigogailua" />
+
+    <ImageView
+        android:id="@+id/imgTransbordador"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgAscensor"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/puentecolgantetransbordador" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
