@@ -34,6 +34,8 @@ android {
 dependencies {
     val roomversion = "2.5.0"
 
+    implementation("org.osmdroid:osmdroid-android:6.1.17")
+
     implementation("androidx.room:room-runtime:$roomversion")
     annotationProcessor("androidx.room:room-compiler:$roomversion")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.22")
