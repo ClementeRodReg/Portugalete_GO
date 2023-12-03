@@ -1,5 +1,7 @@
 plugins {
     id("com.android.application")
+    //plugin de firebase
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -49,4 +51,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // Imports de firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+    //Import de auth
+    implementation("com.google.firebase:firebase-auth")
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88851210590",
+    "project_id": "portugo-614ca",
+    "storage_bucket": "portugo-614ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88851210590:android:251b1f19add73acc726fcf",
+        "android_client_info": {
+          "package_name": "com.example.portugaletego"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTB6AF2LOwW5r8uIzXMJd3BfHBnNL2fsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
