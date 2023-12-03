@@ -50,6 +50,16 @@ public class LoginActivity extends AppCompatActivity {
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         EditText txtUsuario = (EditText) findViewById(R.id.TextImputNombre);
         txtUsuario.setText(rememberUser);
+        Button mapa = (Button) findViewById(R.id.Map);
+
+        mapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent cambio = new Intent(LoginActivity.this, VistaMapa.class);
+                startActivity(cambio);
+            }
+        });
 
         //Iniciar sesion
         confirmar.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 String email = txtUsuario.getText().toString();
                 String password = contrasenna.getText().toString();
                 if(email.isEmpty() || password.isEmpty()){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
 
 
                     builder.setTitle("Login");
@@ -87,11 +97,12 @@ public class LoginActivity extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
 
                                     //intent
+                                    /*
                                     Intent cambio = new Intent(LoginActivity.this, MainActivity2.class);
                                     String usuario = email;
                                     cambio.putExtra("usuario", usuario);
                                     startActivity(cambio);
-
+*/
                                 } else {
 
                                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -117,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("", email);
                 editor.apply();
             }
+
 
         });
     }
