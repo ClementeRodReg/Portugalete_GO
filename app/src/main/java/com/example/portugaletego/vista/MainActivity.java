@@ -18,8 +18,8 @@ import pl.droidsonroids.gif.GifImageView;
 public class MainActivity extends AppCompatActivity {
     Intent mandar;
     final Handler handler = new Handler();
-    final int delay = 500;
-    int insertado = 0;
+    final int delay = 50;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +31,12 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     mandar = pasarVentana.getMandar();
                     startActivity(mandar);
+
                 } catch (Exception ex) {
                 }
-
-                if (insertado < 1)
+                if (pasarVentana.getContador() < 1)
                     handler.postDelayed(this, delay);
+
             }
         }, delay);
 

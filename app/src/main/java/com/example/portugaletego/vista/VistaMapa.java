@@ -1,32 +1,39 @@
 package com.example.portugaletego.vista;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.portugaletego.R;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
+import org.osmdroid.views.overlay.OverlayItem;
+import java.util.ArrayList;
+
 
 
 public class VistaMapa extends AppCompatActivity {
 
-    MapView map = null;
+    MapView map;
     IMapController mapController;
     private static final String TAG = "OsmActivity";
 
 
-    private static final int PERMISSION_REQUEST_CODE = 1;
+    Button botonMinijuego1;
+    Button botonMinijuego2;
+    Button botonMinijuego3;
+    Button botonMinijuego4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +41,88 @@ public class VistaMapa extends AppCompatActivity {
 
         Context ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
+        Configuration.getInstance().setUserAgentValue(getPackageName());
 
-        setContentView(R.layout.activity_main);
-        map = findViewById(R.id.mapview);
-        map.setTileSource(TileSourceFactory.MAPNIK);
+        setContentView(R.layout.activity_vista_mapa);
 
+        map = findViewById(R.id.mapaGPS);
+        // map.setTileSource(TileSourceFactory.MAPNIK);
+        map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         map.setMultiTouchControls(true);
         mapController = map.getController();
         mapController.setZoom(18.0);
         GeoPoint geoPoint = new GeoPoint(43.26271, -2.92528);
         mapController.setCenter(geoPoint);
+
+        //your items
+        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+        items.add(new OverlayItem("Bilbao", "Esto es bilbao, capital mundial", new GeoPoint(43.26271, -2.92528))); // Lat/Lon decimal degrees
+
+        //the overlay
+        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
+                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                    @Override
+                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                        //do something
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onItemLongPress(final int index, final OverlayItem item) {
+                        return false;
+                    }
+                }, this);
+        mOverlay.setFocusItemsOnTap(true);
+        map.getOverlays().add(mOverlay);
+
+        map.setUseDataConnection(true);
+
+
+
+        botonMinijuego1=findViewById(R.id.btnPC);
+        botonMinijuego1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
+                startActivity(mandar);
+            }
+        });
+
+        botonMinijuego2=findViewById(R.id.btnMJ2);
+        botonMinijuego2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
+                startActivity(mandar);
+
+                 */
+            }
+        });
+
+        botonMinijuego3=findViewById(R.id.btnMJ3);
+        botonMinijuego3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
+                startActivity(mandar);
+
+                 */
+            }
+        });
+
+        botonMinijuego4=findViewById(R.id.btnMJ4);
+        botonMinijuego4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
+                startActivity(mandar);
+
+                 */
+            }
+        });
 
     }
 
@@ -53,7 +132,7 @@ public class VistaMapa extends AppCompatActivity {
         //if you make changes to the configuration, use
         //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
-        if (map != null)
+        //if (map != null)
             map.onResume(); //needed for compass, my location overlays, v6.0.0 and up
     }
 
@@ -63,7 +142,7 @@ public class VistaMapa extends AppCompatActivity {
         //if you make changes to the configuration, use
         //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //Configuration.getInstance().save(this, prefs);
-        if (map != null)
+        //if (map != null)
             map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
     }
 
@@ -78,4 +157,6 @@ public class VistaMapa extends AppCompatActivity {
             //resume tasks needing this permission
         }
     }
+
+
 }

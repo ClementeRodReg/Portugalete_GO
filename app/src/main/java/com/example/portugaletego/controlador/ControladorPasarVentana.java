@@ -9,6 +9,11 @@ public class ControladorPasarVentana implements Runnable {
     android.content.Context clase1;
     Class clase2;
 
+    public int getContador() {
+        return contador;
+    }
+
+    int contador=0;
     public Intent getMandar() {
         return mandar;
     }
@@ -27,6 +32,7 @@ public class ControladorPasarVentana implements Runnable {
         //Esperamos a que la transicion del gif termine para pasar de ventana
         try {
             Thread.sleep(6000);
+            contador++;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
