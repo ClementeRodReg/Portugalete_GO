@@ -18,17 +18,18 @@ import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.auth.AuthResult;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
 
 import com.example.portugaletego.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    // private FirebaseAuth mAuth;
 
     SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +37,14 @@ public class LoginActivity extends AppCompatActivity {
 
         //sharedPreferences crear
         Context context = LoginActivity.this;
-        sharedpreferences = context.getSharedPreferences("",Context.MODE_PRIVATE);
+        sharedpreferences = context.getSharedPreferences("", Context.MODE_PRIVATE);
 
         //sharedPreferences leer
         String defaultUser = "";
         String rememberUser = sharedpreferences.getString("", defaultUser);
 
         //declaramos auth con firebase.getInstance
-        mAuth = FirebaseAuth.getInstance();
+        // mAuth = FirebaseAuth.getInstance();
 
         //valores
         EditText contrasenna = (EditText) findViewById(R.id.editTextContrasenna);
@@ -68,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 String email = txtUsuario.getText().toString();
                 String password = contrasenna.getText().toString();
-                if(email.isEmpty() || password.isEmpty()){
+                if (email.isEmpty() || password.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
 
 
@@ -87,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+/*
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -97,12 +99,12 @@ public class LoginActivity extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
 
                                     //intent
-                                    /*
+
                                     Intent cambio = new Intent(LoginActivity.this, MainActivity2.class);
                                     String usuario = email;
                                     cambio.putExtra("usuario", usuario);
                                     startActivity(cambio);
-*/
+
                                 } else {
 
                                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -123,10 +125,13 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
+
                 //sharedPreferences escribir
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString("", email);
                 editor.apply();
+                */
+
             }
 
 
@@ -134,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void setup(){
+    private void setup() {
 
     }
 }

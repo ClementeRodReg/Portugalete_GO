@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ControladorPasarVentana pasarVentana = new ControladorPasarVentana(MainActivity.this, VistaMapa.class);
+        ControladorPasarVentana pasarVentana = new ControladorPasarVentana(MainActivity.this, LoginActivity.class);
 
         handler.postDelayed(new Runnable() {
             public void run() {

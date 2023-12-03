@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/portu_red"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".vista.LoginActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
-        app:cardCornerRadius="30sp"
+        android:layout_width="0dp"
+        android:layout_height="349dp"
+        android:background="@color/portu_red"
         android:elevation="20sp"
-        >
+        app:cardCornerRadius="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
+            android:background="@color/portu_red"
+            android:orientation="vertical"
             android:padding="4dp">
 
             <TextView
                 android:id="@+id/login"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="53dp"
                 android:text="Login"
                 android:textAlignment="center"
+                android:textColor="@color/portu_yellow"
                 android:textSize="40dp"
                 android:textStyle="bold" />
 
@@ -40,9 +46,11 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="26dp"
                 android:drawablePadding="8sp"
+                android:hint="Introduzca el nombre"
                 android:inputType="text"
                 android:padding="8sp"
-                android:hint="Introduzca el nombre"/>
+                android:textColor="@color/white"
+                android:textColorHint="@color/portu_yellow" />
 
             <EditText
                 android:id="@+id/editTextContrasenna"
@@ -50,35 +58,36 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="14dp"
                 android:drawablePadding="8sp"
+                android:hint="Pass"
                 android:inputType="numberPassword"
                 android:padding="8sp"
-                android:hint="Pass"
-                android:textColorHighlight="@color/cardview_dark_background"/>
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textColorHint="@color/portu_yellow" />
 
             <Button
                 android:id="@+id/buttonConfirmar"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
+                android:backgroundTint="@color/portu_yellow"
+                android:text="Confirmar"
                 android:textSize="16dp"
-                app:cornerRadius="20sp"
-                android:text="Confirmar"/>
+                app:cornerRadius="20sp" />
 
             <Button
                 android:id="@+id/Map"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
+                android:backgroundTint="@color/portu_yellow"
+                android:text="ir al Mapa"
                 android:textSize="16dp"
-                app:cornerRadius="20sp"
-                android:text="ir al Mapa"/>
+                app:cornerRadius="20sp" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
 
-
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

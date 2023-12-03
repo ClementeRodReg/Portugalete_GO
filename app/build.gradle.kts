@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     //plugin de firebase
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -34,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation("com.google.firebase:firebase-crashlytics:18.6.0")
+    implementation("com.google.firebase:firebase-analytics:21.5.0")
     val roomversion = "2.5.0"
 
     implementation("org.osmdroid:osmdroid-android:6.1.17")
