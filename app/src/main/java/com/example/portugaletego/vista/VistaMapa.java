@@ -69,14 +69,13 @@ public class VistaMapa extends AppCompatActivity {
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                     @Override
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                        Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
-                        startActivity(mandar);
                         return true;
                     }
 
                     @Override
                     public boolean onItemLongPress(final int index, final OverlayItem item) {
-
+                        Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
+                        startActivity(mandar);
                         return false;
                     }
                 }, this);
