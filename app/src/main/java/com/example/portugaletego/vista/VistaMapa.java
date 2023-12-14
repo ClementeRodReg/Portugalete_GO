@@ -64,6 +64,24 @@ public class VistaMapa extends AppCompatActivity {
                 "construido por iniciativa privada entre 1887 y 1893, que une las dos márgenes de la ría de Bilbao en Vizcaya.",
                 new GeoPoint(43.32280702415836, -3.017871992540378))); // Lat/Lon decimal degrees
 
+        items.add(new OverlayItem("Museo Rialia", "Según documentos conservados en el Archivo Histórico de Portugalete, " +
+                "ya en el año 1892 competía una trainera de Portugalete en la regata entre cofradías, " +
+                "y por lo tanto ya no podemos considerar como primera constancia escrita aquella que habla de una tripulación local compitiendo en 1917. " +
+                "Es en 1917 cuando se inician las regatas del Abra, quedando las tripulaciones en el orden siguiente: " +
+                "Santurtzi, Portugalete, Zierbena y Algorta. La trainera portugaluja se llamaba “Engracia“.",
+                new GeoPoint(43.318723256749124, -3.0140295609217365))); // Lat/Lon decimal degrees
+
+        items.add(new OverlayItem("Torre Salazar", "La casa torre de Salazar, es una casa torre del siglo xiv, " +
+                "construida hacia 1380 en mampostería y se sitúa en la Villa de Portugalete (Vizcaya). " +
+                "Perteneció al linaje de los Salazar. ",
+                new GeoPoint(43.320139896048985, -3.0170681032500877))); // Lat/Lon decimal degrees
+
+        items.add(new OverlayItem("Campo de Futbol La Florida", "según las fuentes históricas consultadas, remonta sus orígenes a 1909 cuando es fundado por su primer Presidente, " +
+                "Alfredo Hervias, y se federa con el nombre de Deportivo Portugalete.\n" +
+                "A partir de ese nacimiento, pasamos a exponer los datos más relevantes y/o anecdóticos de la Historia del Club, cronológicamente ordenados por sus décadas de vida, " +
+                "y estableciendo un bonito paralelismo con la situación de la Noble Villa de Portugalete en cada época.",
+                new GeoPoint(43.31826126075431, -3.026257332581579))); // Lat/Lon decimal degrees
+
         //the overlay
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
@@ -74,8 +92,10 @@ public class VistaMapa extends AppCompatActivity {
 
                     @Override
                     public boolean onItemLongPress(final int index, final OverlayItem item) {
-                        Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
-                        startActivity(mandar);
+                        if (item.getTitle().equals("Puente Colgante")) {
+                            Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
+                            startActivity(mandar);
+                        }
                         return false;
                     }
                 }, this);
