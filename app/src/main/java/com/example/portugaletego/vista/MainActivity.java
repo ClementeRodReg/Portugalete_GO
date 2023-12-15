@@ -9,10 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
 import com.example.portugaletego.R;
 import com.example.portugaletego.controlador.ControladorPasarVentana;
-
 import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }, delay);
-
 
     }
 }
