@@ -1,6 +1,9 @@
 package com.example.portugaletego.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,15 +34,13 @@ public class VistaMapa extends AppCompatActivity {
     IMapController mapController;
     private static final String TAG = "OsmActivity";
 
-
-    Button botonMinijuego1;
-    Button botonMinijuego2;
-    Button botonMinijuego3;
-    Button botonMinijuego4;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_vista_mapa);
+
+/*
 
         Context ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
@@ -103,74 +104,20 @@ public class VistaMapa extends AppCompatActivity {
         map.getOverlays().add(mOverlay);
 
         map.setUseDataConnection(true);
+*/
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        botonMinijuego1 = findViewById(R.id.btnPC);
-        botonMinijuego1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
-                startActivity(mandar);
-            }
-        });
+        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentCV);
+        Fragment nuevoFragment = new MapFragment();
 
-        botonMinijuego2 = findViewById(R.id.btnMJ2);
-        botonMinijuego2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
-                startActivity(mandar);
-
-                 */
-            }
-        });
-
-        botonMinijuego3 = findViewById(R.id.btnMJ3);
-        botonMinijuego3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
-                startActivity(mandar);
-
-                 */
-            }
-        });
-
-        botonMinijuego4 = findViewById(R.id.btnMJ4);
-        botonMinijuego4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                Intent mandar = new Intent(VistaMapa.this, ventanaJuego1BizkaikoZubia.class);
-                startActivity(mandar);
-
-                 */
-            }
-        });
+        fragmentTransaction.replace(R.id.fragmentCV, nuevoFragment);
+        fragmentTransaction.commit();
 
     }
 
-    public void onResume() {
-        super.onResume();
-        //this will refresh the osmdroid configuration on resuming.
-        //if you make changes to the configuration, use
-        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        //Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
-        //if (map != null)
-        map.onResume(); //needed for compass, my location overlays, v6.0.0 and up
-    }
 
-    public void onPause() {
-        super.onPause();
-        //this will refresh the osmdroid configuration on resuming.
-        //if you make changes to the configuration, use
-        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        //Configuration.getInstance().save(this, prefs);
-        //if (map != null)
-        map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
-    }
 
 
     @Override

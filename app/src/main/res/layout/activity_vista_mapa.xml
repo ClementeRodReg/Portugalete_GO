@@ -8,69 +8,15 @@
     tools:context=".vista.VistaMapa">
 
 
-    <Button
-        android:id="@+id/btnPC"
-        android:layout_width="160dp"
-        android:layout_height="66dp"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="Puente Colgante"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentCV"
+        android:name="com.example.portugaletego.vista.MapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <Button
-        android:id="@+id/btnMJ2"
-        android:layout_width="160dp"
-        android:layout_height="66dp"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="Minijuego 2"
-        app:layout_constraintBottom_toBottomOf="@+id/mapaGPS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <Button
-        android:id="@+id/btnMJ4"
-        android:layout_width="160dp"
-        android:layout_height="66dp"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="Minijuego 4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
-
-    <Button
-        android:id="@+id/btnMJ3"
-        android:layout_width="160dp"
-        android:layout_height="66dp"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="Minijuego 3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
-
-    <org.osmdroid.views.MapView
-        android:id="@+id/mapaGPS"
-        android:layout_width="410dp"
-        android:layout_height="558dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-    </org.osmdroid.views.MapView>
+        app:layout_constraintVertical_bias="0.031" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
