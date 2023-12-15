@@ -23,7 +23,6 @@ public class VistaMapa extends AppCompatActivity {
 
         fragmentTransaction.replace(R.id.fragmentCV, nuevoFragment);
         fragmentTransaction.commit();
-
     }
 
 }
