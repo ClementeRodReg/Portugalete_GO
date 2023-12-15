@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Portugalete GO!</string>
+    <string name="transbordador">transbordador</string>
+    <string name="ascensor">ascensor</string>
+    <string name="pasarela">pasarela</string>
+    <string name="tensor">tensor</string>
+    <string name="confirmar">confirmar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

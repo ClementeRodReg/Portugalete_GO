@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Portugalete GO!</string>
+    <string name="transbordador">Trnasbordadorea</string>
+    <string name="ascensor">igogailua</string>
+    <string name="pasarela">pista</string>
+    <string name="tensor">tentsorea</string>
+    <string name="confirmar">berretsi</string>
+</resources>

@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#47141E"
+    android:background="@color/portu_red"
+    tools:context=".vista.VistaMapa">
 
-    tools:context=".vista.MainActivity">
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifview"
-        android:layout_width="353dp"
-        android:layout_height="315dp"
-        android:alpha="0.6"
-        android:background="@color/portu_red"
-        android:src="@drawable/logo"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentCV"
+        android:name="com.example.portugaletego.vista.MapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintVertical_bias="0.031" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
