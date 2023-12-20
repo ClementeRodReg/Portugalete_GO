@@ -10,13 +10,15 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentJuego"
         android:layout_width="413dp"
-        android:layout_height="673dp"
+        android:layout_height="675dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"></androidx.fragment.app.FragmentContainerView>
+        app:layout_constraintVertical_bias="0.0"/>
+
+
 
     <Button
         android:id="@+id/button"
@@ -38,10 +40,10 @@
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.984"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragmentJuego"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/imageButton"
