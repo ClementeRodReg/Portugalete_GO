@@ -24,7 +24,7 @@
             android:name=".vista.VistaMapa"
             android:exported="false" />
         <activity
-            android:name=".vista.ventanaJuego1BizkaikoZubia"
+            android:name=".vista.ActivityJuegos"
             android:exported="false" />
         <activity
             android:name=".vista.MainActivity"

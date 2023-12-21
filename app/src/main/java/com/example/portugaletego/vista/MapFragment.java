@@ -155,7 +155,8 @@ public class MapFragment extends Fragment {
             @Override
             public boolean onItemLongPress(final int index, final OverlayItem item) {
                 if (item.getTitle().equals("Puente Colgante")) {
-                    Intent mandar = new Intent(getActivity(), ventanaJuego1BizkaikoZubia.class);
+                    Intent mandar = new Intent(getActivity(), ActivityJuegos.class);
+                    mandar.putExtra("id",1); //revisar con clemen, mandamos un id segun el pulsador que utilicemos
                     startActivity(mandar);
                 }
                 return false;
