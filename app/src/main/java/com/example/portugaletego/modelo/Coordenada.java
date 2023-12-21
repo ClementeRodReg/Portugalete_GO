@@ -39,10 +39,10 @@ public class Coordenada {
     @ColumnInfo(name="Id")
     private String id;
     @NonNull
-    @ColumnInfo(name="CoordX")
+    @ColumnInfo(name="lat")
     private String coordX;
     @NonNull
-    @ColumnInfo(name="CoordY")
+    @ColumnInfo(name="lon")
     private String coordY;
 
 

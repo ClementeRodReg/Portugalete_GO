@@ -1,14 +1,31 @@
 package com.example.portugaletego.vista;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.portugaletego.R;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.OutputStream;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +43,8 @@ public class fragmentCamara extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Button btnCamara;
+    ImageView imagen;
     public fragmentCamara() {
         // Required empty public constructor
     }
@@ -63,4 +82,63 @@ public class fragmentCamara extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_camara, container, false);
     }
+
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
+        super.onViewCreated(view, savedInstance);
+
+        btnCamara=view.findViewById(R.id.btnCamara);
+        imagen=view.findViewById(R.id.fotoSacada);
+
+        btnCamara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirCamara();
+            }
+        });
+
+    }
+
+    private void abrirCamara(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+         if(requestCode==1 && resultCode== RESULT_OK){
+            Bundle extras = data.getExtras();
+            Bitmap imgBitmap= (Bitmap) extras.get("data");
+            imagen.setImageBitmap(imgBitmap) ;
+
+            ContentResolver resolver = getContext().getContentResolver();
+            ContentValues values = new ContentValues();
+            OutputStream fos = null;
+            String nombreFoto = "RespuestaEjer3punto1";
+            values.put(MediaStore.Images.Media.DISPLAY_NAME, nombreFoto);
+            values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+            values.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/PortuGO");
+            values.put(MediaStore.Images.Media.IS_PENDING, 1);
+
+            Uri collection = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
+            Uri imageUri= resolver.insert(collection, values);
+
+             try {
+                 fos=resolver.openOutputStream(imageUri);
+             } catch (FileNotFoundException e) {
+                 e.printStackTrace();
+             }
+
+             values.clear();
+             values.put(MediaStore.Images.Media.IS_PENDING, 0);
+             resolver.update(imageUri, values, null, null);
+
+
+            boolean guardado = imgBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+
+            if(guardado){
+                Toast.makeText(getView().getContext(), "La imagen ha sido guardada.", Toast.LENGTH_SHORT).show();
+            }
+
+         }
+    }
+
 }
