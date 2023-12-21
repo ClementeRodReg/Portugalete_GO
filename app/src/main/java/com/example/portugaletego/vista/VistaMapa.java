@@ -18,11 +18,27 @@ public class VistaMapa extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentCV);
-        Fragment nuevoFragment = new MapFragment();
+        Fragment fragment1 = fragmentManager.findFragmentById(R.id.fragmentCV);
+        Fragment nuevoFragment1 = new MapFragment();
 
-        fragmentTransaction.replace(R.id.fragmentCV, nuevoFragment);
+        Fragment fragment2 = fragmentManager.findFragmentById(R.id.fcvCamara);
+        Fragment nuevoFragment2 = new fragmentCamara();
+
+        Bundle datos = new Bundle();
+        datos.putString("nombre carpeta", "r_g3");
+        datos.putString("ejer", "ejer3");
+        nuevoFragment2.setArguments(datos);
+
+        fragmentTransaction.replace(R.id.fcvCamara, nuevoFragment2);
+
+        fragmentTransaction.replace(R.id.fragmentCV, nuevoFragment1);
+
         fragmentTransaction.commit();
+
+
+
+
+
     }
 
 }

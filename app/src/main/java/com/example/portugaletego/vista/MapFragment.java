@@ -4,6 +4,7 @@ import static com.google.common.reflect.Reflection.getPackageName;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,9 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.OverlayItem;
+import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
+import org.osmdroid.views.overlay.mylocation.IMyLocationProvider;
+import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
 
@@ -43,6 +47,7 @@ public class MapFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private View vista;
+    private MyLocationNewOverlay myLocationOverlay;
     public MapFragment() {
         // Required empty public constructor
     }
@@ -96,8 +101,22 @@ public class MapFragment extends Fragment {
         map.setMultiTouchControls(true);
         mapController = map.getController();
         mapController.setZoom(18.0);
-        GeoPoint geoPoint = new GeoPoint(43.3186569, -3.0219986);
-        mapController.setCenter(geoPoint);
+        // Habilitar el uso de la ubicación del dispositivo
+        GpsMyLocationProvider locationProvider = new GpsMyLocationProvider(requireActivity());
+        myLocationOverlay = new MyLocationNewOverlay(locationProvider, map) {
+            @Override
+            public void onLocationChanged(Location location, IMyLocationProvider source) {
+                super.onLocationChanged(location, source);
+
+                if (myLocationOverlay != null && myLocationOverlay.getMyLocation() != null /*&& geoPoint != null*/) {
+                    // Verificar la distancia al marcador (ajusta según tu necesidad)
+                    /* double distance = myLocationOverlay.getMyLocation().distanceToAsDouble(geoPoint);*/
+                }
+            }
+        };
+        myLocationOverlay.enableMyLocation();
+        myLocationOverlay.enableFollowLocation();
+        map.getOverlays().add(myLocationOverlay);
 
         //your items
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
