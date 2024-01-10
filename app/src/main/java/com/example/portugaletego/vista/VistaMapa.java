@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.content.Intent;
 import android.os.Bundle;
 import com.example.portugaletego.R;
 
@@ -35,10 +37,11 @@ public class VistaMapa extends AppCompatActivity {
 
         fragmentTransaction.commit();
 
-
-
-
-
     }
 
+    public void mandar(int id){
+        Intent mandar = new Intent(this, ActivityJuegos.class);
+        mandar.putExtra("id",id); //revisar con clemen, mandamos un id segun el pulsador que utilicemos
+        startActivity(mandar);
+    }
 }

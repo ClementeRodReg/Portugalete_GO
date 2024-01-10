@@ -22,15 +22,17 @@ public class ActivityJuegos extends AppCompatActivity {
         Bundle bundle = new Bundle();
         int id = bundle.getInt("id");
 
+        System.out.println(id);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentJuego);
+        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentJuego1);
 
         //Tendremos que meterlo dentro de un intent al seleccionar el pulsador en el mapa
        if(id == 1) {
            Fragment nuevoFragment = new FragmentJuego1();
-           fragmentTransaction.replace(R.id.fragmentJuego, nuevoFragment);
+           fragmentTransaction.replace(R.id.fragmentJuego1, nuevoFragment);
        }
        else if(id == 2){
           // Fragment nuevoFragment = new FragmentJuego2();

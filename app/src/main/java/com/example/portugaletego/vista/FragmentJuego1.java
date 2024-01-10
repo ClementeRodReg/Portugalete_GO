@@ -1,5 +1,7 @@
 package com.example.portugaletego.vista;
 
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
@@ -8,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.DragEvent;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -30,6 +34,8 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ImageView recogida;
 
     private View vista;
 
@@ -96,25 +102,78 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
         imgTensor.setOnLongClickListener(this);
         imgTransbordador.setOnLongClickListener(this);
 
-        placeholder1.setOnDragListener((View.OnDragListener) drag);
-        placeholder2.setOnDragListener();
-        placeholder3.setOnDragListener();
-        placeholder4.setOnDragListener();
+        placeholder1.setOnDragListener(drag);
+        placeholder2.setOnDragListener(drag);
+        placeholder3.setOnDragListener(drag);
+        placeholder4.setOnDragListener(drag);
 
 
     }
 
     @Override
     public boolean onLongClick(View v) {
-
-        return false;
+        recogida = (ImageView) v;
+        ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
+        ClipData dragData = new ClipData(
+                (CharSequence) v.getTag(),
+                new String[]{ClipDescription.MIMETYPE_TEXT_PLAIN},
+                item);
+        View.DragShadowBuilder myShadow = new View.DragShadowBuilder(v);
+        v.startDragAndDrop(dragData,
+                myShadow,
+                null,
+                0
+        );
+        return true;
     }
 
     View.OnDragListener drag = (v, event) -> {
         int dragEvent = event.getAction();
         switch (dragEvent) {
             case DragEvent.ACTION_DROP:
+                if (v.getId() == R.id.placeholder1 && recogida.getId() == R.id.imgTxtTensor) {
+                    v.setBackground(recogida.getDrawable());
+                    recogida.setVisibility(View.GONE);
+                    Toast toast1 =
+                            Toast.makeText(this.getContext(),
+                                    "Tu opcion esta correcta", Toast.LENGTH_SHORT);
 
+                    toast1.show();
+                }
+                else if (v.getId() == R.id.placeholder2 && recogida.getId() == R.id.imgTxtAscensor) {
+                    v.setBackground(recogida.getDrawable());
+                    recogida.setVisibility(View.GONE);
+                    Toast toast1 =
+                            Toast.makeText(this.getContext(),
+                                    "Tu opcion esta correcta", Toast.LENGTH_SHORT);
+
+                    toast1.show();
+                }
+                else if (v.getId() == R.id.placeholder3 && recogida.getId() == R.id.imgTxtTransbordador) {
+                    v.setBackground(recogida.getDrawable());
+                    recogida.setVisibility(View.GONE);
+                    Toast toast1 =
+                            Toast.makeText(this.getContext(),
+                                    "Tu opcion esta correcta", Toast.LENGTH_SHORT);
+
+                    toast1.show();
+                }
+                else if (v.getId() == R.id.placeholder4 && recogida.getId() == R.id.imgTxtPasarela) {
+                    v.setBackground(recogida.getDrawable());
+                    recogida.setVisibility(View.GONE);
+                    Toast toast1 =
+                            Toast.makeText(this.getContext(),
+                                    "Tu opcion esta correcta", Toast.LENGTH_SHORT);
+
+                    toast1.show();
+                }
+                else{
+                    Toast toast1 =
+                            Toast.makeText(this.getContext(),
+                                    "Tu opcion NO esta correcta", Toast.LENGTH_SHORT);
+
+                    toast1.show();
+                }
         }
         return true;
     };
