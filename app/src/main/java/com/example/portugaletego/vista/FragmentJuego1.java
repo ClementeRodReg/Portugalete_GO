@@ -87,15 +87,15 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
 
         TextView placeholder1, placeholder2, placeholder3, placeholder4;
 
-        imgPasarela = vista.findViewById(R.id.imgTxtPasarela);
-        imgAscensor = vista.findViewById(R.id.imgTxtAscensor);
-        imgTensor = vista.findViewById(R.id.imgTxtTensor);
-        imgTransbordador = vista.findViewById(R.id.imgTxtTransbordador);
+        imgPasarela = view.findViewById(R.id.imgTxtPasarela);
+        imgAscensor = view.findViewById(R.id.imgTxtAscensor);
+        imgTensor = view.findViewById(R.id.imgTxtTensor);
+        imgTransbordador = view.findViewById(R.id.imgTxtTransbordador);
 
-        placeholder1 = vista.findViewById(R.id.placeholder1);
-        placeholder2 = vista.findViewById(R.id.placeholder2);
-        placeholder3 = vista.findViewById(R.id.placeholder3);
-        placeholder4 = vista.findViewById(R.id.placeholder4);
+        placeholder1 = view.findViewById(R.id.placeholder1);
+        placeholder2 = view.findViewById(R.id.placeholder2);
+        placeholder3 = view.findViewById(R.id.placeholder3);
+        placeholder4 = view.findViewById(R.id.placeholder4);
 
         imgPasarela.setOnLongClickListener(this);
         imgAscensor.setOnLongClickListener(this);

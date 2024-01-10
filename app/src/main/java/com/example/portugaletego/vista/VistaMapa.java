@@ -22,7 +22,7 @@ public class VistaMapa extends AppCompatActivity {
 
         Fragment fragment1 = fragmentManager.findFragmentById(R.id.fragmentCV);
         Fragment nuevoFragment1 = new MapFragment();
-
+/*
         Fragment fragment2 = fragmentManager.findFragmentById(R.id.fcvCamara);
         Fragment nuevoFragment2 = new fragmentCamara();
 
@@ -32,7 +32,7 @@ public class VistaMapa extends AppCompatActivity {
         nuevoFragment2.setArguments(datos);
 
         fragmentTransaction.replace(R.id.fcvCamara, nuevoFragment2);
-
+*/
         fragmentTransaction.replace(R.id.fragmentCV, nuevoFragment1);
 
         fragmentTransaction.commit();

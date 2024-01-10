@@ -18,9 +18,9 @@ public class ActivityJuegos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_juegos);
 
-        Bundle bundle = new Bundle();
-        int id = bundle.getInt("id");
+        int id = getIntent().getIntExtra("id", 0);
 
         System.out.println(id);
 
