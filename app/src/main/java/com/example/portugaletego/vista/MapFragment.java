@@ -101,6 +101,9 @@ public class MapFragment extends Fragment {
         map.setMultiTouchControls(true);
         mapController = map.getController();
         mapController.setZoom(18.0);
+        GeoPoint geoPoint = new GeoPoint(43.3186569, -3.0219986);
+        mapController.setCenter(geoPoint);
+        /*
         // Habilitar el uso de la ubicación del dispositivo
         GpsMyLocationProvider locationProvider = new GpsMyLocationProvider(requireActivity());
         myLocationOverlay = new MyLocationNewOverlay(locationProvider, map) {
@@ -108,15 +111,16 @@ public class MapFragment extends Fragment {
             public void onLocationChanged(Location location, IMyLocationProvider source) {
                 super.onLocationChanged(location, source);
 
-                if (myLocationOverlay != null && myLocationOverlay.getMyLocation() != null /*&& geoPoint != null*/) {
+                if (myLocationOverlay != null && myLocationOverlay.getMyLocation() != null /*&& geoPoint != null) {
                     // Verificar la distancia al marcador (ajusta según tu necesidad)
-                    /* double distance = myLocationOverlay.getMyLocation().distanceToAsDouble(geoPoint);*/
+                    /* double distance = myLocationOverlay.getMyLocation().distanceToAsDouble(geoPoint);
                 }
             }
         };
         myLocationOverlay.enableMyLocation();
         myLocationOverlay.enableFollowLocation();
         map.getOverlays().add(myLocationOverlay);
+        */
 
         //your items
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();

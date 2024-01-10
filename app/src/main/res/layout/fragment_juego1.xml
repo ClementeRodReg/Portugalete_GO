@@ -115,22 +115,24 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:padding="4dp">
+
         <ImageView
             android:id="@+id/imgTxtPasarela"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/Pasarela"/>
+            app:srcCompat="@drawable/pasarela" />
 
         <ImageView
             android:id="@+id/imgTxtTransbordador"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/Transbordador"/>
+            app:srcCompat="@drawable/transbordador" />
+
         <ImageView
             android:id="@+id/imgTxtTensor"
             android:layout_width="80dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/Tensor"/>
+            app:srcCompat="@drawable/tensor" />
 
     </LinearLayout>
     <LinearLayout
@@ -139,11 +141,12 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:padding="2dp">
+
         <ImageView
             android:id="@+id/imgTxtAscensor"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/Ascensor"/>
+            app:srcCompat="@drawable/ascensor" />
     </LinearLayout>
 
     </LinearLayout>

@@ -129,8 +129,11 @@ public class fragmentCamara extends Fragment {
 
              values.clear();
              values.put(MediaStore.Images.Media.IS_PENDING, 0);
+             try {
              resolver.update(imageUri, values, null, null);
-
+             } catch (Exception ex) {
+                 ex.printStackTrace();
+             }
 
             boolean guardado = imgBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 
