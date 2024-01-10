@@ -161,6 +161,15 @@ public class MapFragment extends Fragment {
                 if (item.getTitle().equals("Puente Colgante")) {
                     ((VistaMapa) getActivity()).mandar(1);
                 }
+                else if (item.getTitle().equals("Museo Rialia")) {
+                    ((VistaMapa) getActivity()).mandar(2);
+                }
+                else if (item.getTitle().equals("Torre Salazar")) {
+                    ((VistaMapa) getActivity()).mandar(3);
+                }
+                else if (item.getTitle().equals("Campo de Futbol La Florida")) {
+                    ((VistaMapa) getActivity()).mandar(4);
+                }
                 return false;
             }
         };

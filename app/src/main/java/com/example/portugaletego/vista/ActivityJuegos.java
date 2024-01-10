@@ -35,20 +35,16 @@ public class ActivityJuegos extends AppCompatActivity {
            fragmentTransaction.replace(R.id.fragmentJuego1, nuevoFragment);
        }
        else if(id == 2){
-          // Fragment nuevoFragment = new FragmentJuego2();
-          // fragmentTransaction.replace(R.id.fragmentJuego, nuevoFragment);
+          Fragment nuevoFragment = new FragmentJuego2();
+          fragmentTransaction.replace(R.id.fragmentJuego2, nuevoFragment);
        }
        else if(id == 3){
-           // Fragment nuevoFragment = new FragmentJuego3();
-           // fragmentTransaction.replace(R.id.fragmentJuego, nuevoFragment);
+           Fragment nuevoFragment = new fragmentCamara();
+            fragmentTransaction.replace(R.id.fragmentCam, nuevoFragment);
        }
-       else if(id == 2){
-           // Fragment nuevoFragment = new FragmentJuego4();
-           // fragmentTransaction.replace(R.id.fragmentJuego, nuevoFragment);
-       }
-       else if(id == 2){
-           // Fragment nuevoFragment = new FragmentJuego5();
-           // fragmentTransaction.replace(R.id.fragmentJuego, nuevoFragment);
+       else if(id == 4){
+            Fragment nuevoFragment = new FragmentCamara2();
+            fragmentTransaction.replace(R.id.fragmentCam2, nuevoFragment);
        }
         fragmentTransaction.commit();
     }

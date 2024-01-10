@@ -35,6 +35,9 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
     private String mParam1;
     private String mParam2;
 
+    private ImageView imgPasarela, imgAscensor, imgTensor, imgTransbordador;
+
+    private TextView placeholder1, placeholder2, placeholder3, placeholder4;
     private ImageView recogida;
 
     private View vista;
@@ -83,10 +86,6 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
 
-        ImageView imgPasarela, imgAscensor, imgTensor, imgTransbordador;
-
-        TextView placeholder1, placeholder2, placeholder3, placeholder4;
-
         imgPasarela = view.findViewById(R.id.imgTxtPasarela);
         imgAscensor = view.findViewById(R.id.imgTxtAscensor);
         imgTensor = view.findViewById(R.id.imgTxtTensor);
@@ -106,8 +105,6 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
         placeholder2.setOnDragListener(drag);
         placeholder3.setOnDragListener(drag);
         placeholder4.setOnDragListener(drag);
-
-
     }
 
     @Override
