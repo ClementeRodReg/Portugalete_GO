@@ -27,7 +27,6 @@ public class ActivityJuegos extends AppCompatActivity {
 
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentJuego);
 
-
         //Tendremos que meterlo dentro de un intent al seleccionar el pulsador en el mapa
        if(id == 1) {
            Fragment nuevoFragment = new FragmentJuego1();
