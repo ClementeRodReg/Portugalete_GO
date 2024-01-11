@@ -36,12 +36,10 @@ public class fragmentCamara extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM1 = "id_juego";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int id_juego;
 
     Button btnCamara;
     ImageView imagen;
@@ -53,16 +51,14 @@ public class fragmentCamara extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param id Parameter 1.
      * @return A new instance of fragment fragmentCamara.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragmentCamara newInstance(String param1, String param2) {
+    public static fragmentCamara newInstance(int id) {
         fragmentCamara fragment = new fragmentCamara();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,8 +67,7 @@ public class fragmentCamara extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            id_juego = getArguments().getInt(ARG_PARAM1);
         }
     }
 
@@ -112,7 +107,13 @@ public class fragmentCamara extends Fragment {
             ContentResolver resolver = getContext().getContentResolver();
             ContentValues values = new ContentValues();
             OutputStream fos = null;
-            String nombreFoto = "RespuestaEjer3punto1";
+            String nombreFoto ="";
+
+            if(id_juego == 3)
+                nombreFoto = "RespuestaEjer3punto1";
+            else if(id_juego == 4)
+                nombreFoto = "RespuestaEjer4punto1";
+
             values.put(MediaStore.Images.Media.DISPLAY_NAME, nombreFoto);
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
             values.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/PortuGO");
