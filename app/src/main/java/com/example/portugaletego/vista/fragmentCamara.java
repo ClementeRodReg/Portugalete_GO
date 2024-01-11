@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -108,12 +109,23 @@ public class fragmentCamara extends Fragment {
             ContentValues values = new ContentValues();
             OutputStream fos = null;
             String nombreFoto ="";
-
-            if(id_juego == 3)
+             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+            if(id_juego == 3){
                 nombreFoto = "RespuestaEjer3punto1";
-            else if(id_juego == 4)
-                nombreFoto = "RespuestaEjer4punto1";
+                File[] files = path.listFiles();
+                for(int i=0; i<files.length; i++) {
+                    if(files[i].getName().contains(nombreFoto))
+                        files[i].delete();
+                }
+            }
 
+            else if(id_juego == 4) {
+                nombreFoto = "RespuestaEjer4punto1";
+                File[] files = path.listFiles();
+                for(int i=0; i<files.length; i++) {
+                    if(files[i].getName().contains(nombreFoto))
+                        files[i].delete();
+            }
             values.put(MediaStore.Images.Media.DISPLAY_NAME, nombreFoto);
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
             values.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/PortuGO");
@@ -145,4 +157,5 @@ public class fragmentCamara extends Fragment {
          }
     }
 
+}
 }
