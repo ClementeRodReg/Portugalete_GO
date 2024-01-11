@@ -61,23 +61,26 @@ public class ActivityJuegos extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentJuegos);
-
+        Bundle bundle = new Bundle();
+        bundle.putInt("id",id);
         //Tendremos que meterlo dentro de un intent al seleccionar el pulsador en el mapa
        if(id == 1) {
            Fragment nuevoFragment = new FragmentJuego1();
            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
        }
        else if(id == 2){
-          Fragment nuevoFragment = new FragmentJuego2();
-          fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+           Fragment nuevoFragment = new FragmentJuego2();
+           fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
        }
        else if(id == 3){
            Fragment nuevoFragment = new fragmentCamara();
-            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+           nuevoFragment.setArguments(bundle);
+           fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
        }
        else if(id == 4){
-            Fragment nuevoFragment = new fragmentCamara();
-            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+           Fragment nuevoFragment = new fragmentCamara();
+           nuevoFragment.setArguments(bundle);
+           fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
        }
         fragmentTransaction.commit();
     }
