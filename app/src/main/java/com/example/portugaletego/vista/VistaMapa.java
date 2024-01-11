@@ -5,17 +5,30 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.View;
+import android.widget.Button;
 import android.content.Intent;
 import android.os.Bundle;
 import com.example.portugaletego.R;
 
 public class VistaMapa extends AppCompatActivity {
 
+    Button btnLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_vista_mapa);
+
+        btnLogin = findViewById(R.id.btnLogin);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                volverLogin();
+            }
+        });
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -43,5 +56,10 @@ public class VistaMapa extends AppCompatActivity {
         Intent mandar = new Intent(this, ActivityJuegos.class);
         mandar.putExtra("id",id); //revisar con clemen, mandamos un id segun el pulsador que utilicemos
         startActivity(mandar);
+    }
+
+    public void volverLogin(){
+        Intent volver = new Intent(this, LoginActivity.class);
+        startActivity(volver);
     }
 }
