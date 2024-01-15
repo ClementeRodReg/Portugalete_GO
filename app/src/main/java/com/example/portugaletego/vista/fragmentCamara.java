@@ -23,6 +23,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.portugaletego.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,7 +50,9 @@ public class fragmentCamara extends Fragment {
 
     Button btnCamara;
     ImageView imagen;
-
+    private FirebaseAuth mAuth;
+    FirebaseStorage storage;
+    StorageReference storageRef;
     public fragmentCamara() {
         // Required empty public constructor
     }
@@ -105,6 +113,8 @@ public class fragmentCamara extends Fragment {
             Bundle extras = data.getExtras();
             Bitmap imgBitmap = (Bitmap) extras.get("data");
             imagen.setImageBitmap(imgBitmap);
+            mAuth = FirebaseAuth.getInstance();
+
 
             ContentResolver resolver = getContext().getContentResolver();
             ContentValues values = new ContentValues();
@@ -113,6 +123,7 @@ public class fragmentCamara extends Fragment {
             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
             if (id_juego == 3) {
                 nombreFoto = "RespuestaEjer3punto1";
+                storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com/r_g1/ejer3");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
                     if (files[i].isDirectory()) {
@@ -127,13 +138,16 @@ public class fragmentCamara extends Fragment {
                 }
             } else if (id_juego == 4) {
                 nombreFoto = "RespuestaEjer4punto1";
+                storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
                     if (files[i].isDirectory()) {
                         File Dir = new File(files[i].getAbsolutePath());
                         File[] filesInDir = Dir.listFiles();
-                        if (filesInDir[i].getName().contains(nombreFoto)) {
-                            filesInDir[i].delete();
+                        for (int num = 0; num < filesInDir.length; num++) {
+                            if (filesInDir[num].getName().contains(nombreFoto)) {
+                                filesInDir[num].delete();
+                            }
                         }
                     }
                 }
@@ -165,6 +179,23 @@ public class fragmentCamara extends Fragment {
             if (guardado) {
                 Toast.makeText(getView().getContext(), "La imagen ha sido guardada.", Toast.LENGTH_SHORT).show();
             }
+            storageRef = storage.getReference();
+            Uri file = Uri.fromFile(new File("/sdcard/Pictures/PortuGO/"+nombreFoto+".jpg"));
+            StorageReference riversRef = storageRef.child("r_g1/ejer4/"+file.getLastPathSegment());
+            UploadTask uploadTask = riversRef.putFile(file);
+
+            // Register observers to listen for when the download is done or if it fails
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle unsuccessful uploads
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    System.out.println("hola");
+                }
+            });
 
         }
     }
