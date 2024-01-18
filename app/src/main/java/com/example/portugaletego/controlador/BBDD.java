@@ -3,6 +3,7 @@ package com.example.portugaletego.controlador;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
+import com.example.portugaletego.controlador.DAO.DAOusuario;
 import com.example.portugaletego.modelo.Coordenada;
 import com.example.portugaletego.modelo.Imagen;
 import com.example.portugaletego.modelo.Juego;
