@@ -1,4 +1,4 @@
-package com.example.portugaletego.controlador;
+package com.example.portugaletego.controlador.DAO;
 
 import androidx.room.Dao;
 import androidx.room.Query;
