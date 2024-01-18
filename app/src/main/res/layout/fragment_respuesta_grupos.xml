@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/portu_red"
     tools:context=".vista.RespuestaGrupos">
 
@@ -11,5 +12,17 @@
         android:layout_height="wrap_content"
         android:background="@color/portu_red"
         android:orientation="vertical" />
+
+    <ImageView
+        android:id="@+id/fotoSacada"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067"
+        android:layout_width="185dp"
+        android:layout_height="170dp"
+        tools:src="@tools:sample/avatars" />
 
 </ScrollView>
