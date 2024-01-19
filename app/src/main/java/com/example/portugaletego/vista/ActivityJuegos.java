@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import com.example.portugaletego.R;
 
 public class ActivityJuegos extends AppCompatActivity {
 
+    MediaPlayer mp;
     Button btnVolver, btnSiguiente;
     ImageButton btnMute, btnUnmute;
 
@@ -67,10 +69,16 @@ public class ActivityJuegos extends AppCompatActivity {
        if(id == 1) {
            Fragment nuevoFragment = new FragmentJuego1();
            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+
+           mp = MediaPlayer.create(this, R.raw.explicacion_puente_colgante);
+           mp.start();
        }
        else if(id == 2){
            Fragment nuevoFragment = new FragmentJuego2();
            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+
+           mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);
+           mp.start();
        }
        else if(id == 3){
            Fragment nuevoFragment = new fragmentCamara();
@@ -103,6 +111,14 @@ public class ActivityJuegos extends AppCompatActivity {
         amanager.adjustVolume(AudioManager.ADJUST_UNMUTE, AudioManager.FLAG_SHOW_UI);
         btnUnmute.setVisibility(View.INVISIBLE);
         btnMute.setVisibility(View.VISIBLE);
+    }
+
+    public void onDestroy(){
+
+       super.onDestroy();
+        if (mp.isPlaying()) { mp.stop(); mp.release();
+            //finally
+        }
     }
 
 }
