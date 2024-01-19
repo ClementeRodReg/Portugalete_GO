@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.portugaletego.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,13 +43,16 @@ public class fragmentCamara extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "id_juego";
+    private static final String ARG_PARAM1 = "id";
 
     // TODO: Rename and change types of parameters
     private int id_juego;
 
     Button btnCamara;
     ImageView imagen;
+    private FirebaseAuth mAuth;
+    FirebaseStorage storage;
+    StorageReference storageRef;
     public fragmentCamara() {
         // Required empty public constructor
     }
@@ -81,8 +91,8 @@ public class fragmentCamara extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
 
-        btnCamara=view.findViewById(R.id.btnCamara);
-        imagen=view.findViewById(R.id.fotoSacada);
+        btnCamara = view.findViewById(R.id.btnCamara);
+        imagen = view.findViewById(R.id.fotoSacada);
 
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,56 +103,101 @@ public class fragmentCamara extends Fragment {
 
     }
 
-    private void abrirCamara(){
+    private void abrirCamara() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent, 1);
+        startActivityForResult(intent, 1);
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-         if(requestCode==1 && resultCode== RESULT_OK){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap imgBitmap= (Bitmap) extras.get("data");
-            imagen.setImageBitmap(imgBitmap) ;
+            Bitmap imgBitmap = (Bitmap) extras.get("data");
+            imagen.setImageBitmap(imgBitmap);
+            mAuth = FirebaseAuth.getInstance();
+
 
             ContentResolver resolver = getContext().getContentResolver();
             ContentValues values = new ContentValues();
             OutputStream fos = null;
-            String nombreFoto ="";
-
-            if(id_juego == 3)
+            String nombreFoto = "";
+            File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+            if (id_juego == 3) {
                 nombreFoto = "RespuestaEjer3punto1";
-            else if(id_juego == 4)
+                storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com/r_g1/ejer3");
+                File[] files = path.listFiles();
+                for (int i = 0; i < files.length; i++) {
+                    if (files[i].isDirectory()) {
+                        File Dir = new File(files[i].getAbsolutePath());
+                        File[] filesInDir = Dir.listFiles();
+                        for (int num = 0; num < filesInDir.length; num++) {
+                            if (filesInDir[num].getName().contains(nombreFoto)) {
+                                filesInDir[num].delete();
+                            }
+                        }
+                    }
+                }
+            } else if (id_juego == 4) {
                 nombreFoto = "RespuestaEjer4punto1";
-
+                storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
+                File[] files = path.listFiles();
+                for (int i = 0; i < files.length; i++) {
+                    if (files[i].isDirectory()) {
+                        File Dir = new File(files[i].getAbsolutePath());
+                        File[] filesInDir = Dir.listFiles();
+                        for (int num = 0; num < filesInDir.length; num++) {
+                            if (filesInDir[num].getName().contains(nombreFoto)) {
+                                filesInDir[num].delete();
+                            }
+                        }
+                    }
+                }
+            }
             values.put(MediaStore.Images.Media.DISPLAY_NAME, nombreFoto);
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
             values.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/PortuGO");
             values.put(MediaStore.Images.Media.IS_PENDING, 1);
 
             Uri collection = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
-            Uri imageUri= resolver.insert(collection, values);
+            Uri imageUri = resolver.insert(collection, values);
 
-             try {
-                 fos=resolver.openOutputStream(imageUri);
-             } catch (FileNotFoundException e) {
-                 e.printStackTrace();
-             }
+            try {
+                fos = resolver.openOutputStream(imageUri);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
-             values.clear();
-             values.put(MediaStore.Images.Media.IS_PENDING, 0);
-             try {
-             resolver.update(imageUri, values, null, null);
-             } catch (Exception ex) {
-                 ex.printStackTrace();
-             }
+            values.clear();
+            values.put(MediaStore.Images.Media.IS_PENDING, 0);
+            try {
+                resolver.update(imageUri, values, null, null);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
             boolean guardado = imgBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 
-            if(guardado){
+            if (guardado) {
                 Toast.makeText(getView().getContext(), "La imagen ha sido guardada.", Toast.LENGTH_SHORT).show();
             }
+            storageRef = storage.getReference();
+            Uri file = Uri.fromFile(new File("/sdcard/Pictures/PortuGO/"+nombreFoto+".jpg"));
+            StorageReference riversRef = storageRef.child("r_g1/ejer4/"+file.getLastPathSegment());
+            UploadTask uploadTask = riversRef.putFile(file);
 
-         }
+            // Register observers to listen for when the download is done or if it fails
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle unsuccessful uploads
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    System.out.println("hola");
+                }
+            });
+
+        }
     }
 
 }
