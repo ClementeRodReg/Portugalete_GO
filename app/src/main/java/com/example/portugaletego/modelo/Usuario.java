@@ -32,4 +32,5 @@ public class Usuario {
     @ColumnInfo(name="Nombre")
     private String nombre;
 
+
 }
