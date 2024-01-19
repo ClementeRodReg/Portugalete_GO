@@ -18,5 +18,5 @@ import com.example.portugaletego.modelo.Usuario;
         }
 )
 public abstract class BBDD extends RoomDatabase {
-        public abstract DAOusuario daoUsuario();
+
 }
