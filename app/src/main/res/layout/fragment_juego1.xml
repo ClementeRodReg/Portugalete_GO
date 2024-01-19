@@ -45,18 +45,19 @@
 
         <TextView
             android:id="@+id/placeholder1"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="100dp"
             android:background="@drawable/placeholder_game1" />
+
         <ImageView
             android:id="@+id/separator1"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
             app:srcCompat="@drawable/separator" />
 
         <TextView
             android:id="@+id/placeholder2"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="100dp"
             android:background="@drawable/placeholder_game1" />
     </LinearLayout>
@@ -92,19 +93,19 @@
 
         <TextView
             android:id="@+id/placeholder3"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="100dp"
             android:background="@drawable/placeholder_game1" />
 
         <ImageView
             android:id="@+id/separator2"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
             app:srcCompat="@drawable/separator" />
 
         <TextView
             android:id="@+id/placeholder4"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="100dp"
             android:background="@drawable/placeholder_game1" />
 
