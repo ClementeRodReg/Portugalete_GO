@@ -26,6 +26,9 @@
         android:theme="@style/Theme.PortugaleteGO"
         tools:targetApi="31">
         <activity
+            android:name=".vista.ActivitySeleccion"
+            android:exported="false" />
+        <activity
             android:name=".vista.VistaProfesor"
             android:exported="false" />
         <activity
