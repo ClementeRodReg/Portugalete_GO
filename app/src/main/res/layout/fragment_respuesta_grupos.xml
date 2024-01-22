@@ -20,6 +20,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textvG1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Grupo 1"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_yellow"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,7 +69,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/portu_yellow"
-                        android:text="Aprobar" />
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <Button
                         android:id="@+id/Pencarbtn"
@@ -67,12 +78,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/portu_yellow"
-                        android:text="Pencar" />
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </LinearLayout>
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

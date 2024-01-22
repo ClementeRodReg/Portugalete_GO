@@ -21,7 +21,7 @@ public class VistaMapa extends AppCompatActivity {
 
         setContentView(R.layout.activity_vista_mapa);
 
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnLoginProf);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
