@@ -23,12 +23,16 @@ import com.google.android.gms.tasks.Task;
 //import com.google.firebase.auth.FirebaseUser;
 
 import com.example.portugaletego.R;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
     // private FirebaseAuth mAuth;
 
     SharedPreferences sharedpreferences;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +41,11 @@ public class LoginActivity extends AppCompatActivity {
 
         //sharedPreferences crear
         Context context = LoginActivity.this;
-        sharedpreferences = context.getSharedPreferences("", Context.MODE_PRIVATE);
 
+        mAuth = FirebaseAuth.getInstance();
         //sharedPreferences leer
         String defaultUser = "";
-        String rememberUser = sharedpreferences.getString("", defaultUser);
+
 
         //declaramos auth con firebase.getInstance
         // mAuth = FirebaseAuth.getInstance();
@@ -50,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
         EditText contrasenna = (EditText) findViewById(R.id.editTextContrasenna);
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         EditText txtUsuario = (EditText) findViewById(R.id.TextImputNombre);
-        txtUsuario.setText(rememberUser);
         Button mapa = (Button) findViewById(R.id.Map);
 
         mapa.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +75,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (email.isEmpty() || password.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
 
-
                     builder.setTitle("Login");
 
                     builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
                         // boton de aceptar y cerrar pop-up
-
                         dialog.cancel();
                     });
 
@@ -86,54 +87,40 @@ public class LoginActivity extends AppCompatActivity {
                     dialog.show();
 
                     return;
-                }
+                } else {
 
-/*
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.d(TAG, "signInWithEmail:success");
+                                        FirebaseUser user = mAuth.getCurrentUser();
 
-                                    //intent
+                                        //intent
+                                        Intent cambio = new Intent(LoginActivity.this, VistaProfesor.class);
+                                        startActivity(cambio);
 
-                                    Intent cambio = new Intent(LoginActivity.this, MainActivity2.class);
-                                    String usuario = email;
-                                    cambio.putExtra("usuario", usuario);
-                                    startActivity(cambio);
+                                    } else {
 
-                                } else {
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                        builder.setTitle("Login");
+                                        builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                                            // boton de aceptar y cerrar pop-up
+                                            dialog.cancel();
+                                        });
 
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                        builder.setMessage("Usuario o contraseña incorrecta");
+                                        AlertDialog dialog = builder.create();
+                                        dialog.show();
 
-
-                                    builder.setTitle("Login");
-
-                                    builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
-                                        // boton de aceptar y cerrar pop-up
-
-                                        dialog.cancel();
-                                    });
-
-                                    builder.setMessage("Usuario o contraseña incorrecta");
-                                    AlertDialog dialog = builder.create();
-                                    dialog.show();
-
+                                    }
                                 }
-                            }
-                        });
+                            });
 
-                //sharedPreferences escribir
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString("", email);
-                editor.apply();
-                */
-
+                }
             }
-
 
         });
     }
