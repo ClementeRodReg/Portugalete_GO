@@ -22,10 +22,10 @@ public class RespuestaGrupos extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "grupo";
+    private static final String ARG_PARAM1 = "nombre carpeta";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private String grupo;
     private TextView ngrupo;
 
     public RespuestaGrupos() {
@@ -40,7 +40,7 @@ public class RespuestaGrupos extends Fragment {
      * @return A new instance of fragment RespuestaGrupos.
      */
     // TODO: Rename and change types and number of parameters
-    public static RespuestaGrupos newInstance(String param1, String param2) {
+    public static RespuestaGrupos newInstance(String param1) {
         RespuestaGrupos fragment = new RespuestaGrupos();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -52,7 +52,7 @@ public class RespuestaGrupos extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            grupo = getArguments().getString(ARG_PARAM1);
         }
     }
 
@@ -65,7 +65,15 @@ public class RespuestaGrupos extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
-        ngrupo= view.findViewById(R.id.textvG1);
+        ngrupo = view.findViewById(R.id.textvG1);
 
+        if (grupo != null) {
+            if (grupo.equals("r_g1"))
+                ngrupo.setText("GRUPO 1");
+            else if (grupo.equals("r_g2"))
+                ngrupo.setText("GRUPO 2");
+            else
+                ngrupo.setText("GRUPO 3");
+        }
     }
 }
