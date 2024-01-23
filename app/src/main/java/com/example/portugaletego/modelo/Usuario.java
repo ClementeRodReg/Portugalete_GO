@@ -7,6 +7,9 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Usuario {
+
+
+
     public int getId() {
         return id;
     }
@@ -24,6 +27,15 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public Usuario(){
+
+    }
+
+    public Usuario(int id, String nombre){
+        this.id = id;
+        this.nombre = nombre;
+    }
+
     @PrimaryKey
     @NonNull
     @ColumnInfo(name="Id")
@@ -32,4 +44,6 @@ public class Usuario {
     @ColumnInfo(name="Nombre")
     private String nombre;
 
+
 }
+

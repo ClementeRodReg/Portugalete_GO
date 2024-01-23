@@ -40,7 +40,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/login"
+                android:id="@+id/textoPregunta"
                 android:layout_width="match_parent"
                 android:layout_height="103dp"
                 android:text="¿Eres un profesor o alumno?"
@@ -51,7 +51,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/buttonConfirmar"
+                android:id="@+id/btnProfesor"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="30dp"
@@ -61,7 +61,7 @@
                 app:cornerRadius="3sp" />
 
             <Button
-                android:id="@+id/Map"
+                android:id="@+id/btnAlumno"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="30dp"

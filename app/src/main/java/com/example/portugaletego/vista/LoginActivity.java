@@ -5,6 +5,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,9 +14,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
+import com.example.portugaletego.modelo.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 //import com.google.firebase.auth.AuthResult;
@@ -27,17 +31,36 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity {
 
     // private FirebaseAuth mAuth;
 
     SharedPreferences sharedpreferences;
     private FirebaseAuth mAuth;
-
+    CardView card1 , card2;
+    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        card1 = findViewById(R.id.card1);
+        card2 = findViewById(R.id.card2);
+
+        Bundle bundle =  getIntent().getExtras();
+        int num = bundle.getInt("num");
+
+        if(num == 2){
+            card1.setVisibility(View.VISIBLE);
+            card2.setVisibility(View.GONE);
+        }else{
+            card2.setVisibility(View.VISIBLE);
+            card1.setVisibility(View.GONE);
+        }
+
+
 
         //sharedPreferences crear
         Context context = LoginActivity.this;
@@ -55,6 +78,22 @@ public class LoginActivity extends AppCompatActivity {
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         EditText txtUsuario = (EditText) findViewById(R.id.TextImputNombre);
         Button mapa = (Button) findViewById(R.id.Map);
+
+        //valores para la seleccion de alumnos
+        spinner = findViewById(R.id.spinner);
+
+        ArrayList<Usuario> opciones = new ArrayList<Usuario>();
+        //añadimos 3 clases provisionales para añadir luego a room
+
+        opciones.add(new Usuario(1,"Grupo 1"));
+        opciones.add(new Usuario(2, "Grupo 2"));
+        opciones.add(new Usuario(3, "Grupo 3"));
+
+        //creamos el adaptador para el spinner
+        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,opciones);
+        spinner.setAdapter(adapter);
+
+
 
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
