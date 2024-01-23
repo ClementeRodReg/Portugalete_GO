@@ -22,9 +22,10 @@ public class ActivityJuegos extends AppCompatActivity {
     Button btnVolver, btnSiguiente;
     ImageButton btnMute, btnUnmute;
 
-    Fragment fragment;
-
+    Fragment fragment, nuevoFragment, fragmentActual;
     FragmentTransaction fragmentTransaction;
+
+    int contadorSaltos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,23 @@ public class ActivityJuegos extends AppCompatActivity {
         btnUnmute = findViewById(R.id.btnUnmute);
 
         AudioManager amanager=(AudioManager)getSystemService(Context.AUDIO_SERVICE);
+
+        int id = getIntent().getIntExtra("id", 0);
+
+        System.out.println(id);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragment = fragmentManager.findFragmentById(R.id.fragmentJuegos);
+        Bundle bundle = new Bundle();
+        bundle.putInt("id",id);
+        //Ejecutamos el cambio de fragment
+        fragmentActual = cambioFragment(id,fragmentTransaction,bundle);
+
+        System.out.println(fragmentActual.getClass());
+        // int num = detectarFragment(fragmentActual);
+
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,19 +77,44 @@ public class ActivityJuegos extends AppCompatActivity {
             }
         });
 
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              // siguiente(num,bundle, fragmentTransaction);
+            }
+        });
+    }
 
-        int id = getIntent().getIntExtra("id", 0);
+  /*  private int detectarFragment(Fragment fragmentActual){
+        // REVISAR MAÑANA SIN FALTA -> NO DEBERIA FUNCIONAR -> HE ASIGNADO UN ID EN EL LINEAR LAYOUT CON ESTE NOMBRE MIENTRAS QUE EL RESTO NO LO NECESITA
+        int numbero = 0;
+        if(fragmentActual == null || fragmentActual.getClass().equals(findViewById(R.id.fragment_enunciados))){
+            numbero = 1;
+        }
+        return numbero;
+    }
 
-        System.out.println(id);
+   */
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
+    private void siguiente(Fragment fragmentActual, int id ,Bundle bundle, FragmentTransaction fragmentTransaction) {
+        if(fragmentActual.getClass().equals(Fragment_Enunciado.class)){
+            switch (id){
+                case 3:
+                    if(contadorSaltos % 2 == 0 ){
 
-        fragment = fragmentManager.findFragmentById(R.id.fragmentJuegos);
-        Bundle bundle = new Bundle();
-        bundle.putInt("id",id);
-        //Tendremos que meterlo dentro de un intent al seleccionar el pulsador en el mapa
-       cambioFragment(id,fragmentTransaction,bundle);
+                    }else{
+
+                    }
+                    break;
+                case 4:
+                    if(contadorSaltos % 2 == 0 ){
+
+                    }else{
+
+                    }
+                    break;
+            }
+        }
     }
 
 
@@ -102,32 +145,48 @@ public class ActivityJuegos extends AppCompatActivity {
         }
     }
 
-    public void cambioFragment(int id, FragmentTransaction fragmentTransaction, Bundle bundle){
-        if(id == 1) {
-            Fragment nuevoFragment = new FragmentJuego1();
-            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+    //Metodo para cambiar el fragment que viene por defecto al correspondiente segun como accedamos por el mapa
+    //int id = mandamos por un codigo numero
+    public Fragment cambioFragment(int id,FragmentTransaction fragmentTransaction, Bundle bundle){
+        switch(id) {
+            case 1: //vamos al juego 1
+                nuevoFragment = new FragmentJuego1();
+                fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
 
-            mp = MediaPlayer.create(this, R.raw.explicacion_puente_colgante);
-            mp.start();
-        }
-        else if(id == 2){
-            Fragment nuevoFragment = new FragmentJuego2();
-            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                mp = MediaPlayer.create(this, R.raw.explicacion_puente_colgante);
+                mp.start();
+                break;
+            case 2: //vamos al juego 2
+                nuevoFragment = new FragmentJuego2();
+                fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
 
-            mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);
-            mp.start();
+                mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);
+                mp.start();
+                break;
+            case 3: //vamos al primer fragment con camara
+
+                //previo a la camara hay que activar un fragment de texto
+                //nuevoFragment = new fragmentCamara();
+
+                nuevoFragment = new Fragment_Enunciado();
+                nuevoFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                break;
+            case 4: //vamos al segundo fragment con camara
+                //nuevoFragment = new fragmentCamara();
+
+                nuevoFragment = new Fragment_Enunciado();
+                nuevoFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                break;
         }
-        else if(id == 3){
-            Fragment nuevoFragment = new fragmentCamara();
-            nuevoFragment.setArguments(bundle);
-            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+            fragmentTransaction.commit(); // -> Realiza el cambio
+            return nuevoFragment;
         }
-        else if(id == 4){
-            Fragment nuevoFragment = new fragmentCamara();
-            nuevoFragment.setArguments(bundle);
-            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
-        }
-        fragmentTransaction.commit();
+
+
     }
 
-}
+
+
+
