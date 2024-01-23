@@ -22,6 +22,10 @@ public class ActivityJuegos extends AppCompatActivity {
     Button btnVolver, btnSiguiente;
     ImageButton btnMute, btnUnmute;
 
+    Fragment fragment;
+
+    FragmentTransaction fragmentTransaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,42 +59,19 @@ public class ActivityJuegos extends AppCompatActivity {
             }
         });
 
+
         int id = getIntent().getIntExtra("id", 0);
 
         System.out.println(id);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction = fragmentManager.beginTransaction();
 
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentJuegos);
+        fragment = fragmentManager.findFragmentById(R.id.fragmentJuegos);
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
         //Tendremos que meterlo dentro de un intent al seleccionar el pulsador en el mapa
-       if(id == 1) {
-           Fragment nuevoFragment = new FragmentJuego1();
-           fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
-
-           mp = MediaPlayer.create(this, R.raw.explicacion_puente_colgante);
-           mp.start();
-       }
-       else if(id == 2){
-           Fragment nuevoFragment = new FragmentJuego2();
-           fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
-
-           mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);
-           mp.start();
-       }
-       else if(id == 3){
-           Fragment nuevoFragment = new fragmentCamara();
-           nuevoFragment.setArguments(bundle);
-           fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
-       }
-       else if(id == 4){
-           Fragment nuevoFragment = new fragmentCamara();
-           nuevoFragment.setArguments(bundle);
-           fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
-       }
-        fragmentTransaction.commit();
+       cambioFragment(id,fragmentTransaction,bundle);
     }
 
 
@@ -119,6 +100,34 @@ public class ActivityJuegos extends AppCompatActivity {
         if (mp.isPlaying()) { mp.stop(); mp.release();
             //finally
         }
+    }
+
+    public void cambioFragment(int id, FragmentTransaction fragmentTransaction, Bundle bundle){
+        if(id == 1) {
+            Fragment nuevoFragment = new FragmentJuego1();
+            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+
+            mp = MediaPlayer.create(this, R.raw.explicacion_puente_colgante);
+            mp.start();
+        }
+        else if(id == 2){
+            Fragment nuevoFragment = new FragmentJuego2();
+            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+
+            mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);
+            mp.start();
+        }
+        else if(id == 3){
+            Fragment nuevoFragment = new fragmentCamara();
+            nuevoFragment.setArguments(bundle);
+            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+        }
+        else if(id == 4){
+            Fragment nuevoFragment = new fragmentCamara();
+            nuevoFragment.setArguments(bundle);
+            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+        }
+        fragmentTransaction.commit();
     }
 
 }

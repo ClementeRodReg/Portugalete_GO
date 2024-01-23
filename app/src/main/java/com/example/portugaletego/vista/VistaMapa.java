@@ -9,11 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import com.example.portugaletego.R;
 
 public class VistaMapa extends AppCompatActivity {
 
     Button btnLogin;
+    TextView nombreGrupo;
+
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,21 +27,33 @@ public class VistaMapa extends AppCompatActivity {
         setContentView(R.layout.activity_vista_mapa);
 
         btnLogin = findViewById(R.id.btnLoginProf);
+        nombreGrupo = findViewById(R.id.nombreGrupo);
 
         Bundle bundle =  getIntent().getExtras();
-        int num = bundle.getInt("num");
+        if(bundle != null){
+            if(bundle.containsKey("idGrupo")){
+                int num = bundle.getInt("idGrupo");
+                switch(num){
+                    case 0: nombreGrupo.setText("G1"); break;
+                    case 1: nombreGrupo.setText("G2"); break;
+                    case 2: nombreGrupo.setText("G3"); break;
+                }
+                nombreGrupo.setVisibility(View.VISIBLE);
+            }
+        }
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                volverLogin(num);
+                volverInicio();
             }
         });
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        Fragment fragment1 = fragmentManager.findFragmentById(R.id.fragmentCV);
+        fragment = fragmentManager.findFragmentById(R.id.fragmentCV);
         Fragment nuevoFragment1 = new MapFragment();
 /*
         Fragment fragment2 = fragmentManager.findFragmentById(R.id.fcvCamara);
@@ -61,9 +78,8 @@ public class VistaMapa extends AppCompatActivity {
         startActivity(mandar);
     }
 
-    public void volverLogin(int num){
-        Intent volver = new Intent(this, LoginActivity.class);
-        volver.putExtra("num",num);
+    public void volverInicio(){
+        Intent volver = new Intent(this, ActivitySeleccion.class);
         startActivity(volver);
     }
 }

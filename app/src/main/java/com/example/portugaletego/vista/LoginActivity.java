@@ -37,10 +37,19 @@ public class LoginActivity extends AppCompatActivity {
 
     // private FirebaseAuth mAuth;
 
+    //Variables de uso comun
+    String email, pass;
+    ArrayList<Usuario> usuarios;
+    Intent cambio;
+    AlertDialog.Builder builder;
+    AlertDialog dialog;
     SharedPreferences sharedpreferences;
     private FirebaseAuth mAuth;
     CardView card1 , card2;
     Spinner spinner;
+    EditText txtUsuario, password;
+    Button volver, mapa, confirmar, accederEstudiante;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +59,18 @@ public class LoginActivity extends AppCompatActivity {
         card2 = findViewById(R.id.card2);
 
         Bundle bundle =  getIntent().getExtras();
-        int num = bundle.getInt("num");
-
-        if(num == 2){
-            card1.setVisibility(View.VISIBLE);
-            card2.setVisibility(View.GONE);
-        }else{
-            card2.setVisibility(View.VISIBLE);
-            card1.setVisibility(View.GONE);
+        if(bundle != null){
+            if(bundle.containsKey("num")){
+                int num = bundle.getInt("num");
+                if(num == 2){
+                    card1.setVisibility(View.VISIBLE);
+                    card2.setVisibility(View.GONE);
+                }else{
+                    card2.setVisibility(View.VISIBLE);
+                    card1.setVisibility(View.GONE);
+                }
+            }
         }
-
-
 
         //sharedPreferences crear
         Context context = LoginActivity.this;
@@ -74,61 +84,47 @@ public class LoginActivity extends AppCompatActivity {
         // mAuth = FirebaseAuth.getInstance();
 
         //valores
-        EditText contrasenna = (EditText) findViewById(R.id.editTextContrasenna);
-        Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
-        EditText txtUsuario = (EditText) findViewById(R.id.TextImputNombre);
-        Button mapa = (Button) findViewById(R.id.Map);
-
-        //valores para la seleccion de alumnos
+        password = findViewById(R.id.editTextContrasenna);
+        confirmar = findViewById(R.id.buttonConfirmar);
+        txtUsuario = findViewById(R.id.TextImputNombre);
+        mapa = findViewById(R.id.Map);
         spinner = findViewById(R.id.spinner);
+        volver = findViewById(R.id.volveraInicio);
+        accederEstudiante = findViewById(R.id.AccesoMapasEstudiante);
 
-        ArrayList<Usuario> opciones = new ArrayList<Usuario>();
-        //añadimos 3 clases provisionales para añadir luego a room
-
-        opciones.add(new Usuario(1,"Grupo 1"));
-        opciones.add(new Usuario(2, "Grupo 2"));
-        opciones.add(new Usuario(3, "Grupo 3"));
+        //rellenamos el array
+        usuarios = RellenarArray();
 
         //creamos el adaptador para el spinner
-        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,opciones);
+        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,usuarios);
         spinner.setAdapter(adapter);
 
-
-
+        //BOTON PARA IR AL MAPA
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cambio = new Intent(LoginActivity.this, VistaMapa.class);
-                cambio.putExtra("num",num);
-                startActivity(cambio);
+                cambio(0);
             }
         });
 
-        //Iniciar sesion
+        //BOTON PARA VOLVER AL INICIO
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cambio(3);
+            }
+        });
+
+        //Iniciar sesion COMO PROFESOR
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String email = txtUsuario.getText().toString();
-                String password = contrasenna.getText().toString();
-                if (email.isEmpty() || password.isEmpty()) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-
-                    builder.setTitle("Login");
-
-                    builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
-                        // boton de aceptar y cerrar pop-up
-                        dialog.cancel();
-                    });
-
-                    builder.setMessage("Usuario o contraseña vacios");
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-
-                    return;
+                email = txtUsuario.getText().toString();
+                pass = password.getText().toString();
+                if (email.isEmpty() || pass.isEmpty()) {
+                    MostrarAlertDialog(0);
                 } else {
-
-                    mAuth.signInWithEmailAndPassword(email, password)
+                    mAuth.signInWithEmailAndPassword(email, pass)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -137,23 +133,10 @@ public class LoginActivity extends AppCompatActivity {
                                         Log.d(TAG, "signInWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
 
-                                        //intent
-                                        Intent cambio = new Intent(LoginActivity.this, VistaProfesor.class);
-                                        startActivity(cambio);
-
+                                        //intent opcion 1 -> Profesor
+                                        cambio(1);
                                     } else {
-
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                        builder.setTitle("Login");
-                                        builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
-                                            // boton de aceptar y cerrar pop-up
-                                            dialog.cancel();
-                                        });
-
-                                        builder.setMessage("Usuario o contraseña incorrecta");
-                                        AlertDialog dialog = builder.create();
-                                        dialog.show();
-
+                                        MostrarAlertDialog(1);
                                     }
                                 }
                             });
@@ -162,10 +145,77 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
+        accederEstudiante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cambio(2);
+            }
+        });
     }
 
 
-    private void setup() {
+    private void cambio(int check) {
+        switch(check){
+            //acceso simple al mapa
+            case 0: cambio = new Intent(LoginActivity.this, VistaMapa.class);
+                startActivity(cambio);
+                break;
 
+            //acceso como profesor
+            case 1: cambio = new Intent(LoginActivity.this, VistaProfesor.class);
+                startActivity(cambio);
+                break;
+            //Acceso como alumnado, depende del grupo que escojas, mandara un id u otro
+            case 2: cambio = new Intent(LoginActivity.this, VistaMapa.class);
+                cambio.putExtra("idGrupo",spinner.getSelectedItemPosition());
+                System.out.println(spinner.getSelectedItemPosition());
+                startActivity(cambio);
+                break;
+            //Vuelta a la seleccion de clase
+            case 3: cambio = new Intent(LoginActivity.this, ActivitySeleccion
+                    .class);
+                startActivity(cambio);
+                break;
+        }
+    }
+
+    private ArrayList<Usuario> RellenarArray(){
+        ArrayList<Usuario> opciones = new ArrayList<Usuario>();
+        //Añadimos 3 clases provisionales para añadir luego a room (TO DO)
+
+        opciones.add(new Usuario(1,"Grupo 1"));
+        opciones.add(new Usuario(2, "Grupo 2"));
+        opciones.add(new Usuario(3, "Grupo 3"));
+
+        return opciones;
+    }
+
+    private void MostrarAlertDialog(int check){
+        switch(check){
+            case 0:builder = new AlertDialog.Builder(LoginActivity.this);
+
+                builder.setTitle("Login");
+
+                builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    // boton de aceptar y cerrar pop-up
+                    dialog.cancel();
+                });
+
+                builder.setMessage("Usuario o contraseña vacios");
+                dialog = builder.create();
+                dialog.show();
+            case 1:
+                builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setTitle("Login");
+                builder.setPositiveButton("Aceptar", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    // boton de aceptar y cerrar pop-up
+                    dialog.cancel();
+                });
+
+                builder.setMessage("Usuario o contraseña incorrecta");
+                dialog = builder.create();
+                dialog.show();
+        }
     }
 }
