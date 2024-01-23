@@ -29,6 +29,12 @@
             app:srcCompat="@drawable/puentecolgantepasarela" />
 
         <ImageView
+            android:id="@+id/separatorminus"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/separator" />
+
+        <ImageView
             android:id="@+id/imgPuenteColgante"
             android:layout_width="175dp"
             android:layout_height="150dp"
@@ -75,6 +81,12 @@
             android:layout_width="175dp"
             android:layout_height="150dp"
             app:srcCompat="@drawable/bizkaikozubiaigogailua" />
+
+            <ImageView
+                android:id="@+id/separatorminus2"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/separator" />
 
         <ImageView
             android:id="@+id/imgTransbordador"

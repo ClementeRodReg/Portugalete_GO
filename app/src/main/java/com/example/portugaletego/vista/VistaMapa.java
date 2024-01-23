@@ -23,10 +23,13 @@ public class VistaMapa extends AppCompatActivity {
 
         btnLogin = findViewById(R.id.btnLoginProf);
 
+        Bundle bundle =  getIntent().getExtras();
+        int num = bundle.getInt("num");
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                volverLogin();
+                volverLogin(num);
             }
         });
 
@@ -58,8 +61,9 @@ public class VistaMapa extends AppCompatActivity {
         startActivity(mandar);
     }
 
-    public void volverLogin(){
+    public void volverLogin(int num){
         Intent volver = new Intent(this, LoginActivity.class);
+        volver.putExtra("num",num);
         startActivity(volver);
     }
 }

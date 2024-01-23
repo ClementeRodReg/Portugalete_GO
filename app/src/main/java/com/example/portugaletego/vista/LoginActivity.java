@@ -99,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent cambio = new Intent(LoginActivity.this, VistaMapa.class);
+                cambio.putExtra("num",num);
                 startActivity(cambio);
             }
         });
