@@ -107,7 +107,7 @@ public class ActivityJuegos extends AppCompatActivity {
                     }
                     break;
                 case 4:
-                    if(contadorSaltos % 2 == 0 ){
+                    if(contadorSaltos % 2 == 1 ){
 
                     }else{
 

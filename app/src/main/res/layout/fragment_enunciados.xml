@@ -21,27 +21,92 @@
             android:id="@+id/cardTexto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:backgroundTint="@color/pergamino"
             app:cardCornerRadius="30sp"
             >
-
             <LinearLayout
+                android:id="@+id/LayoutPreguntas"
                 android:layout_width="350dp"
-                android:layout_height="600dp"
-                android:gravity="center"
+                android:layout_height=600dp"
+                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:outlineSpotShadowColor="@color/black"
+                android:background="@color/pergamino"
+                android:outlineSpotShadowColor="@color/pergamino"
                 app:cardCornerRadius="30sp"
                 >
                 <TextView
                     android:id="@+id/textoJuegos"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="350dp"
+                    android:background="@color/pergamino"
                     />
-
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/LayoutElegir"
+                android:layout_width="350dp"
+                android:layout_height="600dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:background="@color/pergamino"
+                android:outlineSpotShadowColor="@color/pergamino"
+                app:cardCornerRadius="30sp">
+
+                <Button
+                    android:id="@+id/eleccion1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Personaje A"
+                    android:layout_marginTop="13dp"
+                    app:cornerRadius="13sp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/eleccion2"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Personaje B"
+                    android:layout_marginTop="13dp"
+                    app:cornerRadius="13sp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/eleccion3"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Personaje C"
+                    android:layout_marginTop="13dp"
+                    app:cornerRadius="13sp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/eleccion4"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Personaje D"
+                    android:layout_marginTop="13dp"
+                    app:cornerRadius="13sp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/eleccion5"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Personaje E"
+                    android:layout_marginTop="13dp"
+                    app:cornerRadius="13sp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
-
 </LinearLayout>

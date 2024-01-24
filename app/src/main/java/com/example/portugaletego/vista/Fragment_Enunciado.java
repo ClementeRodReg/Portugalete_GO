@@ -2,11 +2,16 @@ package com.example.portugaletego.vista;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.portugaletego.R;
 
@@ -27,6 +32,9 @@ public class Fragment_Enunciado extends Fragment {
     private String mParam2;
 
     private View vista;
+    private LinearLayout LayoutPreguntas, LayoutEleccion;
+    private TextView enunciado;
+    private Button pj1, pj2, pj3, pj4, pj5;
 
     public Fragment_Enunciado() {
         // Required empty public constructor
@@ -66,4 +74,33 @@ public class Fragment_Enunciado extends Fragment {
         vista= inflater.inflate(R.layout.fragment_enunciados, container, false);
         return vista;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
+        super.onViewCreated(view, savedInstance);
+
+        LayoutEleccion = view.findViewById(R.id.LayoutElegir);
+        LayoutPreguntas = view.findViewById(R.id.LayoutPreguntas);
+        enunciado = view.findViewById(R.id.textoJuegos);
+        pj1 = view.findViewById(R.id.eleccion1);
+        pj2 = view.findViewById(R.id.eleccion2);
+        pj3 = view.findViewById(R.id.eleccion3);
+        pj4 = view.findViewById(R.id.eleccion1);
+        pj5 = view.findViewById(R.id.eleccion1);
+
+        pj1.setOnClickListener(this::onClick);
+        pj2.setOnClickListener(this::onClick);
+        pj3.setOnClickListener(this::onClick);
+        pj4.setOnClickListener(this::onClick);
+        pj5.setOnClickListener(this::onClick);
+    }
+
+    public void onClick(View view){
+
+    }
+
+    void escribirEnunciados(){
+
+    }
+
 }
