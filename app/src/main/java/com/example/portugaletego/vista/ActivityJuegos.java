@@ -121,6 +121,7 @@ public class ActivityJuegos extends AppCompatActivity {
     public void volver(){
         Intent mandar = new Intent(this, VistaMapa.class);
         startActivity(mandar);
+        mp.release();
     }
 
     public void mutear(AudioManager amanager){
@@ -135,14 +136,6 @@ public class ActivityJuegos extends AppCompatActivity {
         amanager.adjustVolume(AudioManager.ADJUST_UNMUTE, AudioManager.FLAG_SHOW_UI);
         btnUnmute.setVisibility(View.INVISIBLE);
         btnMute.setVisibility(View.VISIBLE);
-    }
-
-    public void onDestroy(){
-
-       super.onDestroy();
-        if (mp.isPlaying()) { mp.stop(); mp.release();
-            //finally
-        }
     }
 
     //Metodo para cambiar el fragment que viene por defecto al correspondiente segun como accedamos por el mapa

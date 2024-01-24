@@ -27,7 +27,7 @@
             <LinearLayout
                 android:id="@+id/LayoutPreguntas"
                 android:layout_width="350dp"
-                android:layout_height=600dp"
+                android:layout_height="600dp"
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:background="@color/pergamino"
