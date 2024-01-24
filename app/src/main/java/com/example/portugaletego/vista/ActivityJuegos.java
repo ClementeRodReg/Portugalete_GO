@@ -131,14 +131,6 @@ public class ActivityJuegos extends AppCompatActivity {
         btnMute.setVisibility(View.VISIBLE);
     }
 
-    public void onDestroy(){
-
-       super.onDestroy();
-        if (mp.isPlaying()) { mp.stop(); mp.release();
-            //finally
-        }
-    }
-
     //Metodo para cambiar el fragment que viene por defecto al correspondiente segun como accedamos por el mapa
     //int id = mandamos por un codigo numero
     public Fragment cambioFragment(int id,FragmentTransaction fragmentTransaction, Bundle bundle){
