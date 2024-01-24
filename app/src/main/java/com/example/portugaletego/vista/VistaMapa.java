@@ -17,7 +17,7 @@ public class VistaMapa extends AppCompatActivity {
 
     Button btnLogin;
     TextView nombreGrupo;
-
+    int num=0;
     Fragment fragment;
 
     @Override
@@ -32,7 +32,7 @@ public class VistaMapa extends AppCompatActivity {
         Bundle bundle =  getIntent().getExtras();
         if(bundle != null){
             if(bundle.containsKey("idGrupo")){
-                int num = bundle.getInt("idGrupo");
+                num = bundle.getInt("idGrupo");
                 switch(num){
                     case 0: nombreGrupo.setText("G1"); break;
                     case 1: nombreGrupo.setText("G2"); break;
@@ -75,6 +75,7 @@ public class VistaMapa extends AppCompatActivity {
     public void mandar(int id){
         Intent mandar = new Intent(this, ActivityJuegos.class);
         mandar.putExtra("id",id); //revisar con clemen, mandamos un id segun el pulsador que utilicemos
+        mandar.putExtra("grupo",num);
         startActivity(mandar);
     }
 

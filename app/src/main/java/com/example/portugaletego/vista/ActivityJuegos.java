@@ -26,7 +26,7 @@ public class ActivityJuegos extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
 
     int contadorSaltos;
-
+    int grupo=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +40,7 @@ public class ActivityJuegos extends AppCompatActivity {
         AudioManager amanager=(AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
         int id = getIntent().getIntExtra("id", 0);
-
-        System.out.println(id);
+        grupo = getIntent().getIntExtra("grupo", 0);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -50,6 +49,7 @@ public class ActivityJuegos extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
+
         //Ejecutamos el cambio de fragment
         fragmentActual = cambioFragment(id,fragmentTransaction,bundle);
 
@@ -153,14 +153,14 @@ public class ActivityJuegos extends AppCompatActivity {
 
                 //previo a la camara hay que activar un fragment de texto
                 //nuevoFragment = new fragmentCamara();
-
+                bundle.putInt("grupo",grupo);
                 nuevoFragment = new Fragment_Enunciado();
                 nuevoFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                 break;
             case 4: //vamos al segundo fragment con camara
                 //nuevoFragment = new fragmentCamara();
-
+                bundle.putInt("grupo",grupo);
                 nuevoFragment = new Fragment_Enunciado();
                 nuevoFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
