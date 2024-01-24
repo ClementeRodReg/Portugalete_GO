@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/portu_red"
+    android:background="@drawable/gr515_1180_1180"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".vista.LoginActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card1"
-        android:layout_width="0dp"
+        android:layout_width="350sp"
         android:layout_height="349dp"
         android:background="@color/portu_red"
         android:elevation="20sp"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
         app:cardCornerRadius="30sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,23 +32,23 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/portu_red"
             android:orientation="vertical"
-            android:padding="4dp">
+            android:padding="4sp">
 
             <TextView
                 android:id="@+id/login"
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
+                android:layout_height="53sp"
                 android:text="Login"
                 android:textAlignment="center"
                 android:textColor="@color/portu_yellow"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/TextImputNombre"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="26dp"
+                android:layout_height="40sp"
+                android:layout_marginTop="26sp"
                 android:drawablePadding="8sp"
                 android:hint="Introduzca el nombre"
                 android:inputType="text"
@@ -56,8 +59,8 @@
             <EditText
                 android:id="@+id/editTextContrasenna"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="14dp"
+                android:layout_height="40sp"
+                android:layout_marginTop="14sp"
                 android:drawablePadding="8sp"
                 android:hint="Pass"
                 android:inputType="numberPassword"
@@ -69,11 +72,11 @@
             <Button
                 android:id="@+id/buttonConfirmar"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="48sp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/portu_yellow"
                 android:text="Confirmar"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
             <Button
@@ -83,7 +86,7 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/portu_yellow"
                 android:text="ir al Mapa"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
         </LinearLayout>
@@ -92,11 +95,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card2"
-        android:layout_width="0dp"
-        android:layout_height="349dp"
+        android:layout_width="350sp"
+        android:layout_height="349sp"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
         android:background="@color/portu_red"
         android:elevation="20sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:cardCornerRadius="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,37 +113,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
             android:background="@color/portu_red"
             android:orientation="vertical"
-            android:padding="4dp">
+            android:padding="4sp">
 
             <TextView
                 android:id="@+id/AccesoEstudiantes"
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
+                android:layout_height="53sp"
                 android:text="Acceso Estudiantes"
                 android:textAlignment="center"
                 android:textColor="@color/portu_yellow"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="300sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="50sp"
                 android:background="@color/portu_yellow" />
 
 
             <Button
                 android:id="@+id/AccesoMapasEstudiante"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="48sp"
+                android:layout_marginTop="50sp"
                 android:backgroundTint="@color/portu_yellow"
                 android:text="Acceder"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
         </LinearLayout>
@@ -147,12 +153,12 @@
 
     <Button
         android:id="@+id/volveraInicio"
-        android:layout_width="150dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="150sp"
+        android:layout_height="48sp"
+        android:layout_marginBottom="16sp"
         android:backgroundTint="@color/black"
         android:text="Volver"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:cornerRadius="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -25,7 +25,7 @@ public class ActivityJuegos extends AppCompatActivity {
     Fragment fragment, nuevoFragment, fragmentActual;
     FragmentTransaction fragmentTransaction;
 
-    int contadorSaltos = 0;
+    int contadorSaltos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class ActivityJuegos extends AppCompatActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
 
         fragment = fragmentManager.findFragmentById(R.id.fragmentJuegos);
+
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
         //Ejecutamos el cambio de fragment
@@ -100,18 +101,10 @@ public class ActivityJuegos extends AppCompatActivity {
         if(fragmentActual.getClass().equals(Fragment_Enunciado.class)){
             switch (id){
                 case 3:
-                    if(contadorSaltos % 2 == 0 ){
 
-                    }else{
-
-                    }
                     break;
                 case 4:
-                    if(contadorSaltos % 2 == 1 ){
 
-                    }else{
-
-                    }
                     break;
             }
         }
@@ -121,6 +114,7 @@ public class ActivityJuegos extends AppCompatActivity {
     public void volver(){
         Intent mandar = new Intent(this, VistaMapa.class);
         startActivity(mandar);
+        mp.release();
     }
 
     public void mutear(AudioManager amanager){

@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/portu_red"
+    android:background="@drawable/gr515_1180_1180"
     tools:context=".vista.ActivitySeleccion">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_width="0sp"
+        android:layout_height="400sp"
         android:background="@drawable/customborder"
         android:elevation="20sp"
-
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0sp"
         app:cardCornerRadius="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,49 +28,50 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:background="@color/portu_red"
+
             android:orientation="vertical"
-            android:padding="4dp">
+            android:padding="4sp">
 
             <TextView
                 android:id="@+id/bienvenido"
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
+                android:layout_height="53sp"
                 android:text="Bienvenido"
                 android:textAlignment="center"
                 android:textColor="@color/portu_yellow"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textoPregunta"
                 android:layout_width="match_parent"
-                android:layout_height="103dp"
+                android:layout_height="103sp"
                 android:text="¿Eres un profesor o alumno?"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="24sp"
                 android:textAlignment="center"
                 android:textColor="@color/portu_yellow"
-                android:textSize="35dp"
+                android:textSize="35sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnProfesor"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="@color/portu_yellow"
+                android:layout_height="55sp"
+                android:layout_marginTop="30sp"
+                android:backgroundTint="@android:color/transparent"
                 android:text="Profesor"
-                android:textSize="16dp"
-                app:cornerRadius="3sp" />
+                android:textSize="16sp"
+                app:cornerRadius="3sp"
+                />
 
             <Button
                 android:id="@+id/btnAlumno"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="30dp"
+                android:layout_height="55sp"
+                android:layout_marginTop="30sp"
                 android:backgroundTint="@color/portu_yellow"
                 android:text="Alumno"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:cornerRadius="3sp" />
 
         </LinearLayout>
