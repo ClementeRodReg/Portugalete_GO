@@ -78,21 +78,8 @@ public class Fragment_Enunciado extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
-
-        LayoutEleccion = view.findViewById(R.id.LayoutElegir);
         LayoutPreguntas = view.findViewById(R.id.LayoutPreguntas);
         enunciado = view.findViewById(R.id.textoJuegos);
-        pj1 = view.findViewById(R.id.eleccion1);
-        pj2 = view.findViewById(R.id.eleccion2);
-        pj3 = view.findViewById(R.id.eleccion3);
-        pj4 = view.findViewById(R.id.eleccion1);
-        pj5 = view.findViewById(R.id.eleccion1);
-
-        pj1.setOnClickListener(this::onClick);
-        pj2.setOnClickListener(this::onClick);
-        pj3.setOnClickListener(this::onClick);
-        pj4.setOnClickListener(this::onClick);
-        pj5.setOnClickListener(this::onClick);
     }
 
     public void onClick(View view){

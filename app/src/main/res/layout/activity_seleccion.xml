@@ -28,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-
             android:orientation="vertical"
             android:padding="4sp">
 
@@ -58,9 +57,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="55sp"
                 android:layout_marginTop="30sp"
-                android:backgroundTint="@android:color/transparent"
+                android:background="@drawable/ovalo"
                 android:text="Profesor"
-                android:textSize="16sp"
+                android:textColor="@color/portu_yellow"
+                android:textSize="25sp"
+                android:textStyle="bold"
                 app:cornerRadius="3sp"
                 />
 
@@ -69,9 +70,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="55sp"
                 android:layout_marginTop="30sp"
-                android:backgroundTint="@color/portu_yellow"
+                android:background="@drawable/ovalo"
+                android:textColor="@color/portu_yellow"
                 android:text="Alumno"
-                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textSize="25sp"
                 app:cornerRadius="3sp" />
 
         </LinearLayout>

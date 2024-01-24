@@ -74,8 +74,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48sp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/portu_yellow"
+                android:background="@drawable/ovalo"
                 android:text="Confirmar"
+                android:textColor="@color/portu_yellow"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
@@ -84,8 +85,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/portu_yellow"
+                android:background="@drawable/ovalo"
                 android:text="ir al Mapa"
+                android:textColor="@color/portu_yellow"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
@@ -101,7 +103,7 @@
         android:layout_marginRight="30sp"
         android:background="@color/portu_red"
         android:elevation="20sp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:cardCornerRadius="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,8 +116,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:gravity="center_horizontal"
             android:background="@color/portu_red"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="4sp">
 
@@ -159,6 +161,7 @@
         android:backgroundTint="@color/black"
         android:text="Volver"
         android:textSize="16sp"
+        android:textColor="@color/white"
         app:cornerRadius="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -25,8 +25,15 @@ public class ActivityJuegos extends AppCompatActivity {
     Fragment fragment, nuevoFragment, fragmentActual;
     FragmentTransaction fragmentTransaction;
 
-    int contadorSaltos;
-    int grupo=0;
+    boolean fragEnunciadoON = true;
+
+    Fragment fragmento_enunciado = new Fragment_Enunciado();
+    Fragment fragCam = new fragmentCamara();
+
+    Fragment f2 = new FragmentJuego2();
+
+    int contadorSaltos = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +41,15 @@ public class ActivityJuegos extends AppCompatActivity {
 
         btnVolver = findViewById(R.id.btnvolver);
         btnSiguiente = findViewById(R.id.btnSiguiente);
+
         btnMute = findViewById(R.id.btnMute);
         btnUnmute = findViewById(R.id.btnUnmute);
 
         AudioManager amanager=(AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
         int id = getIntent().getIntExtra("id", 0);
-        grupo = getIntent().getIntExtra("grupo", 0);
+
+        System.out.println(id);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -49,9 +58,12 @@ public class ActivityJuegos extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
-
         //Ejecutamos el cambio de fragment
         fragmentActual = cambioFragment(id,fragmentTransaction,bundle);
+
+        //este contador solo se aplica para los juegos que tienen algun tipo de enunciado
+        //cada vez que entremos aqui, se pondra a 0
+        contadorSaltos = 0;
 
         System.out.println(fragmentActual.getClass());
         // int num = detectarFragment(fragmentActual);
@@ -60,7 +72,7 @@ public class ActivityJuegos extends AppCompatActivity {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                volver();
+                volver(mp);
             }
         });
 
@@ -81,7 +93,7 @@ public class ActivityJuegos extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              // siguiente(num,bundle, fragmentTransaction);
+              siguiente(fragmentActual,id,bundle, fragmentManager);
             }
         });
     }
@@ -97,26 +109,86 @@ public class ActivityJuegos extends AppCompatActivity {
 
    */
 
-    private void siguiente(Fragment fragmentActual, int id ,Bundle bundle, FragmentTransaction fragmentTransaction) {
-        if(fragmentActual.getClass().equals(Fragment_Enunciado.class)){
-            switch (id){
-                case 3:
+    private void siguiente(Fragment fragmentActual, int id ,Bundle bundle, FragmentManager fragmentManager) {
+            switch (id) {
+                case 2:
+                    FragmentTransaction fReal = fragmentManager.beginTransaction();
+                    fReal.replace(R.id.fragment_enunciados, f2);
+                    fReal.commit();
+                    btnSiguiente.setVisibility(View.INVISIBLE);
+                break;
 
+                /*
+                case 3:
+                    switch (contadorSaltos){
+                        case 0:
+                            nuevoFragment = new fragmentCamara();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragment_enunciados, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                        break;
+                        case 1:
+                            nuevoFragment = new Fragment_Enunciado();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentCam, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 2:
+                            nuevoFragment = new fragmentCamara();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragment_enunciados, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 3:
+                            nuevoFragment = new Fragment_Enunciado();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentCam, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 4:
+                            nuevoFragment = new fragmentCamara();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragment_enunciados, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 5:
+                            nuevoFragment = new Fragment_Enunciado();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentCam, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                    }
                     break;
                 case 4:
 
+
                     break;
+
+                    */
             }
         }
-    }
 
 
-    public void volver(){
+    //Vuelve al mapa, y si hay un audio en reproduccion, lo libera
+    public void volver(MediaPlayer mp){
         Intent mandar = new Intent(this, VistaMapa.class);
         startActivity(mandar);
-        mp.release();
+        if(mp != null){mp.release();}
     }
 
+    //silencia el audio
     public void mutear(AudioManager amanager){
 
         amanager.adjustVolume(AudioManager.ADJUST_MUTE, AudioManager.FLAG_SHOW_UI);
@@ -124,6 +196,7 @@ public class ActivityJuegos extends AppCompatActivity {
         btnUnmute.setVisibility(View.VISIBLE);
     }
 
+    //vuelve el sonido al audio
     public void unmute(AudioManager amanager){
 
         amanager.adjustVolume(AudioManager.ADJUST_UNMUTE, AudioManager.FLAG_SHOW_UI);
@@ -145,23 +218,23 @@ public class ActivityJuegos extends AppCompatActivity {
             case 2: //vamos al juego 2
                 nuevoFragment = new FragmentJuego2();
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
-
+                btnSiguiente.setVisibility(View.VISIBLE);
                 mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);
                 mp.start();
                 break;
             case 3: //vamos al primer fragment con camara
 
                 //previo a la camara hay que activar un fragment de texto
-                //nuevoFragment = new fragmentCamara();
-                bundle.putInt("grupo",grupo);
-                nuevoFragment = new Fragment_Enunciado();
+                nuevoFragment = new fragmentCamara();
+                btnSiguiente.setVisibility(View.VISIBLE);
+                //nuevoFragment = new Fragment_Enunciado();
                 nuevoFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                 break;
             case 4: //vamos al segundo fragment con camara
-                //nuevoFragment = new fragmentCamara();
-                bundle.putInt("grupo",grupo);
-                nuevoFragment = new Fragment_Enunciado();
+                nuevoFragment = new fragmentCamara();
+                btnSiguiente.setVisibility(View.VISIBLE);
+                //nuevoFragment = new Fragment_Enunciado();
                 nuevoFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                 break;
@@ -169,8 +242,6 @@ public class ActivityJuegos extends AppCompatActivity {
             fragmentTransaction.commit(); // -> Realiza el cambio
             return nuevoFragment;
         }
-
-
     }
 
 
