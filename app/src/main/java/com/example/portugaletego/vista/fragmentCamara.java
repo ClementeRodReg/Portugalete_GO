@@ -44,10 +44,11 @@ public class fragmentCamara extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "id";
+    private static final String ARG_PARAM2 = "grupo";
 
     // TODO: Rename and change types of parameters
     private int id_juego;
-
+    private int id_grupo;
     Button btnCamara;
     ImageView imagen;
     private FirebaseAuth mAuth;
@@ -65,10 +66,11 @@ public class fragmentCamara extends Fragment {
      * @return A new instance of fragment fragmentCamara.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragmentCamara newInstance(int id) {
+    public static fragmentCamara newInstance(int id, int grupo) {
         fragmentCamara fragment = new fragmentCamara();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, id);
+        args.putInt(ARG_PARAM2, grupo);
         fragment.setArguments(args);
         return fragment;
     }
@@ -78,6 +80,7 @@ public class fragmentCamara extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             id_juego = getArguments().getInt(ARG_PARAM1);
+            id_grupo = getArguments().getInt(ARG_PARAM2);
         }
     }
 
@@ -114,7 +117,14 @@ public class fragmentCamara extends Fragment {
             Bitmap imgBitmap = (Bitmap) extras.get("data");
             imagen.setImageBitmap(imgBitmap);
             mAuth = FirebaseAuth.getInstance();
+            String carpetaGrupo="";
 
+            if(id_grupo == 0)
+                carpetaGrupo="r_g1";
+            else if(id_grupo == 1)
+                carpetaGrupo="r_g2";
+            else
+                carpetaGrupo="r_g3";
 
             ContentResolver resolver = getContext().getContentResolver();
             ContentValues values = new ContentValues();
@@ -122,8 +132,8 @@ public class fragmentCamara extends Fragment {
             String nombreFoto = "";
             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
             if (id_juego == 3) {
-                nombreFoto = "RespuestaEjer3punto1";
-                storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com/r_g1/ejer3");
+                nombreFoto = "RespuestaEjer3";
+                storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
                     if (files[i].isDirectory()) {
@@ -137,7 +147,7 @@ public class fragmentCamara extends Fragment {
                     }
                 }
             } else if (id_juego == 4) {
-                nombreFoto = "RespuestaEjer4punto1";
+                nombreFoto = "RespuestaEjer4";
                 storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
@@ -181,7 +191,7 @@ public class fragmentCamara extends Fragment {
             }
             storageRef = storage.getReference();
             Uri file = Uri.fromFile(new File("/sdcard/Pictures/PortuGO/"+nombreFoto+".jpg"));
-            StorageReference riversRef = storageRef.child("r_g1/ejer4/"+file.getLastPathSegment());
+            StorageReference riversRef = storageRef.child(carpetaGrupo+"/ejer"+id_juego+"/"+file.getLastPathSegment());
             UploadTask uploadTask = riversRef.putFile(file);
 
             // Register observers to listen for when the download is done or if it fails
