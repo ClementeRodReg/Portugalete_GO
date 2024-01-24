@@ -69,7 +69,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:text="Ans B"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:layout_marginTop="40dp"/>
 
                 <Button
                     android:id="@+id/ans_C"
@@ -77,7 +78,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:text="Ans C"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:layout_marginTop="40dp"/>
 
                 <Button
                     android:id="@+id/ans_D"
@@ -85,6 +87,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:text="Ans D"
+                    android:layout_marginTop="40dp"
+
                     android:textColor="@color/black" />
 
             </LinearLayout>
