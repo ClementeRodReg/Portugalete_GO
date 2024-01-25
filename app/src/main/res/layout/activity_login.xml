@@ -71,8 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48sp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/ovalo"
-                android:text="Confirmar"
+                android:background="@drawable/ovalo2"                android:text="Confirmar"
                 android:textColor="@color/portu_yellow"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
@@ -82,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/ovalo"
+                android:background="@drawable/ovalo2"
                 android:text="ir al Mapa"
                 android:textColor="@color/portu_yellow"
                 android:textSize="16sp"
@@ -138,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48sp"
                 android:layout_marginTop="50sp"
-                android:backgroundTint="@color/portu_yellow"
+                android:background="@drawable/ovalo2"
                 android:text="Acceder"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
