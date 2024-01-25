@@ -114,20 +114,20 @@ public class ActivityJuegos extends AppCompatActivity {
     private void siguiente(Fragment fragmentActual, int id, Bundle bundle, FragmentManager fragmentManager) {
         switch (id) {
             case 2:
-                FragmentTransaction fReal = fragmentManager.beginTransaction();
-                fReal.replace(R.id.fragment_enunciados, f2);
-                fReal.commit();
-                btnSiguiente.setVisibility(View.INVISIBLE);
-                break;
+               FragmentTransaction fReal = fragmentManager.beginTransaction();
+               fReal.replace(R.id.fragmentJuegos, f2);
+               fReal.commit();
+               btnSiguiente.setVisibility(View.INVISIBLE);
+               break;
 
-                /*
+
                 case 3:
                     switch (contadorSaltos){
                         case 0:
                             nuevoFragment = new fragmentCamara();
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_enunciados, nuevoFragment);
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                             fragmentTransaction.commit();
                             contadorSaltos++;
                         break;
@@ -135,7 +135,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             nuevoFragment = new Fragment_Enunciado();
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragmentCam, nuevoFragment);
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                             fragmentTransaction.commit();
                             contadorSaltos++;
                             break;
@@ -143,7 +143,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             nuevoFragment = new fragmentCamara();
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_enunciados, nuevoFragment);
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                             fragmentTransaction.commit();
                             contadorSaltos++;
                             break;
@@ -151,7 +151,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             nuevoFragment = new Fragment_Enunciado();
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragmentCam, nuevoFragment);
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                             fragmentTransaction.commit();
                             contadorSaltos++;
                             break;
@@ -159,7 +159,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             nuevoFragment = new fragmentCamara();
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_enunciados, nuevoFragment);
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                             fragmentTransaction.commit();
                             contadorSaltos++;
                             break;
@@ -167,9 +167,10 @@ public class ActivityJuegos extends AppCompatActivity {
                             nuevoFragment = new Fragment_Enunciado();
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragmentCam, nuevoFragment);
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                             fragmentTransaction.commit();
                             contadorSaltos++;
+                            btnSiguiente.setVisibility(View.INVISIBLE);
                             break;
                     }
                     break;
@@ -178,8 +179,9 @@ public class ActivityJuegos extends AppCompatActivity {
 
                     break;
 
-                    */
+
         }
+
     }
 
 
@@ -221,7 +223,7 @@ public class ActivityJuegos extends AppCompatActivity {
                 mp.start();
                 break;
             case 2: //vamos al juego 2
-                nuevoFragment = new FragmentJuego2();
+                nuevoFragment = new Fragment_Enunciado();
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                 btnSiguiente.setVisibility(View.VISIBLE);
                 mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);
@@ -230,7 +232,7 @@ public class ActivityJuegos extends AppCompatActivity {
             case 3: //vamos al primer fragment con camara
                 bundle.putInt("grupo", grupo);
                 //previo a la camara hay que activar un fragment de texto
-                nuevoFragment = new fragmentCamara();
+                nuevoFragment = new Fragment_Enunciado();
                 btnSiguiente.setVisibility(View.VISIBLE);
                 //nuevoFragment = new Fragment_Enunciado();
                 nuevoFragment.setArguments(bundle);

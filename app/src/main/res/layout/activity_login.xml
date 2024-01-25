@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gr515_1180_1180"
     android:gravity="center_horizontal"
+    android:layout_gravity="center"
     android:orientation="vertical"
     tools:context=".vista.LoginActivity">
 
@@ -15,13 +16,9 @@
         android:layout_height="349dp"
         android:background="@color/portu_red"
         android:elevation="20sp"
-        android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
         app:cardCornerRadius="30sp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.382">
@@ -99,15 +96,12 @@
         android:id="@+id/card2"
         android:layout_width="350sp"
         android:layout_height="349sp"
-        android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
         android:background="@color/portu_red"
         android:elevation="20sp"
         android:visibility="invisible"
         app:cardCornerRadius="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.382">

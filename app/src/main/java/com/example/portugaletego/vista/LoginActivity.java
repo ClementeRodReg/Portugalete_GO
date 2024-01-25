@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         usuarios = RellenarArray();
 
         //creamos el adaptador para el spinner
-        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,usuarios);
+        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, usuarios);
         spinner.setAdapter(adapter);
 
         //BOTON PARA IR AL MAPA
