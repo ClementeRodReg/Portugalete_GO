@@ -50,7 +50,7 @@
                 android:hint="Introduzca el nombre"
                 android:inputType="text"
                 android:padding="8sp"
-                android:textColor="@color/white"
+                android:textColor="@color/portu_yellow"
                 android:textColorHint="@color/portu_yellow" />
 
             <EditText
@@ -62,7 +62,7 @@
                 android:hint="Pass"
                 android:inputType="numberPassword"
                 android:padding="8sp"
-                android:textColor="@color/white"
+                android:textColor="@color/portu_yellow"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/portu_yellow" />
 
@@ -152,10 +152,10 @@
         android:layout_width="150sp"
         android:layout_height="48sp"
         android:layout_marginBottom="16sp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/portu_yellow"
         android:text="Volver"
-        android:textSize="16sp"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:cornerRadius="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
