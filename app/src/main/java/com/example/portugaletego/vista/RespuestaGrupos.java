@@ -1,5 +1,7 @@
 package com.example.portugaletego.vista;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,9 +11,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.portugaletego.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +38,9 @@ public class RespuestaGrupos extends Fragment {
     // TODO: Rename and change types of parameters
     private String grupo;
     private TextView ngrupo;
+    private FirebaseAuth mAuth;
+    FirebaseStorage storage;
+    StorageReference storageRef;
 
     public RespuestaGrupos() {
         // Required empty public constructor
@@ -66,6 +80,13 @@ public class RespuestaGrupos extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
         ngrupo = view.findViewById(R.id.textvG1);
+        mAuth = FirebaseAuth.getInstance();
+        storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
+        ImageView ejerfoto = view.findViewById(R.id.fotoSacada);
+        TextView descejer = view.findViewById(R.id.desc);
+        Button aprobar = view.findViewById(R.id.Aprobarbtn);
+        LinearLayout ll1 = view.findViewById(R.id.layoutg1);
+        ll1.setVisibility(View.INVISIBLE);
 
         if (grupo != null) {
             if (grupo.equals("r_g1"))
@@ -74,6 +95,39 @@ public class RespuestaGrupos extends Fragment {
                 ngrupo.setText("GRUPO 2");
             else
                 ngrupo.setText("GRUPO 3");
+        }else{
+            grupo="nada";
+        }
+        if (grupo.equals("r_g1")) {
+            ll1.setVisibility(View.VISIBLE);
+            storageRef = storage.getReference();
+            StorageReference islandRef = storageRef.child(grupo + "/ejer4" + "/RespuestaEjer4.jpg");
+            descejer.setText("ejercicio 4");
+            final long ONE_MEGABYTE = 1024 * 1024;
+            islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    // Data for "images/island.jpg" is returns, use this as needed
+                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                            .decodeByteArray(bytes, 0, bytes.length);
+                    ejerfoto.setImageBitmap(bitmapimg);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+                }
+            });
+
+            aprobar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getView().getContext(), "Grupo 1 ha aprobado el ejercicio 4", Toast.LENGTH_SHORT).show();
+                    ll1.setVisibility(View.INVISIBLE);
+                }
+            });
+        }else{
+            ll1.setVisibility(View.INVISIBLE);
         }
     }
 }
