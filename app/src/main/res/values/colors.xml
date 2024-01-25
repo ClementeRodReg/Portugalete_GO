@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#808080</color>
+    <color name="gray">#d3d3d3</color>
     <color name="portu_red">#FFFFFFFF</color>
     <color name="portu_yellow">#4EC3E0</color>
     <color name="pergamino">#f8e6bc</color>

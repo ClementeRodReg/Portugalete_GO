@@ -13,7 +13,7 @@
         android:layout_height="673dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:background="@drawable/gr515_1180_1180"
+        android:background="@drawable/gr5_1500_1501"
         >
 
             <LinearLayout
