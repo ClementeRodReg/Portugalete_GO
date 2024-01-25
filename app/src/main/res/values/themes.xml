@@ -6,7 +6,14 @@
     </style>
 
     <style name="Base.Theme.PortugaleteGOtest" parent="Base.Theme.PortugaleteGO" >
-        <item name="android:button">@drawable/ovalo</item>
+    <item name="android:button">@drawable/ovalo</item>
+</style>
+
+    <style name="Base.Theme.PortugaleteGOtest2" parent="Base.Theme.PortugaleteGO" >
+        <item name="android:button">@drawable/ovalo2</item>
+    </style>
+
+    <style name="Base.Theme.PortugaleteGOAlter" parent="Theme.Material3.DayNight.NoActionBar">
     </style>
 
     <style name="Theme.PortugaleteGO" parent="Base.Theme.PortugaleteGO" />
