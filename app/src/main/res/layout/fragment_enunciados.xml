@@ -38,6 +38,8 @@
                     android:id="@+id/textoJuegos"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
+                    android:text="ENUNCIADO"
+                    android:textSize="40sp"
                     android:background="@color/pergamino"
                     />
                 <ImageView

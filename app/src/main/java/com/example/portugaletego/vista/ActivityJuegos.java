@@ -175,10 +175,12 @@ public class ActivityJuegos extends AppCompatActivity {
                     }
                     break;
                 case 4:
-
-
+                /*    FragmentTransaction fReal3 = fragmentManager.beginTransaction();
+                    fReal3.replace(R.id.fragmentJuegos, fragCam);
+                    fReal3.commit();
+                    btnSiguiente.setVisibility(View.INVISIBLE);
                     break;
-
+                    */
 
         }
 
