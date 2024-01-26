@@ -6,3 +6,8 @@ Ander de la Iglesia
 Unai Cano
 <br>
 Clemente Rodriguez
+<br><br>
+La parte de alumno no tiene usuario/contraseña <br>
+La parte de profesor es <br>
+usuario: profesor@fesor.com
+pass: 123456
