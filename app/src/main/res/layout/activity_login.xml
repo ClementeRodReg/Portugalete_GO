@@ -14,11 +14,12 @@
         android:id="@+id/card1"
         android:layout_width="350sp"
         android:layout_height="349dp"
-        app:cardBackgroundColor="@color/portu_blue"
+        app:cardBackgroundColor="@color/azul_oscuro"
         app:cardElevation="0sp"
         app:cardCornerRadius="30sp"
         app:strokeColor="@android:color/white"
         app:strokeWidth="2sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +31,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
             android:padding="4sp">
 
             <TextView
@@ -68,26 +71,28 @@
                 android:textColorHint="@color/white" />
 
             <Button
-                android:id="@+id/buttonConfirmar"
+                android:id="@+id/Map"
                 style="@style/BotonTransparenteConBordes2"
                 android:layout_width="match_parent"
                 android:layout_height="48sp"
                 android:layout_marginTop="20dp"
-                android:text="Confirmar"
+                android:text="Ir al Mapa"
+                android:visibility="invisible"
+                android:textStyle="bold"
                 android:textColor="@color/portu_blue"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:cornerRadius="13sp" />
 
             <Button
-                android:id="@+id/Map"
+                android:id="@+id/buttonConfirmar"
                 style="@style/BotonTransparenteConBordes2"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
-
-                android:text="ir al Mapa"
+                android:textStyle="bold"
+                android:text="Confirmar"
                 android:textColor="@color/portu_blue"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:cornerRadius="13sp" />
 
         </LinearLayout>
@@ -98,8 +103,8 @@
         android:id="@+id/card2"
         android:layout_width="350sp"
         android:layout_height="349sp"
-        android:visibility="visible"
-        app:cardBackgroundColor="@color/portu_blue"
+        android:visibility="invisible"
+        app:cardBackgroundColor="@color/azul_oscuro"
         app:cardCornerRadius="30sp"
         app:cardElevation="0sp"
         app:layout_constraintBottom_toBottomOf="parent"
