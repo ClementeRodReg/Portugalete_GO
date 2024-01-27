@@ -10,13 +10,15 @@
     android:orientation="vertical"
     tools:context=".vista.LoginActivity">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card1"
         android:layout_width="350sp"
         android:layout_height="349dp"
-        android:background="@color/portu_red"
-        android:elevation="20sp"
+        app:cardBackgroundColor="@color/portu_blue"
+        app:cardElevation="0sp"
         app:cardCornerRadius="30sp"
+        app:strokeColor="@android:color/white"
+        app:strokeWidth="2sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +29,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:background="@color/portu_red"
             android:orientation="vertical"
             android:padding="4sp">
 
@@ -37,7 +38,7 @@
                 android:layout_height="53sp"
                 android:text="Login"
                 android:textAlignment="center"
-                android:textColor="@color/portu_yellow"
+                android:textColor="@color/white"
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
@@ -50,8 +51,8 @@
                 android:hint="Introduzca el nombre"
                 android:inputType="text"
                 android:padding="8sp"
-                android:textColor="@color/portu_yellow"
-                android:textColorHint="@color/portu_yellow" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/editTextContrasenna"
@@ -62,54 +63,59 @@
                 android:hint="Pass"
                 android:inputType="numberPassword"
                 android:padding="8sp"
-                android:textColor="@color/portu_yellow"
+                android:textColor="@color/white"
                 android:textColorHighlight="@color/cardview_dark_background"
-                android:textColorHint="@color/portu_yellow" />
+                android:textColorHint="@color/white" />
 
             <Button
                 android:id="@+id/buttonConfirmar"
+                style="@style/BotonTransparenteConBordes2"
                 android:layout_width="match_parent"
                 android:layout_height="48sp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/ovalo2"                android:text="Confirmar"
-                android:textColor="@color/portu_yellow"
+                android:text="Confirmar"
+                android:textColor="@color/portu_blue"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
             <Button
                 android:id="@+id/Map"
+                style="@style/BotonTransparenteConBordes2"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/ovalo2"
+
                 android:text="ir al Mapa"
-                android:textColor="@color/portu_yellow"
+                android:textColor="@color/portu_blue"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card2"
         android:layout_width="350sp"
         android:layout_height="349sp"
-        android:background="@color/portu_red"
-        android:elevation="20sp"
-        android:visibility="invisible"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/portu_blue"
         app:cardCornerRadius="30sp"
+        app:cardElevation="0sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382">
+        app:layout_constraintVertical_bias="0.382"
+        app:strokeColor="@android:color/white"
+        app:strokeWidth="2sp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@color/portu_red"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="4sp">
@@ -120,7 +126,7 @@
                 android:layout_height="53sp"
                 android:text="Acceso Estudiantes"
                 android:textAlignment="center"
-                android:textColor="@color/portu_yellow"
+                android:textColor="@color/portu_white"
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
@@ -129,29 +135,29 @@
                 android:layout_width="300sp"
                 android:layout_height="50sp"
                 android:layout_marginTop="50sp"
-                android:background="@color/portu_yellow" />
+                android:background="@drawable/mi_spinner" />
 
 
             <Button
                 android:id="@+id/AccesoMapasEstudiante"
+                style="@style/BotonTransparenteConBordes2"
                 android:layout_width="match_parent"
                 android:layout_height="48sp"
                 android:layout_marginTop="50sp"
-                android:background="@drawable/ovalo2"
                 android:text="Acceder"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <Button
         android:id="@+id/volveraInicio"
         android:layout_width="150sp"
         android:layout_height="48sp"
         android:layout_marginBottom="16sp"
-        android:backgroundTint="@color/portu_yellow"
+        android:backgroundTint="@color/azul_oscuro"
         android:text="Volver"
         android:textColor="@color/white"
         android:textSize="16sp"

@@ -28,14 +28,14 @@
                 android:text="Grupo 1"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="@color/portu_yellow"
+                android:textColor="@color/portu_blue"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="193dp"
-                android:background="@color/portu_red"
+                android:background="@color/portu_white"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -68,7 +68,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/portu_yellow"
+                        android:backgroundTint="@color/portu_blue"
                         android:text="Aprobar"
                         tools:ignore="TouchTargetSizeCheck" />
 
@@ -77,7 +77,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/portu_yellow"
+                        android:backgroundTint="@color/portu_blue"
                         android:text="Pencar"
                         tools:ignore="TouchTargetSizeCheck" />
                 </LinearLayout>

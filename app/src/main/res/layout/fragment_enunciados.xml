@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@color/portu_red"
+    android:background="@color/portu_white"
     android:id="@+id/fragment_enunciados">
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@color/portu_red">
+        android:background="@color/portu_white">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardTexto"

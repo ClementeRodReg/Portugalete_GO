@@ -1,20 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.PortugaleteGO" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <!-- <style name="Base.Theme.PortugaleteGO" parent="Theme.AppCompat.Light.NoActionBar"> -->
+    <style name="Base.Theme.PortugaleteGO" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Base.Theme.PortugaleteGOtest" parent="Base.Theme.PortugaleteGO" >
-    <item name="android:button">@drawable/ovalo</item>
-</style>
-
-    <style name="Base.Theme.PortugaleteGOtest2" parent="Base.Theme.PortugaleteGO" >
-        <item name="android:button">@drawable/ovalo2</item>
+    <style name="BotonTransparenteConBordes" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeColor">@android:color/white</item>
+        <item name="strokeWidth">2dp</item>
+        <!-- Puedes ajustar otros atributos del botón aquí si lo deseas -->
     </style>
 
-    <style name="Base.Theme.PortugaleteGOAlter" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="BotonTransparenteConBordes2" parent="Base.Theme.PortugaleteGO" >
+        <item name="backgroundTint">@android:color/white</item>
+        <item name="strokeColor">@android:color/holo_blue_bright</item>
+        <item name="strokeWidth">2dp</item>
     </style>
 
+  <!--  <style name="Base.Theme.PortugaleteGOAlter" parent="Theme.Material3.DayNight">
+    </style>
+    -->
     <style name="Theme.PortugaleteGO" parent="Base.Theme.PortugaleteGO" />
 </resources>

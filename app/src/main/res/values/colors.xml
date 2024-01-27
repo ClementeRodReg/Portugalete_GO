@@ -3,7 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#d3d3d3</color>
-    <color name="portu_red">#FFFFFFFF</color>
-    <color name="portu_yellow">#4EC3E0</color>
+    <color name="portu_white">#FFFFFFFF</color>
+    <color name="portu_blue">#4EC3E0</color>
+    <color name="azul_oscuro">#1e6bad</color>
     <color name="pergamino">#f8e6bc</color>
 </resources>
