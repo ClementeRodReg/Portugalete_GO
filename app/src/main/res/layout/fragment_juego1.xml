@@ -16,193 +16,94 @@
         android:background="@drawable/gr5_1500_1501"
         >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="275dp"
-                android:orientation="horizontal"
-                >
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardJuego1"
-                    android:layout_width="175dp"
-                    android:layout_height="match_parent"
-                    app:cardBackgroundColor="@color/gray"
-                    android:elevation="20sp"
-
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="30dp"
-                    app:cardCornerRadius="30dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_marginRight="10sp"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_gravity="center_horizontal">
-
-                        <ImageView
-                            android:id="@+id/imgPasarela"
-                            android:layout_width="155dp"
-                            android:layout_height="150dp"
-                            android:background="@drawable/round_outline"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/puentecolgantepasarela" />
-
-                        <TextView
-                        android:id="@+id/placeholder1"
-                        android:layout_width="175dp"
-                        android:layout_height="100dp"
-
-                        />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardJuego2"
-                    android:layout_width="175dp"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/gray"
-                    android:elevation="20dp"
-                    android:layout_marginLeft="5dp"
-                    app:cardCornerRadius="30dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_gravity="center_horizontal">
-
-                    <ImageView
-                        android:id="@+id/imgPuenteColgante"
-                        android:layout_width="175dp"
-                        android:layout_height="150dp"
-                        app:srcCompat="@drawable/puentecolgante1"
-                        android:scaleType="centerCrop"/>
-
-
-                        <TextView
-                            android:id="@+id/placeholder2"
-                            android:layout_width="175dp"
-                            android:layout_height="100dp"
-                           />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="275dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardJuego3"
-                    android:layout_width="175dp"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/gray"
-                    android:elevation="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="30dp"
-                    app:cardCornerRadius="30dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_gravity="center_horizontal">
-
-                        <ImageView
-                            android:id="@+id/imgTransbordador"
-                            android:layout_width="175dp"
-                            android:layout_height="150dp"
-                            app:srcCompat="@drawable/puentecolgantetransbordador"
-                            android:scaleType="centerCrop"/>
-
-                        <TextView
-                            android:id="@+id/placeholder3"
-                            android:layout_width="175dp"
-                            android:layout_height="100dp"
-
-                            />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardJuego4"
-                    android:layout_width="175dp"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/gray"
-                    android:elevation="20dp"
-                    android:layout_marginLeft="5dp"
-                    app:cardCornerRadius="30dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_gravity="center_horizontal">
-
-                    <ImageView
-                        android:id="@+id/imgAscensor"
-                        android:layout_width="175dp"
-                        android:layout_height="150dp"
-                        app:srcCompat="@drawable/bizkaikozubiaigogailua"
-                        android:scaleType="centerCrop"/>
-
-                    <TextView
-                        android:id="@+id/placeholder4"
-                        android:layout_width="175dp"
-                        android:layout_height="100dp"
-                        />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
-
-            </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="200dp"
+            android:layout_height="120sp"
+            >
+            <TextView
+                android:id="@+id/placeholder1"
+                android:layout_width="200sp"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                />
 
-                <ImageView
-                    android:id="@+id/imgTxtPasarela"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:srcCompat="@drawable/ascensor"
-                    ></ImageView>
-                <ImageView
-                    android:id="@+id/imgTxtTransbordador"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:srcCompat="@drawable/ascensor"
-                    ></ImageView>
-            </LinearLayout>
-            <LinearLayout
+            <TextView
+                android:id="@+id/placeholder2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imgTxtTensor"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:srcCompat="@drawable/ascensor"
-                    ></ImageView>
-                <ImageView
-                    android:id="@+id/imgTxtAscensor"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:srcCompat="@drawable/ascensor"
-                    ></ImageView>
-
-            </LinearLayout>
+                />
         </LinearLayout>
+"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            >
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgPasarela"
+                android:layout_width="200sp"
+                android:layout_height="150dp"
+                android:
+                app:shapeAppearanceOverlay="@style/SpecificCornerRounded"
+                android:scaleType="centerCrop"
+                android:src="@drawable/puentecolgantepasarela" />
+
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgPuenteColgante"
+                android:layout_width="200sp"
+                android:layout_height="150sp"
+                app:shapeAppearanceOverlay="@style/InverseSpecificCornerRounded"
+                app:srcCompat="@drawable/puentecolgante1"
+                android:scaleType="centerCrop"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            >
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgTransbordador"
+                android:layout_width="200sp"
+                android:layout_height="150sp"
+                app:srcCompat="@drawable/puentecolgantetransbordador"
+                app:shapeAppearanceOverlay="@style/InverseSpecificCornerRounded"
+                android:scaleType="centerCrop"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgAscensor"
+                android:layout_width="200sp"
+                android:layout_height="150sp"
+                app:shapeAppearanceOverlay="@style/SpecificCornerRounded"
+                app:srcCompat="@drawable/bizkaikozubiaigogailua"
+                android:scaleType="centerCrop"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            >
+            <TextView
+                android:id="@+id/placeholder3"
+                android:layout_width="200sp"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/placeholder4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+
+
+
+
+
+
+
+
 
 
     </LinearLayout>
