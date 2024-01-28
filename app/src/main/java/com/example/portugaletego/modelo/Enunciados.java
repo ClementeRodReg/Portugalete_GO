@@ -3,6 +3,7 @@ package com.example.portugaletego.modelo;
 public class Enunciados {
 
     public static String textos[] ={
+          "Une las palabras con sus respectivas fotos",
           "Ejercicio: Empareja las palabras con las fotos correspondientes",
           "Ejercicio: Responde las preguntas",
           "Mira esta imagen y saca una foto del lugar correspondiente",

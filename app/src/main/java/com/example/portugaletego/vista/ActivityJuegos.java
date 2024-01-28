@@ -31,6 +31,7 @@ public class ActivityJuegos extends AppCompatActivity {
     Fragment fragCam = new fragmentCamara();
 
     Fragment f2 = new FragmentJuego2();
+    Fragment f1 = new FragmentJuego1();
 
     int contadorSaltos = 0;
     int grupo = 0;
@@ -115,6 +116,12 @@ public class ActivityJuegos extends AppCompatActivity {
 
     private void siguiente(Fragment fragmentActual, int id, Bundle bundle, FragmentManager fragmentManager) {
         switch (id) {
+            case 0:
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentJuegos, f1);
+                fragmentTransaction.commit();
+                btnSiguiente.setVisibility(View.INVISIBLE);
+                break;
             case 1:
                FragmentTransaction fReal = fragmentManager.beginTransaction();
                fReal.replace(R.id.fragmentJuegos, f2);
@@ -220,9 +227,9 @@ public class ActivityJuegos extends AppCompatActivity {
     public Fragment cambioFragment(int id, FragmentTransaction fragmentTransaction, Bundle bundle) {
         switch (id) {
             case 0: //vamos al juego 1
-                nuevoFragment = new FragmentJuego1();
+                nuevoFragment = new Fragment_Enunciado();
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
-
+                btnSiguiente.setVisibility(View.VISIBLE);
                 mp = MediaPlayer.create(this, R.raw.explicacion_puente_colgante);
                 mp.start();
                 break;
