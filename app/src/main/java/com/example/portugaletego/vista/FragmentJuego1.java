@@ -2,6 +2,8 @@ package com.example.portugaletego.vista;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
@@ -128,8 +130,11 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
         int dragEvent = event.getAction();
         switch (dragEvent) {
             case DragEvent.ACTION_DROP:
-                if (v.getId() == R.id.placeholder1 && recogida.getId() == R.id.imgTxtTensor) {
-                    v.setBackground(recogida.getDrawable());
+                if (v.getId() == R.id.placeholder1 && recogida.getId() == R.id.imgTxtPasarela) {
+                    Drawable combinedDrawable = createCombinedDrawable(
+                            getResources().getDrawable(R.drawable.textviewredondeado),
+                            recogida.getDrawable());
+                    v.setBackground(combinedDrawable);
                     recogida.setVisibility(View.GONE);
                     Toast toast1 =
                             Toast.makeText(this.getContext(),
@@ -138,7 +143,10 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
                     toast1.show();
                 }
                 else if (v.getId() == R.id.placeholder2 && recogida.getId() == R.id.imgTxtAscensor) {
-                    v.setBackground(recogida.getDrawable());
+                    Drawable combinedDrawable = createCombinedDrawable(
+                            getResources().getDrawable(R.drawable.textviewredondeado),
+                            recogida.getDrawable());
+                    v.setBackground(combinedDrawable);
                     recogida.setVisibility(View.GONE);
                     Toast toast1 =
                             Toast.makeText(this.getContext(),
@@ -147,7 +155,10 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
                     toast1.show();
                 }
                 else if (v.getId() == R.id.placeholder3 && recogida.getId() == R.id.imgTxtTransbordador) {
-                    v.setBackground(recogida.getDrawable());
+                    Drawable combinedDrawable = createCombinedDrawable(
+                            getResources().getDrawable(R.drawable.textviewredondeado),
+                            recogida.getDrawable());
+                    v.setBackground(combinedDrawable);
                     recogida.setVisibility(View.GONE);
                     Toast toast1 =
                             Toast.makeText(this.getContext(),
@@ -155,8 +166,11 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
 
                     toast1.show();
                 }
-                else if (v.getId() == R.id.placeholder4 && recogida.getId() == R.id.imgTxtPasarela) {
-                    v.setBackground(recogida.getDrawable());
+                else if (v.getId() == R.id.placeholder4 && recogida.getId() == R.id.imgTxtTensor) {
+                    Drawable combinedDrawable = createCombinedDrawable(
+                            getResources().getDrawable(R.drawable.textviewredondeado),
+                            recogida.getDrawable());
+                    v.setBackground(combinedDrawable);
                     recogida.setVisibility(View.GONE);
                     Toast toast1 =
                             Toast.makeText(this.getContext(),
@@ -174,4 +188,18 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
         }
         return true;
     };
+
+    private Drawable createCombinedDrawable(Drawable background, Drawable image) {
+        Drawable[] layers = new Drawable[2];
+        layers[0] = background; // Drawable de fondo con esquinas redondeadas
+        layers[1] = image; // Imagen arrastrada
+        LayerDrawable layerDrawable = new LayerDrawable(layers);
+
+        // Ajusta la imagen arrastrada para que ocupe todo el espacio disponible
+        // manteniendo las esquinas redondeadas
+        layerDrawable.setLayerInset(1, 0, 0, 0, 0);
+
+        return layerDrawable;
+    }
+
 }

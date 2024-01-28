@@ -10,12 +10,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="673dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:background="@drawable/gr5_1500_1501"
         >
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120sp"
@@ -24,12 +23,14 @@
                 android:id="@+id/placeholder1"
                 android:layout_width="200sp"
                 android:layout_height="match_parent"
+                android:background="@drawable/textviewredondeado"
                 />
 
             <TextView
                 android:id="@+id/placeholder2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/textviewredondeado"
                 />
         </LinearLayout>
 "
@@ -87,12 +88,14 @@
                 android:id="@+id/placeholder3"
                 android:layout_width="200sp"
                 android:layout_height="match_parent"
+                android:background="@drawable/textviewredondeado"
                 />
 
             <TextView
                 android:id="@+id/placeholder4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/textviewredondeado"
                 />
         </LinearLayout>
 
@@ -101,9 +104,11 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                android:gravity="bottom">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imgTxtAscensor"
