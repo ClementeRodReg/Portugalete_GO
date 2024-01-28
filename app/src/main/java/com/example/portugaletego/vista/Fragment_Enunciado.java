@@ -85,9 +85,21 @@ public class Fragment_Enunciado extends Fragment {
         enunciado = view.findViewById(R.id.textoJuegos);
 
         int id = obtenerId();
-        escribirEnunciados(enunciado, id);
+        int contadorSaltos = obtenerContador();
+        if(id == 3){
+            System.out.println(contadorSaltos);
+            switch(contadorSaltos){
+                case 0: escribirEnunciadosEjer4(enunciado, contadorSaltos); break;
+                case 2: escribirEnunciadosEjer4(enunciado, 1); break;
+                case 4: escribirEnunciadosEjer4(enunciado, 2); break;
+                case 6: escribirEnunciadosEjer4(enunciado, 3); break;
+                case 8: escribirEnunciadosEjer4(enunciado, 4); break;
+            }
 
-
+        }
+        else{
+            escribirEnunciados(enunciado, id);
+        }
     }
 
     public int obtenerId(){
@@ -95,8 +107,19 @@ public class Fragment_Enunciado extends Fragment {
         int id = ((ActivityJuegos) a).getId();
         return id;
     }
+
+    public int obtenerContador(){
+        Activity a = getActivity();
+        int contador = ((ActivityJuegos) a).getContadorSaltos();
+        return contador;
+    }
     void escribirEnunciados(TextView enunciado, int id){
         String opcionActual = Enunciados.textos[id];
+        enunciado.setText(opcionActual);
+    }
+
+    void escribirEnunciadosEjer4(TextView enunciado, int contador){
+        String opcionActual = Enunciados.juego4[contador];
         enunciado.setText(opcionActual);
     }
 

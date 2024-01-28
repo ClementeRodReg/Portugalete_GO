@@ -3,19 +3,17 @@ package com.example.portugaletego.modelo;
 public class Enunciados {
 
     public static String textos[] ={
-          "Une las palabras con sus respectivas fotos",
-          "Ejercicio: Empareja las palabras con las fotos correspondientes",
-          "Ejercicio: Responde las preguntas",
-          "Mira esta imagen y saca una foto del lugar correspondiente",
-          "Escoge un personaje: "
+          "Ejercicio 1: Empareja las palabras con las fotos correspondientes",
+          "Ejercicio 2: Responde las preguntas",
+          "Ejercicio 3: Mira esta imagen y saca una foto del lugar correspondiente"
     };
 
     public static String juego4[] ={
-            "Basa-lore baten argazkia atera.",
-            "Zuhaitz bat aurkitu eta haren ezaugarriak deskribatzea.",
-            "Forma berezi edo kolore bakarreko harri bat bilatzea.",
-            "La Florida eremuarekin zerikusia duen istorio edo legenda bat duen bideoa grabatu",
-            "Zenbat hegazti-mota aurki daitezkeen identifikatu eta zenbatzea."
+            "Ejercicio 4: Saca una foto a un Basa Lore",
+            "Encuentra un arbol y describe sus cualidades",
+            "Encuentra una piedra que tenga una forma especial o solo un color",
+            "Graba un video que tenga que ver con la historia de la Florida",
+            "Saca una foto a un ave de la zona."
     };
 
     // Personaje 1 -> 1,2,3,4,5

@@ -184,12 +184,84 @@ public class ActivityJuegos extends AppCompatActivity {
                     }
                     break;
                 case 3:
-                /*    FragmentTransaction fReal3 = fragmentManager.beginTransaction();
-                    fReal3.replace(R.id.fragmentJuegos, fragCam);
-                    fReal3.commit();
-                    btnSiguiente.setVisibility(View.INVISIBLE);
-                    break;
-                    */
+                    switch(contadorSaltos){
+                        case 0:
+                            nuevoFragment = new fragmentCamara();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 1:
+                            nuevoFragment = new Fragment_Enunciado();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 2:
+                            nuevoFragment = new fragmentCamara();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 3:
+                            nuevoFragment = new Fragment_Enunciado();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 4:
+                            nuevoFragment = new fragmentCamara();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 5:
+                            nuevoFragment = new Fragment_Enunciado();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 6:
+                            nuevoFragment = new fragmentCamara();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+                            break;
+                        case 7:
+                            nuevoFragment = new Fragment_Enunciado();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            contadorSaltos++;
+
+                            break;
+                        case 8:
+                            nuevoFragment = new fragmentCamara();
+                            nuevoFragment.setArguments(bundle);
+                            fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
+                            fragmentTransaction.commit();
+                            btnSiguiente.setVisibility(View.INVISIBLE);
+                            contadorSaltos++;
+                            break;
+                    }
+
+
 
         }
 
@@ -251,7 +323,7 @@ public class ActivityJuegos extends AppCompatActivity {
                 break;
             case 3: //vamos al segundo fragment con camara
                 bundle.putInt("grupo", grupo);
-                nuevoFragment = new fragmentCamara();
+                nuevoFragment = new Fragment_Enunciado();
                 btnSiguiente.setVisibility(View.VISIBLE);
                 //nuevoFragment = new Fragment_Enunciado();
                 nuevoFragment.setArguments(bundle);
@@ -268,6 +340,10 @@ public class ActivityJuegos extends AppCompatActivity {
 
     public int getId(){
         return id;
+    }
+
+    public int getContadorSaltos(){
+        return contadorSaltos;
     }
 }
 

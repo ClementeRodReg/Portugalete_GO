@@ -139,7 +139,6 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
                     Toast toast1 =
                             Toast.makeText(this.getContext(),
                                     "Tu opcion esta correcta", Toast.LENGTH_SHORT);
-
                     toast1.show();
                 }
                 else if (v.getId() == R.id.placeholder2 && recogida.getId() == R.id.imgTxtAscensor) {
@@ -151,7 +150,6 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
                     Toast toast1 =
                             Toast.makeText(this.getContext(),
                                     "Tu opcion esta correcta", Toast.LENGTH_SHORT);
-
                     toast1.show();
                 }
                 else if (v.getId() == R.id.placeholder3 && recogida.getId() == R.id.imgTxtTransbordador) {
@@ -163,7 +161,6 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
                     Toast toast1 =
                             Toast.makeText(this.getContext(),
                                     "Tu opcion esta correcta", Toast.LENGTH_SHORT);
-
                     toast1.show();
                 }
                 else if (v.getId() == R.id.placeholder4 && recogida.getId() == R.id.imgTxtTensor) {
@@ -175,7 +172,6 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
                     Toast toast1 =
                             Toast.makeText(this.getContext(),
                                     "Tu opcion esta correcta", Toast.LENGTH_SHORT);
-
                     toast1.show();
                 }
                 else{
@@ -197,7 +193,7 @@ public class FragmentJuego1 extends Fragment implements View.OnLongClickListener
 
         // Ajusta la imagen arrastrada para que ocupe todo el espacio disponible
         // manteniendo las esquinas redondeadas
-        layerDrawable.setLayerInset(1, 0, 0, 0, 0);
+        layerDrawable.setLayerInset(1, 10, 10, 10, 10);
 
         return layerDrawable;
     }

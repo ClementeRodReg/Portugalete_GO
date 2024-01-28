@@ -67,7 +67,7 @@
             android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            style="@style/BotonTransparenteConBordes2"
+            style="@style/BotonTransparenteConBordes"
             android:text="Siguiente"
             android:textColor="@color/white"
             android:textStyle="bold"
