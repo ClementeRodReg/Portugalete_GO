@@ -29,7 +29,7 @@
             android:elevation="20dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            app:cardBackgroundColor="@android:color/transparent"
+            app:cardBackgroundColor="@color/azul_oscuro"
             app:cardElevation="0dp"
             app:cardCornerRadius="30dp"
             app:strokeColor="@color/white"
@@ -44,16 +44,16 @@
 
                 <Button
                     android:id="@+id/btnCamara"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/azul_oscuro"
+                    android:layout_width="200sp"
+                    android:layout_height="50sp"
+                    style="@style/BotonAzulOscuro"
                     android:text="Camara"
                     />
 
                 <ImageView
                     android:id="@+id/fotoSacada"
-                    android:layout_width="185dp"
-                    android:layout_height="170dp"
+                    android:layout_width="250sp"
+                    android:layout_height="250sp"
                     tools:src="@tools:sample/avatars" />
             </LinearLayout>
 

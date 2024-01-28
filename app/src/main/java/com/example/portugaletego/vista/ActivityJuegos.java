@@ -282,7 +282,7 @@ public class ActivityJuegos extends AppCompatActivity {
     public void mutear(AudioManager amanager) {
 
         amanager.adjustVolume(AudioManager.ADJUST_MUTE, AudioManager.FLAG_SHOW_UI);
-        btnMute.setVisibility(View.INVISIBLE);
+        btnMute.setVisibility(View.GONE);
         btnUnmute.setVisibility(View.VISIBLE);
     }
 
@@ -290,7 +290,7 @@ public class ActivityJuegos extends AppCompatActivity {
     public void unmute(AudioManager amanager) {
 
         amanager.adjustVolume(AudioManager.ADJUST_UNMUTE, AudioManager.FLAG_SHOW_UI);
-        btnUnmute.setVisibility(View.INVISIBLE);
+        btnUnmute.setVisibility(View.GONE);
         btnMute.setVisibility(View.VISIBLE);
     }
 

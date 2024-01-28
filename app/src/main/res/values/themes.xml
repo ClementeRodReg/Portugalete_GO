@@ -19,6 +19,11 @@
         <item name="strokeWidth">2dp</item>
     </style>
 
+    <style name="BotonAzulOscuro" parent="Base.Theme.PortugaleteGO">
+        <item name="backgroundTint">@color/azul_oscuro</item>
+        <item name="strokeColor">@android:color/white</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
   <!--  <style name="Base.Theme.PortugaleteGOAlter" parent="Theme.Material3.DayNight">
     </style>
     -->
