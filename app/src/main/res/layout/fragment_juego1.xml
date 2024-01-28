@@ -43,7 +43,6 @@
                 android:id="@+id/imgPasarela"
                 android:layout_width="200sp"
                 android:layout_height="150dp"
-                android:
                 app:shapeAppearanceOverlay="@style/SpecificCornerRounded"
                 android:scaleType="centerCrop"
                 android:src="@drawable/puentecolgantepasarela" />
@@ -97,13 +96,45 @@
                 />
         </LinearLayout>
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgTxtAscensor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ascensor_azul"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"
+                    />
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgTxtPasarela"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pasarela_azul"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"/>
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgTxtTensor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pcolgante_azul"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"/>
 
-
-
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgTxtTransbordador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/transbordador_azul"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"/>
+            </LinearLayout>
+        </HorizontalScrollView>
 
 
     </LinearLayout>
