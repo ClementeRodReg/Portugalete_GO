@@ -32,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         >
 
         <Button
@@ -44,15 +45,7 @@
             android:textStyle="bold"
             />
 
-        <Button
-            android:id="@+id/btnSiguiente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/BotonTransparenteConBordes2"
-            android:text="Siguiente"
-            android:textStyle="bold"
-            android:visibility="invisible"
-            />
+
 
 
 
@@ -76,8 +69,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/portu_blue"
-            android:text="@string/common_google_play_services_enable_button"
+            android:text="Fin"
+            android:clickable="false"
             android:visibility="gone"
+            />
+        <Button
+            android:id="@+id/btnSiguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/BotonTransparenteConBordes2"
+            android:text="Siguiente"
+            android:textStyle="bold"
+            android:visibility="invisible"
             />
     </LinearLayout>
 

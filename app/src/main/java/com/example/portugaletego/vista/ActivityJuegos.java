@@ -252,6 +252,10 @@ public class ActivityJuegos extends AppCompatActivity {
         fragmentTransaction.commit(); // -> Realiza el cambio
         return nuevoFragment;
     }
+
+    public MediaPlayer getMp(){
+        return mp;
+    }
 }
 
 

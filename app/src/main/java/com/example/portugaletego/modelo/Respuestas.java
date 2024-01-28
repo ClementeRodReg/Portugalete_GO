@@ -54,7 +54,7 @@ public class Respuestas {
             {"Nikolas Deuna","Portugaletetarrak","Jarrillera","Piratas de Sombrero de Paja"},
             {"Ballenas","Sardinas","Merluzas","Bacalao"},
             {"1790-1800","1850-1900","1800-1850","1900+"},
-            {"Trapagaran ","Barakaldo","Sestao","Bilbao"},
+            {"Trapagaran","Barakaldo","Sestao","Bilbao"},
             {"Pesca","Astilleros","Siderurgia","Mercaderia"}
     };
 

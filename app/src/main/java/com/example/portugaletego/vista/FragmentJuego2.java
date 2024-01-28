@@ -1,11 +1,14 @@
 package com.example.portugaletego.vista;
 
+import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -108,70 +116,131 @@ public class FragmentJuego2 extends Fragment {
 
         totalQuestionsTextView.setText("Preguntas totales : "+totalQuestion);
 
-        loadNewQuestion();
+        nuevaPregunta();
     }
-
 
     public void onClick(View view) {
+        Button btnClick = (Button) view;
+        if (btnClick.getId() == R.id.submit_btn) {
+            Button btnCorrecto = findButtonWithAnswer(Respuestas.correctAnswers[currentQuestionIndex]);
+            boolean respuestaCorrecta = selectedAnswer.equals(Respuestas.correctAnswers[currentQuestionIndex]);
 
+            if (btnCorrecto != null) {
+                btnCorrecto.setBackgroundColor(Color.GREEN);
+            }
 
-        ansA.setBackgroundColor(Color.WHITE);
-        ansB.setBackgroundColor(Color.WHITE);
-        ansC.setBackgroundColor(Color.WHITE);
-        ansD.setBackgroundColor(Color.WHITE);
-
-        Button clickedButton = (Button) view;
-        if(clickedButton.getId()==R.id.submit_btn){
-            if(selectedAnswer.equals(Respuestas.correctAnswers[currentQuestionIndex])){
+            if (!respuestaCorrecta) {
+                // Respuesta incorrecta, colorea el botón seleccionado en rojo
+                Button btnEscogido = findButtonWithAnswer(selectedAnswer);
+                if (btnEscogido != null) {
+                    btnEscogido.setBackgroundColor(Color.RED);
+                }
+            }
+            if (respuestaCorrecta) {
                 score++;
             }
-            currentQuestionIndex++;
-            loadNewQuestion();
-
-
-        }else{
-            //choices button clicked
-            selectedAnswer  = clickedButton.getText().toString();
-            clickedButton.setBackgroundColor(Color.MAGENTA);
-
+            if (currentQuestionIndex + 1 == totalQuestion) {
+                // Llama a finishQuiz después de un retraso
+                new Handler().postDelayed(() -> {
+                    finQuiz();
+                }, 1500); // Retraso de 1.5 segundos
+            } else {
+                // Llama a loadNewQuestion después de un retraso
+                new Handler().postDelayed(() -> {
+                    currentQuestionIndex++;
+                    nuevaPregunta();
+                }, 1500); // Retraso de 1.5 segundos
+            }
+        } else {
+            // Botón de respuesta seleccionado
+            resetearPreguntas();
+            selectedAnswer = btnClick.getText().toString();
+            btnClick.setBackgroundColor(Color.LTGRAY); // Color de selección temporal
         }
-
     }
 
-    void loadNewQuestion(){
-
-        if(currentQuestionIndex == totalQuestion ){
-            finishQuiz();
-            return;
+    private Button findButtonWithAnswer(String answer) {
+        if (ansA.getText().toString().equals(answer)) {
+            return ansA;
+        } else if (ansB.getText().toString().equals(answer)) {
+            return ansB;
+        } else if (ansC.getText().toString().equals(answer)) {
+            return ansC;
+        } else if (ansD.getText().toString().equals(answer)) {
+            return ansD;
         }
+        return null;
+    }
+
+    private void resetearPreguntas() {
+        ansA.setBackgroundColor(Color.WHITE);
+        ansA.setTextColor(Color.BLACK);
+        ansB.setBackgroundColor(Color.WHITE);
+        ansB.setTextColor(Color.BLACK);
+        ansC.setBackgroundColor(Color.WHITE);
+        ansC.setTextColor(Color.BLACK);
+        ansD.setBackgroundColor(Color.WHITE);
+        ansD.setTextColor(Color.BLACK);
+    }
+
+    //llama al metodo resetear
+    void nuevaPregunta() {
+        resetearPreguntas();
+
+        String[] opcionesActuales = Respuestas.choices[currentQuestionIndex];
+        List<String> opcionesBarajadas = barajarRespuestas(opcionesActuales);
 
         questionTextView.setText(Respuestas.question[currentQuestionIndex]);
-        ansA.setText(Respuestas.choices[currentQuestionIndex][0]);
-        ansB.setText(Respuestas.choices[currentQuestionIndex][1]);
-        ansC.setText(Respuestas.choices[currentQuestionIndex][2]);
-        ansD.setText(Respuestas.choices[currentQuestionIndex][3]);
-
+        ansA.setText(opcionesBarajadas.get(0));
+        ansB.setText(opcionesBarajadas.get(1));
+        ansC.setText(opcionesBarajadas.get(2));
+        ansD.setText(opcionesBarajadas.get(3));
     }
 
-    void finishQuiz(){
+    private List<String> barajarRespuestas(String[] respuestas) {
+        List<String> listaBarajada = new ArrayList<>();
+        Random random = new Random();
+
+        // Crea una copia temporal de las respuestas para manipular
+        List<String> temp = new ArrayList<>(Arrays.asList(respuestas));
+
+        // Baraja las respuestas
+        while (!temp.isEmpty()) {
+            int index = random.nextInt(temp.size());
+            listaBarajada.add(temp.get(index));
+            temp.remove(index);
+        }
+        return listaBarajada;
+    }
+
+    //Solo sale cuando completamos las preguntas ->  Da dos botones para reiniciar o salir del juego
+    void finQuiz(){
         String passStatus = "";
         if(score > totalQuestion*0.60){
-            passStatus = "Passed";
+            passStatus = "Has superado el juego!";
         }else{
-            passStatus = "Failed";
+            passStatus = "Has fallado :(";
         }
 
         new AlertDialog.Builder(getContext())
                 .setTitle(passStatus)
                 .setMessage("Puntuación "+ score+" de "+ totalQuestion)
                 .setPositiveButton("Reiniciar",(dialogInterface, i) -> restartQuiz() )
+                .setNegativeButton("Salir",(dialogInterface, i) -> salir())
                 .setCancelable(false)
                 .show();
+    }
+
+    //Metodo para salir del activity desde el propio fragment -> solo se accede desde un AlertDialog
+    private void salir() {
+        Activity a = getActivity();
+        MediaPlayer mp2 = ((ActivityJuegos) a).getMp();
+        ((ActivityJuegos) a).volver(mp2);
     }
 
     void restartQuiz(){
         score = 0;
         currentQuestionIndex =0;
-        loadNewQuestion();
+        nuevaPregunta();
     }
 }
