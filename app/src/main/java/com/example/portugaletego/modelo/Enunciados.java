@@ -10,8 +10,8 @@ public class Enunciados {
 
     public static String juego4[] ={
             "Ejercicio 4: Saca una foto a un Basa Lore",
-            "Encuentra un arbol y describe sus cualidades",
-            "Encuentra una piedra que tenga una forma especial o solo un color",
+            "Encuentra un arbol, describe sus cualidades y sacale una foto",
+            "Encuentra una piedra que tenga una forma especial o solo un color, sacale una foto",
             "Graba un video que tenga que ver con la historia de la Florida",
             "Saca una foto a un ave de la zona."
     };
