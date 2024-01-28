@@ -1,5 +1,6 @@
 package com.example.portugaletego.vista;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.portugaletego.R;
+import com.example.portugaletego.modelo.Enunciados;
+import com.example.portugaletego.modelo.Respuestas;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -80,14 +83,21 @@ public class Fragment_Enunciado extends Fragment {
         super.onViewCreated(view, savedInstance);
         LayoutPreguntas = view.findViewById(R.id.LayoutPreguntas);
         enunciado = view.findViewById(R.id.textoJuegos);
+
+        int id = obtenerId();
+        escribirEnunciados(enunciado, id);
+
+
     }
 
-    public void onClick(View view){
-
+    public int obtenerId(){
+        Activity a = getActivity();
+        int id = ((ActivityJuegos) a).getId();
+        return id;
     }
-
-    void escribirEnunciados(){
-
+    void escribirEnunciados(TextView enunciado, int id){
+        String opcionActual = Enunciados.textos[id];
+        enunciado.setText(opcionActual);
     }
 
 }

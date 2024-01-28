@@ -159,16 +159,16 @@ public class MapFragment extends Fragment {
             @Override
             public boolean onItemLongPress(final int index, final OverlayItem item) {
                 if (item.getTitle().equals("Puente Colgante")) {
-                    ((VistaMapa) getActivity()).mandar(1);
+                    ((VistaMapa) getActivity()).mandar(0);
                 }
                 else if (item.getTitle().equals("Museo Rialia")) {
-                    ((VistaMapa) getActivity()).mandar(2);
+                    ((VistaMapa) getActivity()).mandar(1);
                 }
                 else if (item.getTitle().equals("Torre Salazar")) {
-                    ((VistaMapa) getActivity()).mandar(3);
+                    ((VistaMapa) getActivity()).mandar(2);
                 }
                 else if (item.getTitle().equals("Campo de Futbol La Florida")) {
-                    ((VistaMapa) getActivity()).mandar(4);
+                    ((VistaMapa) getActivity()).mandar(3);
                 }
                 return false;
             }

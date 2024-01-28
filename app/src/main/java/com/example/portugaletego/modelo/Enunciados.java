@@ -4,9 +4,9 @@ public class Enunciados {
 
     public static String textos[] ={
           "Ejercicio: Empareja las palabras con las fotos correspondientes",
-            "Ejercicio: Responde las preguntas",
-            "Mira esta imagen y saca una foto del lugar correspondiente",
-            "Escoge un personaje: "
+          "Ejercicio: Responde las preguntas",
+          "Mira esta imagen y saca una foto del lugar correspondiente",
+          "Escoge un personaje: "
     };
 
     public static String juego4[] ={

@@ -35,6 +35,8 @@ public class ActivityJuegos extends AppCompatActivity {
     int contadorSaltos = 0;
     int grupo = 0;
 
+    int id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,7 @@ public class ActivityJuegos extends AppCompatActivity {
 
         AudioManager amanager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        int id = getIntent().getIntExtra("id", 0);
+        id = getIntent().getIntExtra("id", 0);
         grupo = getIntent().getIntExtra("grupo", 0);
         System.out.println(id);
 
@@ -113,7 +115,7 @@ public class ActivityJuegos extends AppCompatActivity {
 
     private void siguiente(Fragment fragmentActual, int id, Bundle bundle, FragmentManager fragmentManager) {
         switch (id) {
-            case 2:
+            case 1:
                FragmentTransaction fReal = fragmentManager.beginTransaction();
                fReal.replace(R.id.fragmentJuegos, f2);
                fReal.commit();
@@ -121,7 +123,7 @@ public class ActivityJuegos extends AppCompatActivity {
                break;
 
 
-                case 3:
+                case 2:
                     switch (contadorSaltos){
                         case 0:
                             nuevoFragment = new fragmentCamara();
@@ -174,7 +176,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             break;
                     }
                     break;
-                case 4:
+                case 3:
                 /*    FragmentTransaction fReal3 = fragmentManager.beginTransaction();
                     fReal3.replace(R.id.fragmentJuegos, fragCam);
                     fReal3.commit();
@@ -217,21 +219,21 @@ public class ActivityJuegos extends AppCompatActivity {
     //int id = mandamos por un codigo numero
     public Fragment cambioFragment(int id, FragmentTransaction fragmentTransaction, Bundle bundle) {
         switch (id) {
-            case 1: //vamos al juego 1
+            case 0: //vamos al juego 1
                 nuevoFragment = new FragmentJuego1();
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
 
                 mp = MediaPlayer.create(this, R.raw.explicacion_puente_colgante);
                 mp.start();
                 break;
-            case 2: //vamos al juego 2
+            case 1: //vamos al juego 2
                 nuevoFragment = new Fragment_Enunciado();
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                 btnSiguiente.setVisibility(View.VISIBLE);
                 mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);
                 mp.start();
                 break;
-            case 3: //vamos al primer fragment con camara
+            case 2: //vamos al primer fragment con camara
                 bundle.putInt("grupo", grupo);
                 //previo a la camara hay que activar un fragment de texto
                 nuevoFragment = new Fragment_Enunciado();
@@ -240,7 +242,7 @@ public class ActivityJuegos extends AppCompatActivity {
                 nuevoFragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                 break;
-            case 4: //vamos al segundo fragment con camara
+            case 3: //vamos al segundo fragment con camara
                 bundle.putInt("grupo", grupo);
                 nuevoFragment = new fragmentCamara();
                 btnSiguiente.setVisibility(View.VISIBLE);
@@ -255,6 +257,10 @@ public class ActivityJuegos extends AppCompatActivity {
 
     public MediaPlayer getMp(){
         return mp;
+    }
+
+    public int getId(){
+        return id;
     }
 }
 
