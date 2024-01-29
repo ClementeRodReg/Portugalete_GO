@@ -108,6 +108,7 @@ public class FragmentJuego2 extends Fragment {
         ansD = view.findViewById(R.id.ans_D);
         submitBtn = view.findViewById(R.id.submit_btn);
 
+
         ansA.setOnClickListener(this::onClick);
         ansB.setOnClickListener(this::onClick);
         ansC.setOnClickListener(this::onClick);
@@ -141,21 +142,27 @@ public class FragmentJuego2 extends Fragment {
             }
             if (currentQuestionIndex + 1 == totalQuestion) {
                 // Llama a finishQuiz después de un retraso
+                submitBtn.setVisibility(View.INVISIBLE);
                 new Handler().postDelayed(() -> {
                     finQuiz();
+
                 }, 1500); // Retraso de 1.5 segundos
             } else {
                 // Llama a loadNewQuestion después de un retraso
+                submitBtn.setVisibility(View.INVISIBLE);
                 new Handler().postDelayed(() -> {
                     currentQuestionIndex++;
                     nuevaPregunta();
+
                 }, 1500); // Retraso de 1.5 segundos
             }
         } else {
             // Botón de respuesta seleccionado
             resetearPreguntas();
             selectedAnswer = btnClick.getText().toString();
-            btnClick.setBackgroundColor(Color.LTGRAY); // Color de selección temporal
+            btnClick.setBackgroundColor(Color.LTGRAY);
+            submitBtn.setVisibility(View.VISIBLE);
+            // Color de selección temporal
         }
     }
 
