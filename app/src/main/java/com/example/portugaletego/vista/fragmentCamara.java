@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.portugaletego.R;
@@ -53,6 +54,8 @@ public class fragmentCamara extends Fragment {
     private int id_parte;
     Button btnCamara;
     ImageView imagen;
+
+    TextView texto;
     private FirebaseAuth mAuth;
     FirebaseStorage storage;
     StorageReference storageRef;
@@ -101,13 +104,25 @@ public class fragmentCamara extends Fragment {
         btnCamara = view.findViewById(R.id.btnCamara);
         imagen = view.findViewById(R.id.fotoSacada);
 
+        switch(id_parte){
+            case 1: break;
+            case 2: break;
+            case 3: break;
+            case 4: break;
+            case 5: break;
+        }
+
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 abrirCamara();
+                enseñarTexto();
             }
         });
 
+    }
+
+    private void enseñarTexto() {
     }
 
     private void abrirCamara() {

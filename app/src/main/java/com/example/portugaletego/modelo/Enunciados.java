@@ -16,6 +16,23 @@ public class Enunciados {
             "Saca una foto a un ave de la zona."
     };
 
+    public static String juego3[] ={
+            "La torre de Salazar fue construida alrededor de 1380 en Portugalete",
+            "Tras la quema de 1943 realizada por los anarquistas, no quedaron mas que ruinas y la biblioteca se perdío",
+            "En los años 1958/1959, el arquitecto Joaquin Irizar reconstruyo la torre",
+            "La construccion se divide en dos: por un lado, la torre, por otro, la muralla",
+            "La ultima reconstrucción fue en 2003, con el objetivo que puso el ayuntamiento para utilizarla de centro cultural"
+    };
+
+
+/*
+    testu 1: Salazar dorrea izen bereko leinuak 1380 inguruan Portugaleten eraikitako dorretxea da.
+    testu 2: 1934an anarkistek erre ondoren, hondakinak besterik ez ziren geratu eta liburutegia galdu zen.
+    testu 3: 1958 eta 1959. urteetan Joaquín Irizar arkitektoak berreraiki zuen.
+    testu 4: Bi zatik osatzen dute multzoa: alde batetik, dorrea, eta bestetik, harresiaren zati bat, garai batean eraikina inguratzen zuen harresirena zena.
+    testu 5: Azken berreraiketa 2003. urtean izan zen udaletxeak helburu kulturaletarako ireki zuenean.
+*/
+
     // Personaje 1 -> 1,2,3,4,5
     // Personaje 2 -> 2,3,4,5,1
     // Personaje 3 -> 3,4,5,1,2

@@ -99,11 +99,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/submit_btn"
                 android:text="Enviar"
+                android:visibility="invisible"
                 android:backgroundTint="@color/verde"
                 android:layout_below="@id/choices_layout"
                 android:layout_marginTop="40dp"/>
-
-
 
         </RelativeLayout>
 
