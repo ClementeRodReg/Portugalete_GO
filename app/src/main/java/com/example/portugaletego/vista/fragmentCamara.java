@@ -101,9 +101,13 @@ public class fragmentCamara extends Fragment {
             @Override
             public void onClick(View v) {
                 abrirCamara();
+                enseñarTexto();
             }
         });
 
+    }
+
+    private void enseñarTexto() {
     }
 
     private void abrirCamara() {

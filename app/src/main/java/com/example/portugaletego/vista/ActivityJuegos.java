@@ -208,6 +208,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                             fragmentTransaction.commit();
                             contadorSaltos++;
+                            System.out.println(contadorSaltos);
                             break;
                         case 3:
                             nuevoFragment = new Fragment_Enunciado();
@@ -248,7 +249,6 @@ public class ActivityJuegos extends AppCompatActivity {
                             fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                             fragmentTransaction.commit();
                             contadorSaltos++;
-
                             break;
                         case 8:
                             nuevoFragment = new fragmentCamara();
