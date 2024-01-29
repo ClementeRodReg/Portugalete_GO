@@ -134,6 +134,7 @@ public class ActivityJuegos extends AppCompatActivity {
                     switch (contadorSaltos){
                         case 0:
                             nuevoFragment = new fragmentCamara();
+
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
@@ -187,6 +188,7 @@ public class ActivityJuegos extends AppCompatActivity {
                     switch(contadorSaltos){
                         case 0:
                             nuevoFragment = new fragmentCamara();
+                            bundle.putInt("parte",1);
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
@@ -203,6 +205,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             break;
                         case 2:
                             nuevoFragment = new fragmentCamara();
+                            bundle.putInt("parte",2);
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
@@ -220,6 +223,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             break;
                         case 4:
                             nuevoFragment = new fragmentCamara();
+                            bundle.putInt("parte",3);
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
@@ -236,6 +240,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             break;
                         case 6:
                             nuevoFragment = new fragmentCamara();
+                            bundle.putInt("parte",4);
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
@@ -252,6 +257,7 @@ public class ActivityJuegos extends AppCompatActivity {
                             break;
                         case 8:
                             nuevoFragment = new fragmentCamara();
+                            bundle.putInt("parte",5);
                             nuevoFragment.setArguments(bundle);
                             fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);

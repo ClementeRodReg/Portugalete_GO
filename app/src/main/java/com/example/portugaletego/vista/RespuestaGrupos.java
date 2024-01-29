@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.portugaletego.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.api.Distribution;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -39,8 +40,10 @@ public class RespuestaGrupos extends Fragment {
     private String grupo;
     private TextView ngrupo;
     private FirebaseAuth mAuth;
+    LinearLayout layoutGrande;
     FirebaseStorage storage;
     StorageReference storageRef;
+    int num = 0;
 
     public RespuestaGrupos() {
         // Required empty public constructor
@@ -82,11 +85,7 @@ public class RespuestaGrupos extends Fragment {
         ngrupo = view.findViewById(R.id.textvG1);
         mAuth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
-        ImageView ejerfoto = view.findViewById(R.id.fotoSacada);
-        TextView descejer = view.findViewById(R.id.desc);
-        Button aprobar = view.findViewById(R.id.Aprobarbtn);
         LinearLayout ll1 = view.findViewById(R.id.layoutg1);
-        ll1.setVisibility(View.INVISIBLE);
 
         if (grupo != null) {
             if (grupo.equals("r_g1"))
@@ -95,39 +94,61 @@ public class RespuestaGrupos extends Fragment {
                 ngrupo.setText("GRUPO 2");
             else
                 ngrupo.setText("GRUPO 3");
-        }else{
-            grupo="nada";
+        } else {
+            grupo = "nada";
         }
-        if (grupo.equals("r_g1")) {
-            ll1.setVisibility(View.VISIBLE);
+
+        num = 0;
+        for (int i = 1; i < 6; i++) {
+
             storageRef = storage.getReference();
-            StorageReference islandRef = storageRef.child(grupo + "/ejer4" + "/RespuestaEjer4.jpg");
-            descejer.setText("ejercicio 4");
+            StorageReference islandRef = storageRef.child(grupo + "/ejer4/" + "RespuestaEjer4parte" + i + ".jpg");
             final long ONE_MEGABYTE = 1024 * 1024;
             islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                 @Override
                 public void onSuccess(byte[] bytes) {
                     // Data for "images/island.jpg" is returns, use this as needed
+                    ImageView ejerfoto = new ImageView(view.getContext());
                     Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
                             .decodeByteArray(bytes, 0, bytes.length);
                     ejerfoto.setImageBitmap(bitmapimg);
+
+                    num++;
+                    TextView descejer = new TextView(view.getContext());
+                    descejer.setText("ejercicio 4 parte " + num);
+
+                    Button aprobar = new Button(view.getContext());
+                    aprobar.setText("Aprobar");
+                    aprobar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(getView().getContext(), ngrupo.getText()+" ha aprobado el ejercicio 4", Toast.LENGTH_SHORT).show();
+                            ll1.setVisibility(View.INVISIBLE);
+                        }
+                    });
+
+
+                    LinearLayout ll4 = new LinearLayout(view.getContext());
+                    ll4.setOrientation(LinearLayout.HORIZONTAL);
+                    ll4.addView(ejerfoto);
+
+                    LinearLayout ll2 = new LinearLayout(view.getContext());
+                    ll2.setOrientation(LinearLayout.VERTICAL);
+                    ll2.addView(descejer);
+
+                    ll4.addView(ll2);
+                    //ll1.addView(ll4, ll1.getWidth(), 193);
+                    ll1.addView(ll4);
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    // Handle any errors
+
                 }
             });
 
-            aprobar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getView().getContext(), "Grupo 1 ha aprobado el ejercicio 4", Toast.LENGTH_SHORT).show();
-                    ll1.setVisibility(View.INVISIBLE);
-                }
-            });
-        }else{
-            ll1.setVisibility(View.INVISIBLE);
+
         }
     }
 }

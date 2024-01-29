@@ -45,10 +45,12 @@ public class fragmentCamara extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "id";
     private static final String ARG_PARAM2 = "grupo";
+    private static final String ARG_PARAM3 = "parte";
 
     // TODO: Rename and change types of parameters
     private int id_juego;
     private int id_grupo;
+    private int id_parte;
     Button btnCamara;
     ImageView imagen;
     private FirebaseAuth mAuth;
@@ -66,11 +68,12 @@ public class fragmentCamara extends Fragment {
      * @return A new instance of fragment fragmentCamara.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragmentCamara newInstance(int id, int grupo) {
+    public static fragmentCamara newInstance(int id, int grupo, int parte) {
         fragmentCamara fragment = new fragmentCamara();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, id);
         args.putInt(ARG_PARAM2, grupo);
+        args.putInt(ARG_PARAM3, parte);
         fragment.setArguments(args);
         return fragment;
     }
@@ -81,6 +84,7 @@ public class fragmentCamara extends Fragment {
         if (getArguments() != null) {
             id_juego = getArguments().getInt(ARG_PARAM1);
             id_grupo = getArguments().getInt(ARG_PARAM2);
+            id_parte = getArguments().getInt(ARG_PARAM3);
         }
     }
 
@@ -136,7 +140,7 @@ public class fragmentCamara extends Fragment {
             String nombreFoto = "";
             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
             if (id_juego == 3) {
-                nombreFoto = "RespuestaEjer3";
+                nombreFoto = "RespuestaEjer3parte"+id_parte;
                 storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
@@ -151,7 +155,7 @@ public class fragmentCamara extends Fragment {
                     }
                 }
             } else if (id_juego == 4) {
-                nombreFoto = "RespuestaEjer4";
+                nombreFoto = "RespuestaEjer4parte"+id_parte;
                 storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
