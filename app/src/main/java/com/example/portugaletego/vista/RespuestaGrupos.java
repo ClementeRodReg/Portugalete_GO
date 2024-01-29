@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.example.portugaletego.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.api.Distribution;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -90,6 +89,7 @@ public class RespuestaGrupos extends Fragment {
             mAuth = FirebaseAuth.getInstance();
             storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
             storageRef = storage.getReference();
+
             if (grupo.equals("r_g1"))
                 ngrupo.setText("GRUPO 1");
             else if (grupo.equals("r_g2"))
@@ -103,10 +103,10 @@ public class RespuestaGrupos extends Fragment {
         num = 0;
 
         if (!grupo.equals("nada")) {
-            for (int i = 1; i < 6; i++) {
-                StorageReference islandRef = storageRef.child(grupo + "/ejer4/" + "RespuestaEjer4parte" + i + ".jpg");
+            for (int i = 1; i < 2; i++) {
+                StorageReference islandRef = storageRef.child( "r_g1/ejer4/" + "RespuestaEjer4parte" + i + ".jpg");
                 final long ONE_MEGABYTE = 1024 * 1024;
-                islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                islandRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                     @Override
                     public void onSuccess(byte[] bytes) {
                         // Data for "images/island.jpg" is returns, use this as needed

@@ -151,6 +151,7 @@
                 android:layout_height="48sp"
                 android:layout_marginTop="50sp"
                 android:text="Acceder"
+                android:textColor="@color/portu_blue"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
