@@ -83,11 +83,13 @@ public class RespuestaGrupos extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
         ngrupo = view.findViewById(R.id.textvG1);
-        mAuth = FirebaseAuth.getInstance();
-        storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
+
         LinearLayout ll1 = view.findViewById(R.id.layoutg1);
 
         if (grupo != null) {
+            mAuth = FirebaseAuth.getInstance();
+            storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
+            storageRef = storage.getReference();
             if (grupo.equals("r_g1"))
                 ngrupo.setText("GRUPO 1");
             else if (grupo.equals("r_g2"))
@@ -99,56 +101,71 @@ public class RespuestaGrupos extends Fragment {
         }
 
         num = 0;
-        for (int i = 1; i < 6; i++) {
 
-            storageRef = storage.getReference();
-            StorageReference islandRef = storageRef.child(grupo + "/ejer4/" + "RespuestaEjer4parte" + i + ".jpg");
-            final long ONE_MEGABYTE = 1024 * 1024;
-            islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    // Data for "images/island.jpg" is returns, use this as needed
-                    ImageView ejerfoto = new ImageView(view.getContext());
-                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
-                            .decodeByteArray(bytes, 0, bytes.length);
-                    ejerfoto.setImageBitmap(bitmapimg);
+        if (!grupo.equals("nada")) {
+            for (int i = 1; i < 6; i++) {
+                StorageReference islandRef = storageRef.child(grupo + "/ejer4/" + "RespuestaEjer4parte" + i + ".jpg");
+                final long ONE_MEGABYTE = 1024 * 1024;
+                islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        // Data for "images/island.jpg" is returns, use this as needed
+                        ImageView ejerfoto = new ImageView(view.getContext());
+                        Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                .decodeByteArray(bytes, 0, bytes.length);
+                        ejerfoto.setImageBitmap(bitmapimg);
 
-                    num++;
-                    TextView descejer = new TextView(view.getContext());
-                    descejer.setText("ejercicio 4 parte " + num);
+                        num++;
+                        TextView descejer = new TextView(view.getContext());
+                        descejer.setText("ejercicio 4 parte " + num);
 
-                    Button aprobar = new Button(view.getContext());
-                    aprobar.setText("Aprobar");
-                    aprobar.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(getView().getContext(), ngrupo.getText()+" ha aprobado el ejercicio 4", Toast.LENGTH_SHORT).show();
-                            ll1.setVisibility(View.INVISIBLE);
-                        }
-                    });
+                        Button aprobar = new Button(view.getContext());
+                        aprobar.setText("Aprobar");
+                        aprobar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(getView().getContext(), ngrupo.getText() + " ha aprobado el ejercicio 4 parte " + num, Toast.LENGTH_SHORT).show();
 
+                            }
+                        });
 
-                    LinearLayout ll4 = new LinearLayout(view.getContext());
-                    ll4.setOrientation(LinearLayout.HORIZONTAL);
-                    ll4.addView(ejerfoto);
+                        Button pencar = new Button(view.getContext());
+                        pencar.setText("Pencar");
+                        pencar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(getView().getContext(), ngrupo.getText() + " ha pencado el ejercicio 4 parte " + num, Toast.LENGTH_SHORT).show();
 
-                    LinearLayout ll2 = new LinearLayout(view.getContext());
-                    ll2.setOrientation(LinearLayout.VERTICAL);
-                    ll2.addView(descejer);
-
-                    ll4.addView(ll2);
-                    //ll1.addView(ll4, ll1.getWidth(), 193);
-                    ll1.addView(ll4);
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-
-                }
-            });
+                            }
+                        });
 
 
+                        LinearLayout ll4 = new LinearLayout(view.getContext());
+                        ll4.setOrientation(LinearLayout.HORIZONTAL);
+                        ll4.addView(ejerfoto);
+
+                        LinearLayout ll2 = new LinearLayout(view.getContext());
+                        ll2.setOrientation(LinearLayout.VERTICAL);
+                        ll2.addView(descejer);
+                        ll2.addView(aprobar);
+                        ll2.addView(pencar);
+
+                        ll4.addView(ll2);
+                        //ll1.addView(ll4, ll1.getWidth(), 193);
+                        ll1.addView(ll4);
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+
+                    }
+                });
+
+
+            }
         }
+
+
     }
 }

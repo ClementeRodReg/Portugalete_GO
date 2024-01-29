@@ -29,7 +29,7 @@
                 android:text="Grupo 1"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="@color/portu_blue"
+                android:textColor="@color/azul_oscuro"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -38,7 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="193dp"
                 android:background="@color/portu_white"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/fotoSacada"

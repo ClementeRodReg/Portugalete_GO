@@ -56,7 +56,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     // Imports de firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
     //Import de auth
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")

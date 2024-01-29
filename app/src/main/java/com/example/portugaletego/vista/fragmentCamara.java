@@ -135,7 +135,7 @@ public class fragmentCamara extends Fragment {
             OutputStream fos = null;
             String nombreFoto = "";
             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
-            if (id_juego == 3) {
+            if (id_juego == 2) {
                 nombreFoto = "RespuestaEjer3parte"+id_parte;
                 storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
@@ -150,7 +150,7 @@ public class fragmentCamara extends Fragment {
                         }
                     }
                 }
-            } else if (id_juego == 4) {
+            } else if (id_juego == 3) {
                 nombreFoto = "RespuestaEjer4parte"+id_parte;
                 storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
@@ -195,7 +195,7 @@ public class fragmentCamara extends Fragment {
             }
             storageRef = storage.getReference();
             Uri file = Uri.fromFile(new File("/sdcard/Pictures/PortuGO/"+nombreFoto+".jpg"));
-            StorageReference riversRef = storageRef.child(carpetaGrupo+"/ejer"+id_juego+"/"+file.getLastPathSegment());
+            StorageReference riversRef = storageRef.child(carpetaGrupo+"/ejer"+(id_juego+1)+"/"+file.getLastPathSegment());
             UploadTask uploadTask = riversRef.putFile(file);
 
             // Register observers to listen for when the download is done or if it fails
