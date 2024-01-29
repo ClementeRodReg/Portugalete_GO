@@ -19,7 +19,8 @@
             android:id="@+id/layoutg1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/textvG1"
@@ -33,6 +34,7 @@
                 android:textStyle="bold" />
 
             <LinearLayout
+                android:id="@+id/layoutejer3parte1"
                 android:layout_width="match_parent"
                 android:layout_height="193dp"
                 android:background="@color/portu_white"
@@ -51,6 +53,7 @@
                     tools:src="@tools:sample/avatars" />
 
                 <LinearLayout
+                    android:id="@+id/layoutdescbotones"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
