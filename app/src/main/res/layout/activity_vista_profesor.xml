@@ -52,12 +52,11 @@
         android:layout_weight="80"
         android:orientation="vertical">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentRespuestasGrupos"
-        android:name="com.example.portugaletego.vista.RespuestaGrupos"
-        android:layout_width="0dp"
-        android:layout_height="592dp"
-        />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentRespuestasGrupos"
+            android:name="com.example.portugaletego.vista.RespuestaGrupos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout

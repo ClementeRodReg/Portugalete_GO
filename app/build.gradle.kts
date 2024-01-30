@@ -35,7 +35,6 @@ android {
 }
 
 dependencies {
-
     implementation("com.google.firebase:firebase-analytics:21.5.0")
     val roomversion = "2.5.0"
 
@@ -56,10 +55,10 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     // Imports de firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     //Import de auth
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-storage")
-    implementation("com.google.firebase:firebase-appcheck")
+
 }

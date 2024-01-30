@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,16 @@ import android.widget.Toast;
 import com.example.portugaletego.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StreamDownloadTask;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +50,6 @@ public class RespuestaGrupos extends Fragment {
     LinearLayout layoutGrande;
     FirebaseStorage storage;
     StorageReference storageRef;
-    int num = 0;
 
     public RespuestaGrupos() {
         // Required empty public constructor
@@ -84,11 +91,12 @@ public class RespuestaGrupos extends Fragment {
         ngrupo = view.findViewById(R.id.textvG1);
 
         LinearLayout ll1 = view.findViewById(R.id.layoutg1);
-
+        LinearLayout ll41 = view.findViewById(R.id.layoutejer4parte1);
+        LinearLayout ll42 = view.findViewById(R.id.layoutejer4parte2);
+        LinearLayout ll43 = view.findViewById(R.id.layoutejer4parte3);
+        LinearLayout ll44 = view.findViewById(R.id.layoutejer4parte4);
+        LinearLayout ll45 = view.findViewById(R.id.layoutejer4parte5);
         if (grupo != null) {
-            mAuth = FirebaseAuth.getInstance();
-            storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
-            storageRef = storage.getReference();
 
             if (grupo.equals("r_g1"))
                 ngrupo.setText("GRUPO 1");
@@ -100,72 +108,193 @@ public class RespuestaGrupos extends Fragment {
             grupo = "nada";
         }
 
-        num = 0;
+        if (grupo.equals("r_g1")) {
 
-        if (!grupo.equals("nada")) {
-            for (int i = 1; i < 2; i++) {
-                StorageReference islandRef = storageRef.child( "r_g1/ejer4/" + "RespuestaEjer4parte" + i + ".jpg");
-                final long ONE_MEGABYTE = 1024 * 1024;
-                islandRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        // Data for "images/island.jpg" is returns, use this as needed
-                        ImageView ejerfoto = new ImageView(view.getContext());
-                        Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
-                                .decodeByteArray(bytes, 0, bytes.length);
-                        ejerfoto.setImageBitmap(bitmapimg);
 
-                        num++;
-                        TextView descejer = new TextView(view.getContext());
-                        descejer.setText("ejercicio 4 parte " + num);
+            ImageView ejerfoto1 = view.findViewById(R.id.fotoSacada1);
+            ImageView ejerfoto2 = view.findViewById(R.id.fotoSacada2);
+            ImageView ejerfoto3 = view.findViewById(R.id.fotoSacada3);
+            ImageView ejerfoto4 = view.findViewById(R.id.fotoSacada4);
+            ImageView ejerfoto5 = view.findViewById(R.id.fotoSacada5);
+            File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
 
-                        Button aprobar = new Button(view.getContext());
-                        aprobar.setText("Aprobar");
-                        aprobar.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(getView().getContext(), ngrupo.getText() + " ha aprobado el ejercicio 4 parte " + num, Toast.LENGTH_SHORT).show();
+            String nombreFoto1 = "RespuestaEjer4parte1";
+            String nombreFoto2 = "RespuestaEjer4parte2";
+            String nombreFoto3 = "RespuestaEjer4parte3";
+            String nombreFoto4 = "RespuestaEjer4parte4";
+            String nombreFoto5 = "RespuestaEjer4parte5";
 
+            File[] files = path.listFiles();
+
+            for (int o = 0; o < files.length; o++) {
+                if (files[o].isDirectory()) {
+                    File Dir = new File(files[o].getAbsolutePath());
+                    File[] filesInDir = Dir.listFiles();
+                    for (int num = 0; num < filesInDir.length; num++) {
+                        if (filesInDir[num].getName().contains(nombreFoto1)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto1.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
                             }
-                        });
-
-                        Button pencar = new Button(view.getContext());
-                        pencar.setText("Pencar");
-                        pencar.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(getView().getContext(), ngrupo.getText() + " ha pencado el ejercicio 4 parte " + num, Toast.LENGTH_SHORT).show();
-
+                        } else if (filesInDir[num].getName().contains(nombreFoto2)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto2.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
                             }
-                        });
-
-
-                        LinearLayout ll4 = new LinearLayout(view.getContext());
-                        ll4.setOrientation(LinearLayout.HORIZONTAL);
-                        ll4.addView(ejerfoto);
-
-                        LinearLayout ll2 = new LinearLayout(view.getContext());
-                        ll2.setOrientation(LinearLayout.VERTICAL);
-                        ll2.addView(descejer);
-                        ll2.addView(aprobar);
-                        ll2.addView(pencar);
-
-                        ll4.addView(ll2);
-                        //ll1.addView(ll4, ll1.getWidth(), 193);
-                        ll1.addView(ll4);
+                        } else if (filesInDir[num].getName().contains(nombreFoto3)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto3.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        } else if (filesInDir[num].getName().contains(nombreFoto4)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto4.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        } else if (filesInDir[num].getName().contains(nombreFoto5)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto5.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
 
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-
-                    }
-                });
-
-
+                }
             }
+
+
+            TextView descejer1 = view.findViewById(R.id.desc1);
+            descejer1.setText("ejercicio 4 parte 1");
+            TextView descejer2 = view.findViewById(R.id.desc2);
+            descejer2.setText("ejercicio 4 parte 2");
+            TextView descejer3 = view.findViewById(R.id.desc3);
+            descejer3.setText("ejercicio 4 parte 3");
+            TextView descejer4 = view.findViewById(R.id.desc4);
+            descejer4.setText("ejercicio 4 parte 4");
+            TextView descejer5 = view.findViewById(R.id.desc5);
+            descejer5.setText("ejercicio 4 parte 5");
+
+            Button aprobar1 = view.findViewById(R.id.Aprobarbtn1);
+            Button aprobar2 = view.findViewById(R.id.Aprobarbtn2);
+            Button aprobar3 = view.findViewById(R.id.Aprobarbtn3);
+            Button aprobar4 = view.findViewById(R.id.Aprobarbtn4);
+            Button aprobar5 = view.findViewById(R.id.Aprobarbtn5);
+            aprobar1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(1);
+                    ll41.setVisibility(View.GONE);
+                }
+            });
+            aprobar2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(2);
+                    ll42.setVisibility(View.GONE);
+                }
+            });
+            aprobar3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(3);
+                    ll43.setVisibility(View.GONE);
+                }
+            });
+            aprobar4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(4);
+                    ll44.setVisibility(View.GONE);
+                }
+            });
+            aprobar5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(5);
+                    ll45.setVisibility(View.GONE);
+                }
+            });
+
+            Button pencar1 = view.findViewById(R.id.Pencarbtn1);
+            Button pencar2 = view.findViewById(R.id.Pencarbtn2);
+            Button pencar3 = view.findViewById(R.id.Pencarbtn3);
+            Button pencar4 = view.findViewById(R.id.Pencarbtn4);
+            Button pencar5 = view.findViewById(R.id.Pencarbtn5);
+            pencar1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(1);
+                    ll41.setVisibility(View.GONE);
+                }
+            });
+            pencar2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(2);
+                    ll42.setVisibility(View.GONE);
+                }
+            });
+            pencar3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(3);
+                    ll43.setVisibility(View.GONE);
+                }
+            });
+            pencar4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(4);
+                    ll44.setVisibility(View.GONE);
+                }
+            });
+            pencar5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(5);
+                    ll45.setVisibility(View.GONE);
+                }
+            });
+
+
         }
+    }
 
+    public void avisoA(int parte) {
+        Toast.makeText(getView().getContext(), ngrupo.getText() + " ha aprobado el ejercicio 4 parte " + parte, Toast.LENGTH_SHORT).show();
+    }
 
+    public void avisoP(int parte) {
+        Toast.makeText(getView().getContext(), ngrupo.getText() + " ha pencado el ejercicio 4 parte " + parte, Toast.LENGTH_SHORT).show();
     }
 }
