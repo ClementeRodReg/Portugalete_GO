@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Usuario {
 
+
+
     public int getId() {
         return id;
     }
@@ -28,6 +30,10 @@ public class Usuario {
     @Override
     public String toString() {
         return "Grupo " +id;
+    }
+
+    public Usuario(){
+
     }
 
     public Usuario(int id, String nombre){
