@@ -12,21 +12,16 @@ public class Imagen extends Contenido{
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     @NonNull
-    public String getNombre() {
-        return nombre;
+    public String getRuta() {
+        return Ruta;
     }
-
-    public void setNombre(@NonNull String nombre) {
-        this.nombre = nombre;
+    public void setRuta(@NonNull String Ruta) {
+        this.Ruta = Ruta;
     }
-
-
 
     @PrimaryKey
     @NonNull
@@ -34,22 +29,7 @@ public class Imagen extends Contenido{
     private int id;
 
     @NonNull
-    @ColumnInfo(name="Nombre")
-    private String nombre;
-
-    /*
-    @NonNull
-    public Respuesta getRespuesta() {
-        return respuesta;
-    }
-
-    public void setRespuesta(@NonNull Respuesta respuesta) {
-        this.respuesta = respuesta;
-    }
-
-    @NonNull
-    @ColumnInfo(name="Respuesta")
-    private Respuesta respuesta;
-*/
+    @ColumnInfo(name="Ruta")
+    private String Ruta;
 
 }

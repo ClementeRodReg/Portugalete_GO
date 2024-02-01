@@ -17,6 +17,15 @@ public class Pregunta {
     private int id;
 
     @NonNull
+    public String getTextoPregunta() {
+        return textoPregunta;
+    }
+
+    public void setTextoPregunta(@NonNull String textoPregunta) {
+        this.textoPregunta = textoPregunta;
+    }
+
+    @NonNull
     @ColumnInfo(name="textoPregunta")
     private String textoPregunta;
 
@@ -28,15 +37,4 @@ public class Pregunta {
     public void setId(@NonNull int id) {
         this.id = id;
     }
-
-
-    @NonNull
-    public String getNombre() {
-        return textoPregunta;
-    }
-
-    public void setNombre(@NonNull String textoPregunta) {
-        this.textoPregunta = textoPregunta;
-    }
-
 }

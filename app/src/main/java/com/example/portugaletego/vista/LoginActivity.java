@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.portugaletego.modelo.Usuario;
+import com.example.portugaletego.modelo.Grupo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 //import com.google.firebase.auth.AuthResult;
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //Variables de uso comun
     String email, pass;
-    ArrayList<Usuario> usuarios;
+    ArrayList<Grupo> grupos;
     Intent cambio;
     AlertDialog.Builder builder;
     AlertDialog dialog;
@@ -93,10 +93,10 @@ public class LoginActivity extends AppCompatActivity {
         accederEstudiante = findViewById(R.id.AccesoMapasEstudiante);
 
         //rellenamos el array
-        usuarios = RellenarArray();
+        grupos = RellenarArray();
 
         //creamos el adaptador para el spinner
-        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, usuarios);
+        ArrayAdapter<Grupo> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, grupos);
         spinner.setAdapter(adapter);
 
         //BOTON PARA IR AL MAPA
@@ -180,13 +180,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private ArrayList<Usuario> RellenarArray(){
-        ArrayList<Usuario> opciones = new ArrayList<Usuario>();
+    private ArrayList<Grupo> RellenarArray(){
+        ArrayList<Grupo> opciones = new ArrayList<Grupo>();
         //Añadimos 3 clases provisionales para añadir luego a room (TO DO)
 
-        opciones.add(new Usuario(1,"Grupo 1"));
-        opciones.add(new Usuario(2, "Grupo 2"));
-        opciones.add(new Usuario(3, "Grupo 3"));
+        opciones.add(new Grupo(1,"Grupo 1"));
+        opciones.add(new Grupo(2, "Grupo 2"));
+        opciones.add(new Grupo(3, "Grupo 3"));
 
         return opciones;
     }

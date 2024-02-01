@@ -6,9 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Usuario {
-
-
+public class Grupo {
 
     public int getId() {
         return id;
@@ -32,11 +30,11 @@ public class Usuario {
         return "Grupo " +id;
     }
 
-    public Usuario(){
+    public Grupo(){
 
     }
 
-    public Usuario(int id, String nombre){
+    public Grupo(int id, String nombre){
         this.id = id;
         this.nombre = nombre;
     }
