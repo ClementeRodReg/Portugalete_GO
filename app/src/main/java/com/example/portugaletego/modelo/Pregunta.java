@@ -10,46 +10,33 @@ import java.util.List;
 @Entity
 public class Pregunta {
 
+
     @PrimaryKey
     @NonNull
     @ColumnInfo(name="Id")
     private int id;
 
     @NonNull
-    @ColumnInfo(name="Nombre")
-    private String nombre;
-
-    /*
-    @NonNull
-    @ColumnInfo(name="Respuestas")
-    private List<Respuesta> respuestas;
+    @ColumnInfo(name="textoPregunta")
+    private String textoPregunta;
 
     @NonNull
-    public List<Respuesta> getRespuestas() {
-        return respuestas;
-    }
-
-    public void setRespuestas(@NonNull List<Respuesta> respuestas) {
-        this.respuestas = respuestas;
-    }
-    */
-
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(@NonNull int id) {
         this.id = id;
     }
 
+
     @NonNull
     public String getNombre() {
-        return nombre;
+        return textoPregunta;
     }
 
-    public void setNombre(@NonNull String nombre) {
-        this.nombre = nombre;
+    public void setNombre(@NonNull String textoPregunta) {
+        this.textoPregunta = textoPregunta;
     }
-
 
 }

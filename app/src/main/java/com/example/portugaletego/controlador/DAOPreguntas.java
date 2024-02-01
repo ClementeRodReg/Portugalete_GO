@@ -7,4 +7,6 @@ import com.example.portugaletego.modelo.Pregunta;
 
 @Dao
 public interface DAOPreguntas {
+
+    
 }

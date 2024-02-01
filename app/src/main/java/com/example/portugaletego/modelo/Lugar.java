@@ -10,29 +10,49 @@ import androidx.room.PrimaryKey;
 public class Lugar {
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name="Lugar")
-    private String nombre;
+    @ColumnInfo(name="nombreL")
+    private String nombreL;
 
     @NonNull
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(@NonNull String nombre) {
-        this.nombre = nombre;
-    }
-/*
-    @NonNull
-    public Coordenada getCoordenada() {
-        return coordenada;
-    }
-
-    public void setCoordenada(@NonNull Coordenada coordenada) {
-        this.coordenada = coordenada;
-    }
+    @ColumnInfo(name="textoLugar")
+    public String texto;
 
     @NonNull
-    @ColumnInfo(name="Coordenada")
-    private Coordenada coordenada;
-*/
+    @ColumnInfo(name="lat")
+    public String lat;
+
+    @NonNull
+    @ColumnInfo(name="lon")
+    public String lon;
+
+    @NonNull
+    public String getNombreLugar() {
+        return nombreL;
+    }
+
+    public void setNombreLugar(@NonNull String nombreL) {
+        this.nombreL = nombreL;
+    }
+
+    @NonNull
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(@NonNull String texto) {
+        this.texto = texto;
+    }
+
+    @NonNull
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(@NonNull String lat) {
+        this.lat = lat;
+    }
+
+
+
+
 }
