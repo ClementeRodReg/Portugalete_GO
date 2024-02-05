@@ -140,8 +140,7 @@
                 android:layout_width="300sp"
                 android:layout_height="50sp"
                 android:layout_marginTop="50sp"
-                android:background="@drawable/mi_spinner"
-                />
+                android:background="@drawable/mi_spinner" />
 
 
             <Button
@@ -151,7 +150,7 @@
                 android:layout_height="48sp"
                 android:layout_marginTop="50sp"
                 android:text="Acceder"
-                android:textColor="@color/portu_blue"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:cornerRadius="13sp" />
 
