@@ -13,8 +13,8 @@ public class Pregunta {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name="Id")
-    private int id;
+    @ColumnInfo(name="id_pregunta")
+    private int id_pregunta;
 
     @NonNull
     public String getTextoPregunta() {
@@ -31,10 +31,10 @@ public class Pregunta {
 
     @NonNull
     public int getId() {
-        return id;
+        return id_pregunta;
     }
 
-    public void setId(@NonNull int id) {
-        this.id = id;
+    public void setId(@NonNull int id_pregunta) {
+        this.id_pregunta = id_pregunta;
     }
 }

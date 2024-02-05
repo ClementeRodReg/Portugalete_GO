@@ -3,9 +3,11 @@ package com.example.portugaletego.modelo;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(foreignKeys = {@ForeignKey(entity = Pregunta.class,
+        parentColumns = "codEmpresa",childColumns = "codEmpresa")})
 public class Respuesta {
     public int getId() {
         return id;
@@ -45,5 +47,8 @@ public class Respuesta {
     @ColumnInfo(name="EsCorrecto")
     private boolean iscorrect;
 
+    @NonNull
+    @ColumnInfo(name="id_pregunta")
+    private int id_pregunta;
 
 }

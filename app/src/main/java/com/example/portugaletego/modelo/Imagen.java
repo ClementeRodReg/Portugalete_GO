@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.List;
 @Entity
-public class Imagen extends Contenido{
+public class Imagen{
 
     public int getId() {
         return id;

@@ -12,7 +12,7 @@ import com.example.portugaletego.modelo.Respuesta;
 @Database(
         version = 1,
         entities = {Grupo.class, Respuesta.class, Pregunta.class,
-        Lugar.class, Juego.class, Imagen.class        }
+        Lugar.class, Imagen.class        }
 )
 public abstract class BBDD extends RoomDatabase {
         public abstract DAOGrupo daoUsuario();
