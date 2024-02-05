@@ -14,8 +14,6 @@ import java.util.List;
 @Dao
 public interface DAOEnunciados
 {
-
-
     @Insert
     void insertarEnunciado(Enunciados en);
 
@@ -27,4 +25,20 @@ public interface DAOEnunciados
 
     @Query("Select * from Enunciados")
     List<Enunciados> obtenerEnunciados();
+
+    //--------------------------------------------------------------------------------------------------
+    //    @Query("Select * from enunciados")
+    //    List<Enunciados> obtenerEnunciados();
+
+    @Query("Select * from enunciados where id = :id")
+    Enunciados obtenerEnunciado(int id);
+
+    //   @Insert
+    //   void insertarEnunciado(Enunciados enunciados);
+
+    @Query("UPDATE enunciados set texto = :texto where id = :id")
+    void actualizarEnunciado(String texto, int id);
+
+    @Query("DELETE From enunciados where id = :id")
+    void eliminarEnunciado(int id);
 }

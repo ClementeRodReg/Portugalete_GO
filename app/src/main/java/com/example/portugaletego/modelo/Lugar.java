@@ -10,8 +10,8 @@ import androidx.room.PrimaryKey;
 public class Lugar {
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name="nombreL")
-    private String nombreL;
+    @ColumnInfo(name="nombre")
+    private String nombreLugar;
 
     @NonNull
     @ColumnInfo(name="textoLugar")
@@ -25,13 +25,20 @@ public class Lugar {
     @ColumnInfo(name="lon")
     public String lon;
 
+    public Lugar(String nombreLugar, String texto, String lat, String lon){
+        this.nombreLugar = nombreLugar;
+        this.texto = texto;
+        this.lat = lat;
+        this.lon = lon;
+    }
+
     @NonNull
     public String getNombreLugar() {
-        return nombreL;
+        return nombreLugar;
     }
 
     public void setNombreLugar(@NonNull String nombreL) {
-        this.nombreL = nombreL;
+        this.nombreLugar = nombreL;
     }
 
     @NonNull

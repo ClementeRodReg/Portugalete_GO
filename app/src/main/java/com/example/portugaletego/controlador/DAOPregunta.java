@@ -24,4 +24,20 @@ public interface DAOPregunta {
 
     @Query("Select * from Pregunta")
     List<Pregunta> obtenerPreguntas();
+
+    //--------------------------------------------------------------------------------------------------
+    //     @Query
+    //     ("Select * from pregunta") List<Pregunta> obtenerPreguntas();
+
+    @Query("Select * from pregunta where id_pregunta = :id")
+    Pregunta obtenerPregunta(int id);
+
+    @Insert
+    void insertarPregunta(Pregunta pregunta);
+
+    @Query("UPDATE pregunta set textoPregunta = :texto where id_pregunta = :id")
+    void actualizarPregunta(String texto, int id);
+
+    @Query("DELETE From pregunta where id_pregunta = :id")
+    void eliminarPregunta(int id);
 }

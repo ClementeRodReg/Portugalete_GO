@@ -9,6 +9,24 @@ import androidx.room.PrimaryKey;
 @Entity(foreignKeys = {@ForeignKey(entity = Pregunta.class,
         parentColumns = "codEmpresa",childColumns = "codEmpresa")})
 public class Respuesta {
+
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="Id")
+    private int id;
+
+    @NonNull
+    @ColumnInfo(name="Texto")
+    private String texto;
+
+    @NonNull
+    @ColumnInfo(name="EsCorrecto")
+    private boolean iscorrect;
+
+    @NonNull
+    @ColumnInfo(name="id_pregunta")
+    private int id_pregunta;
+
     public int getId() {
         return id;
     }
@@ -33,22 +51,5 @@ public class Respuesta {
     public void setIscorrect(boolean iscorrect) {
         this.iscorrect = iscorrect;
     }
-
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo(name="Id")
-    private int id;
-
-    @NonNull
-    @ColumnInfo(name="Texto")
-    private String texto;
-
-    @NonNull
-    @ColumnInfo(name="EsCorrecto")
-    private boolean iscorrect;
-
-    @NonNull
-    @ColumnInfo(name="id_pregunta")
-    private int id_pregunta;
 
 }

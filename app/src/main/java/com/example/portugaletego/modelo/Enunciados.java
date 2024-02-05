@@ -1,12 +1,27 @@
 package com.example.portugaletego.modelo;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Enunciados {
 
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="id")
+    private int id;
 
-/*
+    @NonNull
+    @ColumnInfo(name="texto")
+    private String texto;
+
+    public Enunciados(int id, String texto){
+        this.id = id;
+        this.texto = texto;
+    }
+
     public static String textos[] ={
           "Ejercicio 1: Empareja las palabras con las fotos correspondientes",
           "Ejercicio 2: Responde las preguntas",
@@ -29,6 +44,4 @@ public class Enunciados {
             "La ultima reconstrucción fue en 2003, con el objetivo que puso el ayuntamiento para utilizarla de centro cultural"
     };
 
-
-*/
 }
