@@ -7,7 +7,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {@ForeignKey(entity = Pregunta.class,
-        parentColumns = "codEmpresa",childColumns = "codEmpresa")})
+        parentColumns = "id_pregunta",childColumns = "id_pregunta")})
 public class Respuesta {
 
     @PrimaryKey
@@ -52,4 +52,11 @@ public class Respuesta {
         this.iscorrect = iscorrect;
     }
 
+    public int getId_pregunta() {
+        return id_pregunta;
+    }
+
+    public void setId_pregunta(int id_pregunta) {
+        this.id_pregunta = id_pregunta;
+    }
 }

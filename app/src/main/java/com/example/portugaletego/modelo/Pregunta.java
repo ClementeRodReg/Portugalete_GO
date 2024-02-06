@@ -26,9 +26,9 @@ public class Pregunta {
 
     @NonNull
     @ColumnInfo(name="id_enunciado")
-    private String id_enunciado;
+    private int id_enunciado;
 
-    public Pregunta(int id_pregunta, String textoPregunta, String id_enunciado){
+    public Pregunta(int id_pregunta, String textoPregunta, int id_enunciado){
         this.id_pregunta = id_pregunta;
         this.textoPregunta = textoPregunta;
         this.id_enunciado = id_enunciado;
@@ -41,6 +41,23 @@ public class Pregunta {
 
     public void setTextoPregunta(@NonNull String textoPregunta) {
         this.textoPregunta = textoPregunta;
+    }
+
+    public int getId_pregunta() {
+        return id_pregunta;
+    }
+
+    public void setId_pregunta(int id_pregunta) {
+        this.id_pregunta = id_pregunta;
+    }
+
+    @NonNull
+    public int getId_enunciado() {
+        return id_enunciado;
+    }
+
+    public void setId_enunciado(@NonNull int id_enunciado) {
+        this.id_enunciado = id_enunciado;
     }
 
     @NonNull

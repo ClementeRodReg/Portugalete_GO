@@ -3,23 +3,59 @@ package com.example.portugaletego.modelo;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(foreignKeys = {@ForeignKey( entity = Lugar.class,
+        parentColumns = "id_lugar",
+        childColumns = "id_lugar",
+        onDelete = ForeignKey.CASCADE)})
 public class Enunciados {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name="id")
-    private int id;
+    @ColumnInfo(name="id_enunciado")
+    private int id_enunciado;
 
     @NonNull
     @ColumnInfo(name="texto")
     private String texto;
 
-    public Enunciados(int id, String texto){
-        this.id = id;
+    @NonNull
+    @ColumnInfo(name="id_lugar")
+    private int id_lugar;
+
+    @NonNull
+    public int getId_lugar() {
+        return id_lugar;
+    }
+
+    public void setId_lugar(@NonNull int id_lugar) {
+        this.id_lugar = id_lugar;
+    }
+
+
+    public int getId_enunciado() {
+        return id_enunciado;
+    }
+
+    public void setId_enunciado(int id_enunciado) {
+        this.id_enunciado = id_enunciado;
+    }
+
+    @NonNull
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(@NonNull String texto) {
         this.texto = texto;
+    }
+
+    public Enunciados(int id_enunciado, String texto, @NonNull int idLugar){
+        this.id_enunciado = id_enunciado;
+        this.texto = texto;
+        id_lugar = idLugar;
     }
 
     public static String textos[] ={

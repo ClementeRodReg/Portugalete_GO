@@ -22,7 +22,7 @@ public interface DAOLugar {
     @Delete
     void deleteLugar(Lugar lugar);
 
-    @Query("Select * from Lugar where nombreL = :nombreLugar")
+    @Query("Select * from Lugar where nombre = :nombreLugar")
     List<Lugar> obtenerLugarPorNombre(String nombreLugar);
 
     //--------------------------------------------------------------------------------------------------

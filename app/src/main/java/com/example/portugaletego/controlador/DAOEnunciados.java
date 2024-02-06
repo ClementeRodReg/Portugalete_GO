@@ -30,15 +30,15 @@ public interface DAOEnunciados
     //    @Query("Select * from enunciados")
     //    List<Enunciados> obtenerEnunciados();
 
-    @Query("Select * from enunciados where id = :id")
+    @Query("Select * from enunciados where id_enunciado = :id")
     Enunciados obtenerEnunciado(int id);
 
     //   @Insert
     //   void insertarEnunciado(Enunciados enunciados);
 
-    @Query("UPDATE enunciados set texto = :texto where id = :id")
+    @Query("UPDATE enunciados set texto = :texto where id_enunciado = :id")
     void actualizarEnunciado(String texto, int id);
 
-    @Query("DELETE From enunciados where id = :id")
+    @Query("DELETE From enunciados where id_enunciado = :id")
     void eliminarEnunciado(int id);
 }
