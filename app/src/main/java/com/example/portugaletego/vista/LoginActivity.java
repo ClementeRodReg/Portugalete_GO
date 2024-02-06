@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.portugaletego.controlador.BBDD;
 import com.example.portugaletego.modelo.Grupo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +33,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -49,15 +51,32 @@ public class LoginActivity extends AppCompatActivity {
     Spinner spinner;
     EditText txtUsuario, password;
     Button volver, mapa, confirmar, accederEstudiante;
+    List<Grupo> gruposRoom;
+
+    BBDD appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        //valores
         card1 = findViewById(R.id.card1);
         card2 = findViewById(R.id.card2);
+        password = findViewById(R.id.editTextContrasenna);
+        confirmar = findViewById(R.id.buttonConfirmar);
+        txtUsuario = findViewById(R.id.TextImputNombre);
+        mapa = findViewById(R.id.Map);
+        spinner = findViewById(R.id.spinner);
+        volver = findViewById(R.id.volveraInicio);
+        accederEstudiante = findViewById(R.id.AccesoMapasEstudiante);
 
+
+        appDatabase = BBDD.getDatabase(getApplicationContext()); //obtenemos la base de datos
+
+        //Recoge el numero del Activity anterior, si es 1, mostrara la tarjeta de login del profesor
+        //Si es un 2, la de seleccion de grupo para alumnos
         Bundle bundle =  getIntent().getExtras();
         if(bundle != null){
             if(bundle.containsKey("num")){
@@ -72,25 +91,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
+        //recogemos los grupos disponibles  <!!!!!!!>
+        gruposRoom = appDatabase.daoGrupo().obtenerGrupos();
+
         //sharedPreferences crear
         Context context = LoginActivity.this;
 
         mAuth = FirebaseAuth.getInstance();
         //sharedPreferences leer
         String defaultUser = "";
-
-
-        //declaramos auth con firebase.getInstance
-        // mAuth = FirebaseAuth.getInstance();
-
-        //valores
-        password = findViewById(R.id.editTextContrasenna);
-        confirmar = findViewById(R.id.buttonConfirmar);
-        txtUsuario = findViewById(R.id.TextImputNombre);
-        mapa = findViewById(R.id.Map);
-        spinner = findViewById(R.id.spinner);
-        volver = findViewById(R.id.volveraInicio);
-        accederEstudiante = findViewById(R.id.AccesoMapasEstudiante);
 
         //rellenamos el array
         grupos = RellenarArray();

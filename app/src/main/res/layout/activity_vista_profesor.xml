@@ -73,6 +73,25 @@
             android:backgroundTint="@color/portu_blue"
             android:text="Login"
             />
+
+        <Button
+            android:id="@+id/btnRanking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/portu_white"
+            android:textColor="@color/azul_oscuro"
+            android:text="Ranking"
+            />
+
+        <Button
+            android:id="@+id/btnGrupos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/portu_white"
+            android:textColor="@color/azul_oscuro"
+            android:visibility="gone"
+            android:text="Grupos"
+            />
     </LinearLayout>
 
 </LinearLayout>

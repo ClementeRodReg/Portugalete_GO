@@ -10,8 +10,10 @@ import com.example.portugaletego.R;
 import com.example.portugaletego.controlador.BBDD;
 import com.example.portugaletego.controlador.ControladorPasarVentana;
 import com.example.portugaletego.modelo.Enunciados;
+import com.example.portugaletego.modelo.Grupo;
 import com.example.portugaletego.modelo.Lugar;
 import com.example.portugaletego.modelo.Pregunta;
+import com.example.portugaletego.modelo.Puntuacion;
 import com.example.portugaletego.modelo.Respuesta;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,16 +21,40 @@ public class MainActivity extends AppCompatActivity {
     final Handler handler = new Handler();
     final int delay = 50;
 
+    BBDD appDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ControladorPasarVentana pasarVentana = new ControladorPasarVentana(MainActivity.this, ActivitySeleccion.class);
 
-        BBDD appDatabase = BBDD.getDatabase(getApplicationContext()); //obtenemos la base de datos
+        appDatabase = BBDD.getDatabase(getApplicationContext()); //obtenemos la base de datos
 
+        INSERTS();
+
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                try {
+                    mandar = pasarVentana.getMandar();
+                    startActivity(mandar);
+
+                } catch (Exception ex) {
+                }
+                if (pasarVentana.getContador() < 1)
+                    handler.postDelayed(this, delay);
+
+            }
+        }, delay);
+
+    }
+
+    public void INSERTS(){
+        //INSERTS GRUPOS
+        appDatabase.daoGrupo().insertarGrupo(new Grupo(1, "Grupo 1"));
+        appDatabase.daoGrupo().insertarGrupo(new Grupo(2, "Grupo 2"));
+        appDatabase.daoGrupo().insertarGrupo(new Grupo(3, "Grupo 3"));
         //inserts Lugares
-
         appDatabase.daoLugar().insertarLugar(new Lugar("Puente Colgante","El Puente de Vizcaya, también conocido como Puente Bizkaia, " +
                 "Puente colgante, Puente de Portugalete, " +
                 "o Puente colgante de Portugalete, es un puente transbordador de peaje, concebido, diseñado y " +
@@ -69,23 +95,49 @@ public class MainActivity extends AppCompatActivity {
         appDatabase.daoPregunta().insertarPregunta(new Pregunta(5, "¿Cuando comenzo la industrialización en España?",1));
         appDatabase.daoPregunta().insertarPregunta(new Pregunta(6, "¿Qué ciudad no es de la margen izquierda?",1));
         appDatabase.daoPregunta().insertarPregunta(new Pregunta(7, "¿Cual fue la industra principal en la margen izquierda?",1));
-        //insert Respuestas
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta());
-
-
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                try {
-                    mandar = pasarVentana.getMandar();
-                    startActivity(mandar);
-
-                } catch (Exception ex) {
-                }
-                if (pasarVentana.getContador() < 1)
-                    handler.postDelayed(this, delay);
-
-            }
-        }, delay);
-
+        //insert Respuestas[0]
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(0,"La persona que daba las instrucciones fuera del agua",false,1));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(1,"La persona que estaba en la parte trasera de la trainera, corrigiendo el rumbo",true,1));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(2,"La persona que va al lado de la trainera en un bote",false,1));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(3,"El mas anciano de los remeros",false,1));
+        //insert Respuestas[1]
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(4,"11",false,2));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(5,"16",false,2));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(6,"14",false,2));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(7,"13",true,2));
+        //Insert Respuestas[2]
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(8,"Nikolas Deuna",false,3));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(9,"Portugaletetarrak",false,3));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(10,"Jarrillera",true,3));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(11,"Piratas de Sombrero de Paja",false,3));
+        //Insert Respuestas[3]
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(12,"Ballenas",true,4));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(13,"Sardinas",false,4));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(14,"Merluzas",false,4));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(15,"Bacalao",false,4));
+        //Insert REspuestas[4]
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(12,"1790-1800",false,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(13,"1850-1900",false,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(14,"1800-1850",true,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(15,"1900+",false,5));
+        //Insert REspuestas[5]
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(16,"Trapagaran",true,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(17,"Barakaldo",false,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(18,"Sestao",false,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(19,"Bilbao",false,6));
+        //Insert REspuestas[6]
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(16,"Pesca",false,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(17,"Astilleros",false,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(18,"Siderurgia",true,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(19,"Mercaderia",false,7));
+        //Insert Puntuaciones de BASE
+        appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo1_06_02_2024",20));
+        appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo2_06_02_2024",19));
+        appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo3_06_02_2024",18));
+        appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo1_03_02_2024",17));
+        appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo2_03_02_2024",16));
+        appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo3_03_02_2024",15));
+        appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo1_04_02_2024",14));
+        appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo1_07_02_2024",13));
     }
 }

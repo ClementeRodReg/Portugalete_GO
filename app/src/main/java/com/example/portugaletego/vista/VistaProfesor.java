@@ -19,7 +19,7 @@ public class VistaProfesor extends AppCompatActivity {
     Button g1;
     Button g2;
     Button g3;
-    Button btnLogin;
+    Button btnLogin, btnRanking, btnGrupos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,11 @@ public class VistaProfesor extends AppCompatActivity {
         g3 = findViewById(R.id.g3Button);
 
         btnLogin = findViewById(R.id.btnLoginProf);
+        btnRanking = findViewById(R.id.btnRanking);
+        btnGrupos = findViewById(R.id.btnGrupos);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,12 +46,29 @@ public class VistaProfesor extends AppCompatActivity {
             }
         });
 
+        btnRanking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnGrupos.setVisibility(View.VISIBLE);
+                btnRanking.setVisibility(View.GONE);
+
+
+            }
+        });
+
+        btnGrupos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnGrupos.setVisibility(View.GONE);
+                btnRanking.setVisibility(View.VISIBLE);
+            }
+        });
+
         g1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 layoutRespuestas.setVisibility(View.VISIBLE);
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
 
                 Fragment fragment1 = fragmentManager.findFragmentById(R.id.fragmentRespuestasGrupos);
                 Fragment nuevoFragment1 = new RespuestaGrupos();
@@ -64,8 +86,6 @@ public class VistaProfesor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 layoutRespuestas.setVisibility(View.VISIBLE);
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 Fragment fragment1 = fragmentManager.findFragmentById(R.id.fragmentRespuestasGrupos);
                 Fragment nuevoFragment1 = new RespuestaGrupos();
@@ -83,8 +103,6 @@ public class VistaProfesor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 layoutRespuestas.setVisibility(View.VISIBLE);
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 Fragment fragment1 = fragmentManager.findFragmentById(R.id.fragmentRespuestasGrupos);
                 Fragment nuevoFragment1 = new RespuestaGrupos();

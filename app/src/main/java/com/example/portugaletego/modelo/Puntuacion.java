@@ -21,6 +21,11 @@ public class Puntuacion {
         return puntos;
     }
 
+    public Puntuacion(@NonNull String puntuacion_id, int puntos) {
+        this.puntuacion_id = puntuacion_id;
+        this.puntos = puntos;
+    }
+
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }

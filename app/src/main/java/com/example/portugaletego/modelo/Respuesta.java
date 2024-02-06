@@ -31,6 +31,13 @@ public class Respuesta {
         return id;
     }
 
+    public Respuesta(int id, @NonNull String texto, boolean iscorrect, int id_pregunta) {
+        this.id = id;
+        this.texto = texto;
+        this.iscorrect = iscorrect;
+        this.id_pregunta = id_pregunta;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
