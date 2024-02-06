@@ -41,4 +41,11 @@ public interface DAOEnunciados
 
     @Query("DELETE From enunciados where id_enunciado = :id")
     void eliminarEnunciado(int id);
+
+
+    @Query("SELECT * From enunciados LIMIT :cantidad OFFSET :inicio")
+    List<Enunciados> obtenerEnunciadosEntre(int cantidad, int inicio);
+
+    @Query("SELECT * from enunciados WHERE id_lugar = :id_lugar")
+    List<Enunciados> obtenerEnunciadosPorIdLugar(int id_lugar);
 }

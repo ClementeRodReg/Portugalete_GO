@@ -1,5 +1,6 @@
 package com.example.portugaletego.vista;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.portugaletego.R;
+import com.example.portugaletego.controlador.BBDD;
+import com.example.portugaletego.modelo.Puntuacion;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +35,8 @@ public class FragmentRanking extends Fragment {
 
     private TextView pos1_gr, pos2_gr, pos3_gr, pos4_gr, pos5_gr, pos6_gr, pos7_gr, pos8_gr;
     private TextView pos1_pt, pos2_pt, pos3_pt, pos4_pt, pos5_pt, pos6_pt, pos7_pt, pos8_pt;
+
+    BBDD appDatabase;
 
     public FragmentRanking() {
         // Required empty public constructor
@@ -74,6 +80,8 @@ public class FragmentRanking extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
 
+        Context ctx = getContext();
+
         pos1_gr = view.findViewById(R.id.posicion1_grupo1);
         pos2_gr = view.findViewById(R.id.posicion1_grupo2);
         pos3_gr = view.findViewById(R.id.posicion1_grupo3);
@@ -92,7 +100,31 @@ public class FragmentRanking extends Fragment {
         pos7_pt = view.findViewById(R.id.posicion1_puntos7);
         pos8_pt = view.findViewById(R.id.posicion1_puntos8);
 
+        appDatabase = BBDD.getDatabase(ctx.getApplicationContext());
+        List<Puntuacion> ranking = appDatabase.daoPuntuacion().obtenerRanking();
 
+        pos1_gr.setText(ranking.get(0).getPuntuacion_id());
+        pos1_pt.setText(ranking.get(0).getPuntos());
 
+        pos2_gr.setText(ranking.get(1).getPuntuacion_id());
+        pos2_pt.setText(ranking.get(1).getPuntos());
+
+        pos3_gr.setText(ranking.get(2).getPuntuacion_id());
+        pos3_pt.setText(ranking.get(2).getPuntos());
+
+        pos4_gr.setText(ranking.get(3).getPuntuacion_id());
+        pos4_pt.setText(ranking.get(3).getPuntos());
+
+        pos5_gr.setText(ranking.get(4).getPuntuacion_id());
+        pos5_pt.setText(ranking.get(4).getPuntos());
+
+        pos6_gr.setText(ranking.get(5).getPuntuacion_id());
+        pos6_pt.setText(ranking.get(5).getPuntos());
+
+        pos7_gr.setText(ranking.get(6).getPuntuacion_id());
+        pos7_pt.setText(ranking.get(6).getPuntos());
+
+        pos8_gr.setText(ranking.get(7).getPuntuacion_id());
+        pos8_pt.setText(ranking.get(7).getPuntos());
     }
 }

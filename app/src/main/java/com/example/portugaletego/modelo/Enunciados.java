@@ -58,6 +58,10 @@ public class Enunciados {
         id_lugar = idLugar;
     }
 
+    public Enunciados(){
+
+    }
+
     public static String textos[] ={
           "Ejercicio 1: Empareja las palabras con las fotos correspondientes",
           "Ejercicio 2: Responde las preguntas",

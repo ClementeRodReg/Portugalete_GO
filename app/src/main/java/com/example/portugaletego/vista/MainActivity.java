@@ -2,6 +2,7 @@ package com.example.portugaletego.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,8 @@ import com.example.portugaletego.modelo.Lugar;
 import com.example.portugaletego.modelo.Pregunta;
 import com.example.portugaletego.modelo.Puntuacion;
 import com.example.portugaletego.modelo.Respuesta;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     Intent mandar;
@@ -31,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
         appDatabase = BBDD.getDatabase(getApplicationContext()); //obtenemos la base de datos
 
-        INSERTS();
+        if(!existeBaseDeDatos(this, "bd_portu4")){
+            INSERTS();
+        }
+
 
         handler.postDelayed(new Runnable() {
             public void run() {
@@ -75,17 +81,17 @@ public class MainActivity extends AppCompatActivity {
         //inserts enunciados
         appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(0,"Ejercicio 1: Empareja las palabras con las fotos correspondientes", 0));
         appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(1,"Ejercicio 2: Responde las preguntas", 1));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(2,"Ejercicio 3: Mira esta imagen y saca una foto del lugar correspondiente", 2));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(2,"Ejercicio 3: Saca una foto del lugar correspondiente", 2));
         appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(3,"Ejercicio 4: Saca una foto a un Basa Lore", 3));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(4,"Encuentra un arbol, describe sus cualidades y sacale una foto", 4));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(5,"Encuentra una piedra que tenga una forma especial o solo un color, sacale una foto", 4));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(6,"Graba un video que tenga que ver con la historia de la Florida", 4));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(7,"Saca una foto a un ave de la zona.", 4));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(8,"La torre de Salazar fue construida alrededor de 1380 en Portugalete", 3));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(9,"Tras la quema de 1943 realizada por los anarquistas, no quedaron mas que ruinas y la biblioteca se perdío", 3));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(10,"En los años 1958/1959, el arquitecto Joaquin Irizar reconstruyo la torre", 3));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(11,"La construccion se divide en dos: por un lado, la torre, por otro, la muralla", 3));
-        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(12,"La ultima reconstrucción fue en 2003, con el objetivo que puso el ayuntamiento para utilizarla de centro cultural", 3));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(4,"Encuentra un arbol, describe sus cualidades y sacale una foto", 3));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(5,"Encuentra una piedra que tenga una forma especial o solo un color, sacale una foto", 3));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(6,"Graba un video que tenga que ver con la historia de la Florida", 3));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(7,"Saca una foto a un ave de la zona.", 3));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(8,"La torre de Salazar fue construida alrededor de 1380 en Portugalete", 2));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(9,"Tras la quema de 1943 realizada por los anarquistas, no quedaron mas que ruinas y la biblioteca se perdío", 2));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(10,"En los años 1958/1959, el arquitecto Joaquin Irizar reconstruyo la torre", 2));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(11,"La construccion se divide en dos: por un lado, la torre, por otro, la muralla", 2));
+        appDatabase.daoEnunciados().insertarEnunciado(new Enunciados(12,"La ultima reconstrucción fue en 2003, con el objetivo que puso el ayuntamiento para utilizarla de centro cultural", 2));
         //insert Preguntas
         appDatabase.daoPregunta().insertarPregunta(new Pregunta(0, "¿Qué o quién es el Patrón?",1));
         appDatabase.daoPregunta().insertarPregunta(new Pregunta(1, "¿Cuantos remeros hay en una trainera?",1));
@@ -116,20 +122,20 @@ public class MainActivity extends AppCompatActivity {
         appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(14,"Merluzas",false,4));
         appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(15,"Bacalao",false,4));
         //Insert REspuestas[4]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(12,"1790-1800",false,5));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(13,"1850-1900",false,5));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(14,"1800-1850",true,5));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(15,"1900+",false,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(16,"1790-1800",false,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(17,"1850-1900",false,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(18,"1800-1850",true,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(19,"1900+",false,5));
         //Insert REspuestas[5]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(16,"Trapagaran",true,6));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(17,"Barakaldo",false,6));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(18,"Sestao",false,6));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(19,"Bilbao",false,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(20,"Trapagaran",true,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(21,"Barakaldo",false,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(22,"Sestao",false,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(23,"Bilbao",false,6));
         //Insert REspuestas[6]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(16,"Pesca",false,7));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(17,"Astilleros",false,7));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(18,"Siderurgia",true,7));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(19,"Mercaderia",false,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(24,"Pesca",false,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(25,"Astilleros",false,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(26,"Siderurgia",true,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(27,"Mercaderia",false,7));
         //Insert Puntuaciones de BASE
         appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo1_06_02_2024",20));
         appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo2_06_02_2024",19));
@@ -139,5 +145,11 @@ public class MainActivity extends AppCompatActivity {
         appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo3_03_02_2024",15));
         appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo1_04_02_2024",14));
         appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo1_07_02_2024",13));
+    }
+
+    private boolean existeBaseDeDatos(Context context, String nombreDb) {
+        File dbFile = context.getDatabasePath(nombreDb);
+
+        return dbFile.exists();
     }
 }

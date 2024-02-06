@@ -6,14 +6,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.portugaletego.R;
+import com.example.portugaletego.controlador.BBDD;
+import com.example.portugaletego.controlador.DAOLugar;
+import com.example.portugaletego.modelo.Lugar;
+
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -27,6 +34,7 @@ import org.osmdroid.views.overlay.mylocation.IMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,8 +54,11 @@ public class MapFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    BBDD appDatabase;
     private View vista;
     private MyLocationNewOverlay myLocationOverlay;
+
     public MapFragment() {
         // Required empty public constructor
     }
@@ -83,17 +94,21 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        vista=inflater.inflate(R.layout.fragment_map, container, false);
+        vista = inflater.inflate(R.layout.fragment_map, container, false);
         return vista;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance){
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
 
         Context ctx = getContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
         Configuration.getInstance().setUserAgentValue(view.getContext().getPackageName());
+
+
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        appDatabase = BBDD.getDatabase(ctx.getApplicationContext());
 
         map = vista.findViewById(R.id.mapaGPS);
         // map.setTileSource(TileSourceFactory.MAPNIK);
@@ -123,7 +138,14 @@ public class MapFragment extends Fragment {
         */
 
         //your items
+        List<Lugar> lugares = appDatabase.daoLugar().obtenerLugares();
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+        for (Lugar lugar : lugares) {
+            items.add(new OverlayItem(lugar.getNombreLugar(), lugar.getTexto(), new GeoPoint(
+                    lugar.getLat(), lugar.getLon())));
+        }
+
+        /*
         items.add(new OverlayItem("Puente Colgante", "El Puente de Vizcaya, también conocido como Puente Bizkaia, " +
                 "Puente colgante, Puente de Portugalete, " +
                 "o Puente colgante de Portugalete, es un puente transbordador de peaje, concebido, diseñado y " +
@@ -147,33 +169,32 @@ public class MapFragment extends Fragment {
                 "A partir de ese nacimiento, pasamos a exponer los datos más relevantes y/o anecdóticos de la Historia del Club, cronológicamente ordenados por sus décadas de vida, " +
                 "y estableciendo un bonito paralelismo con la situación de la Noble Villa de Portugalete en cada época.",
                 new GeoPoint(43.31826126075431, -3.026257332581579))); // Lat/Lon decimal degrees
+        */
 
         //the overlay
 
-        ItemizedIconOverlay.OnItemGestureListener<OverlayItem> hola =  new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>(){
+        ItemizedIconOverlay.OnItemGestureListener<OverlayItem> hola = new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
             @Override
             public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
                 return true;
             }
 
+            //hardcoded -->>> mirar a ver si se puede hacer con room directamente
             @Override
             public boolean onItemLongPress(final int index, final OverlayItem item) {
                 if (item.getTitle().equals("Puente Colgante")) {
                     ((VistaMapa) getActivity()).mandar(0);
-                }
-                else if (item.getTitle().equals("Museo Rialia")) {
+                } else if (item.getTitle().equals("Museo Rialia")) {
                     ((VistaMapa) getActivity()).mandar(1);
-                }
-                else if (item.getTitle().equals("Torre Salazar")) {
+                } else if (item.getTitle().equals("Torre Salazar")) {
                     ((VistaMapa) getActivity()).mandar(2);
-                }
-                else if (item.getTitle().equals("Campo de Futbol La Florida")) {
+                } else if (item.getTitle().equals("Campo de Futbol La Florida")) {
                     ((VistaMapa) getActivity()).mandar(3);
                 }
                 return false;
             }
         };
-        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items , hola, view.getContext());
+        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items, hola, view.getContext());
         mOverlay.setFocusItemsOnTap(true);
         map.getOverlays().add(mOverlay);
 

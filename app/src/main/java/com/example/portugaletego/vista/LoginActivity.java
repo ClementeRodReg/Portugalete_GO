@@ -101,11 +101,8 @@ public class LoginActivity extends AppCompatActivity {
         //sharedPreferences leer
         String defaultUser = "";
 
-        //rellenamos el array
-        grupos = RellenarArray();
-
         //creamos el adaptador para el spinner
-        ArrayAdapter<Grupo> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, grupos);
+        ArrayAdapter<Grupo> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, gruposRoom);
         spinner.setAdapter(adapter);
 
         //BOTON PARA IR AL MAPA
@@ -163,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
+    //CAMBIAMOS DE ACTIVITY EN FUNCION DE LA ELECCION
     private void cambio(int check) {
         switch(check){
             //acceso simple al mapa
@@ -187,17 +184,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(cambio);
                 break;
         }
-    }
-
-    private ArrayList<Grupo> RellenarArray(){
-        ArrayList<Grupo> opciones = new ArrayList<Grupo>();
-        //Añadimos 3 clases provisionales para añadir luego a room (TO DO)
-
-        opciones.add(new Grupo(1,"Grupo 1"));
-        opciones.add(new Grupo(2, "Grupo 2"));
-        opciones.add(new Grupo(3, "Grupo 3"));
-
-        return opciones;
     }
 
     private void MostrarAlertDialog(int check){

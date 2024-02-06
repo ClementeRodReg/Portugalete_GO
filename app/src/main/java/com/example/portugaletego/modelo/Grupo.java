@@ -9,23 +9,26 @@ import androidx.room.PrimaryKey;
 public class Grupo {
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name="Id")
-    private int id;
+    @ColumnInfo(name="idGrupo")
+    private int idGrupo;
     @NonNull
     @ColumnInfo(name="Nombre")
     private String nombre;
-    public Grupo(int id, String nombre){
-        this.id = id;
+    public Grupo(int idGrupo, String nombre){
+        this.idGrupo = idGrupo;
         this.nombre = nombre;
     }
     public Grupo(){
     }
-    public int getId() {
-        return id;
+
+    public int getIdGrupo() {
+        return idGrupo;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public void setIdGrupo(int idGrupo) {
+        this.idGrupo = idGrupo;
     }
+
     @NonNull
     public String getNombre() {
         return nombre;
@@ -35,7 +38,7 @@ public class Grupo {
     }
     @Override
     public String toString() {
-        return "Grupo " +id;
+        return "Grupo " +idGrupo;
     }
 }
 

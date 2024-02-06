@@ -11,6 +11,7 @@ import com.example.portugaletego.modelo.Grupo;
 import com.example.portugaletego.modelo.Imagen;
 import com.example.portugaletego.modelo.Lugar;
 import com.example.portugaletego.modelo.Pregunta;
+import com.example.portugaletego.modelo.Puntuacion;
 import com.example.portugaletego.modelo.Respuesta;
 
 @Database(
@@ -21,6 +22,7 @@ import com.example.portugaletego.modelo.Respuesta;
                 Pregunta.class,
                 Lugar.class,
                 Imagen.class,
+                Puntuacion.class,
                 Enunciados.class}
 )
 public abstract class BBDD extends RoomDatabase {
@@ -38,7 +40,7 @@ public abstract class BBDD extends RoomDatabase {
                 if (INSTANCE == null) {
                         synchronized (BBDD.class) {
                                 if (INSTANCE == null) {
-                                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(), BBDD.class, "bd_portu").allowMainThreadQueries().build();
+                                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(), BBDD.class, "bd_portu4").allowMainThreadQueries().build();
                                 }
                         }
                 }

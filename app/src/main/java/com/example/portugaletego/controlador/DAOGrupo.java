@@ -17,7 +17,7 @@ public interface DAOGrupo {
     @Query("SELECT * FROM Grupo")
     List<Grupo> obtenerUsuarios();
 
-    @Query("SELECT * FROM Grupo where id = :id")
+    @Query("SELECT * FROM Grupo where idGrupo = :id")
     List<Grupo> obtenerUsuarios(int id);
 
     //--------------------------------------------------------------------------------------------------
@@ -25,15 +25,15 @@ public interface DAOGrupo {
     @Query("Select * from grupo")
     List<Grupo> obtenerGrupos();
 
-    @Query("Select * from grupo where id = :id")
+    @Query("Select * from grupo where idGrupo = :id")
     Grupo obtenerGrupo(int id);
 
     @Insert
     void insertarGrupo(Grupo grupo);
 
-    @Query("UPDATE grupo set nombre = :nombre where id = :id")
+    @Query("UPDATE grupo set nombre = :nombre where idGrupo = :id")
     void actualizarGrupo(String nombre, int id);
 
-    @Query("DELETE From grupo where id= :id")
+    @Query("DELETE From grupo where idGrupo= :id")
     void eliminarGrupo(int id);
 }
