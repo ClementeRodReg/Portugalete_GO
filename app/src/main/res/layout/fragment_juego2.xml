@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@color/portu_red">
+    android:background="@android:color/transparent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,22 +15,96 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
-        android:background="@color/portu_red">
+        android:background="@android:color/transparent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:padding="24dp"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/total_question"
+                android:text="Total Questions "
+                android:layout_centerHorizontal="true"
+                android:textSize="20dp"/>
 
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/gifview"
-            android:layout_width="353dp"
-            android:layout_height="315dp"
-            android:alpha="0.6"
-            android:background="@color/portu_red"
-            android:src="@drawable/wip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ImageContrastCheck" />
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/choices_layout"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="This will be the question"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold" />
 
+
+            <LinearLayout
+                android:id="@+id/choices_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ans_A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Ans A"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/ans_B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Ans B"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/ans_C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Ans C"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/ans_D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Ans D"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/submit_btn"
+                android:text="Enviar"
+                android:visibility="invisible"
+                android:backgroundTint="@color/verde"
+                android:layout_below="@id/choices_layout"
+                android:layout_marginTop="40dp"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

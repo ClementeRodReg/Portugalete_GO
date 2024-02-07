@@ -6,148 +6,141 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@color/portu_red">
+    android:background="@android:color/transparent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="673dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:background="@color/portu_red">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/portu_red"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:padding="4dp">
-
-        <ImageView
-            android:id="@+id/imgPasarela"
-            android:layout_width="175dp"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/puentecolgantepasarela" />
-
-        <ImageView
-            android:id="@+id/imgPuenteColgante"
-            android:layout_width="175dp"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/puentecolgante1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:padding="4dp">
-
-        <TextView
-            android:id="@+id/placeholder1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/placeholder_game1" />
-        <ImageView
-            android:id="@+id/separator1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/separator" />
-
-        <TextView
-            android:id="@+id/placeholder2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/placeholder_game1" />
-    </LinearLayout>
-
+        android:background="@drawable/gr5_1500_1501"
+        >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120sp"
+            >
+            <TextView
+                android:id="@+id/placeholder1"
+                android:layout_width="200sp"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewredondeado"
+                />
+
+            <TextView
+                android:id="@+id/placeholder2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewredondeado"
+                />
+        </LinearLayout>
+"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_gravity="center"
             android:gravity="center_horizontal"
-            android:background="@color/portu_red"
-            android:orientation="horizontal"
-            android:padding="4dp">
+            >
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgPasarela"
+                android:layout_width="200sp"
+                android:layout_height="150dp"
+                app:shapeAppearanceOverlay="@style/SpecificCornerRounded"
+                android:scaleType="centerCrop"
+                android:src="@drawable/puentecolgantepasarela" />
 
-            <ImageView
-            android:id="@+id/imgAscensor"
-            android:layout_width="175dp"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/bizkaikozubiaigogailua" />
 
-        <ImageView
-            android:id="@+id/imgTransbordador"
-            android:layout_width="175dp"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/puentecolgantetransbordador" />
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgPuenteColgante"
+                android:layout_width="200sp"
+                android:layout_height="150sp"
+                app:shapeAppearanceOverlay="@style/InverseSpecificCornerRounded"
+                app:srcCompat="@drawable/puentecolgante1"
+                android:scaleType="centerCrop"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            >
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgTransbordador"
+                android:layout_width="200sp"
+                android:layout_height="150sp"
+                app:srcCompat="@drawable/puentecolgantetransbordador"
+                app:shapeAppearanceOverlay="@style/InverseSpecificCornerRounded"
+                android:scaleType="centerCrop"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgAscensor"
+                android:layout_width="200sp"
+                android:layout_height="150sp"
+                app:shapeAppearanceOverlay="@style/SpecificCornerRounded"
+                app:srcCompat="@drawable/bizkaikozubiaigogailua"
+                android:scaleType="centerCrop"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            >
+            <TextView
+                android:id="@+id/placeholder3"
+                android:layout_width="200sp"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewredondeado"
+                />
+
+            <TextView
+                android:id="@+id/placeholder4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewredondeado"
+                />
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:padding="4dp">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/placeholder3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/placeholder_game1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                android:gravity="bottom">
 
-        <ImageView
-            android:id="@+id/separator2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/separator" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgTxtAscensor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ascensor_azul"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"
+                    />
 
-        <TextView
-            android:id="@+id/placeholder4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/placeholder_game1" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgTxtPasarela"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pasarela_azul"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"/>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="4dp">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgTxtTensor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pcolgante_azul"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"/>
 
-        <ImageView
-            android:id="@+id/imgTxtPasarela"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/pasarela" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgTxtTransbordador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/transbordador_azul"
+                    app:shapeAppearanceOverlay="@style/RoundedSquare"/>
+            </LinearLayout>
+        </HorizontalScrollView>
 
-        <ImageView
-            android:id="@+id/imgTxtTransbordador"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/transbordador" />
-
-        <ImageView
-            android:id="@+id/imgTxtTensor"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/tensor" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="2dp">
-
-        <ImageView
-            android:id="@+id/imgTxtAscensor"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/ascensor" />
-    </LinearLayout>
 
     </LinearLayout>
 

@@ -1,62 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutTOP"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/portu_red"
+    android:background="@drawable/gr5_1500_1501"
+    android:orientation="vertical"
     tools:context=".vista.VistaProfesor">
 
-    <Button
-        android:id="@+id/g2Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="G2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/g3Button"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toEndOf="@+id/g1Button"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <Button
-        android:id="@+id/g3Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="G3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <Button
-        android:id="@+id/g1Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="G1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentRespuestasGrupos"
-        android:name="com.example.portugaletego.vista.RespuestaGrupos"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/g2Button"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_gravity="center"
+        android:layout_weight="8"
+        android:gravity="center"
+        android:id="@+id/layoutBotonesProfesor"
+        >
+
+        <Button
+            android:id="@+id/g1Button"
+            style="@style/BotonAzulOscuro"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="G1" />
+
+        <Button
+            android:id="@+id/g2Button"
+            style="@style/BotonAzulOscuro"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="G2" />
+
+        <Button
+            android:id="@+id/g3Button"
+            style="@style/BotonAzulOscuro"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="G3" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="80"
+        android:orientation="vertical">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentRespuestasGrupos"
+            android:name="com.example.portugaletego.vista.RespuestaGrupos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="8"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnLoginProf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/portu_blue"
+            android:text="Login" />
+
+        <Button
+            android:id="@+id/btnRanking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/portu_white"
+            android:text="Ranking"
+            android:textColor="@color/azul_oscuro" />
+
+        <Button
+            android:id="@+id/btnGrupos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/portu_white"
+            android:text="Grupos"
+            android:textColor="@color/azul_oscuro"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

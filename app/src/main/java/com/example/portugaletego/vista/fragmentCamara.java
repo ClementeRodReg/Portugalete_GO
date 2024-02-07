@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.portugaletego.R;
@@ -44,10 +45,13 @@ public class fragmentCamara extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "id";
+    private static final String ARG_PARAM2 = "grupo";
+    private static final String ARG_PARAM3 = "parte";
 
     // TODO: Rename and change types of parameters
     private int id_juego;
-
+    private int id_grupo;
+    private int id_parte;
     Button btnCamara;
     ImageView imagen;
     private FirebaseAuth mAuth;
@@ -65,10 +69,12 @@ public class fragmentCamara extends Fragment {
      * @return A new instance of fragment fragmentCamara.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragmentCamara newInstance(int id) {
+    public static fragmentCamara newInstance(int id, int grupo, int parte) {
         fragmentCamara fragment = new fragmentCamara();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, id);
+        args.putInt(ARG_PARAM2, grupo);
+        args.putInt(ARG_PARAM3, parte);
         fragment.setArguments(args);
         return fragment;
     }
@@ -78,6 +84,8 @@ public class fragmentCamara extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             id_juego = getArguments().getInt(ARG_PARAM1);
+            id_grupo = getArguments().getInt(ARG_PARAM2);
+            id_parte = getArguments().getInt(ARG_PARAM3);
         }
     }
 
@@ -110,20 +118,30 @@ public class fragmentCamara extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
+            //obtiene la foto y la coloca en un ImageView
             Bundle extras = data.getExtras();
             Bitmap imgBitmap = (Bitmap) extras.get("data");
             imagen.setImageBitmap(imgBitmap);
-            mAuth = FirebaseAuth.getInstance();
 
+            //procede a guardar la foto en firebase
+            mAuth = FirebaseAuth.getInstance();
+            String carpetaGrupo="";
+
+            if(id_grupo == 0)
+                carpetaGrupo="r_g1";
+            else if(id_grupo == 1)
+                carpetaGrupo="r_g2";
+            else
+                carpetaGrupo="r_g3";
 
             ContentResolver resolver = getContext().getContentResolver();
             ContentValues values = new ContentValues();
             OutputStream fos = null;
             String nombreFoto = "";
             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
-            if (id_juego == 3) {
-                nombreFoto = "RespuestaEjer3punto1";
-                storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com/r_g1/ejer3");
+            if (id_juego == 2) {
+                nombreFoto = carpetaGrupo+"RespuestaEjer3parte"+id_parte;
+                storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
                     if (files[i].isDirectory()) {
@@ -136,8 +154,8 @@ public class fragmentCamara extends Fragment {
                         }
                     }
                 }
-            } else if (id_juego == 4) {
-                nombreFoto = "RespuestaEjer4punto1";
+            } else if (id_juego == 3) {
+                nombreFoto = carpetaGrupo+"RespuestaEjer4parte"+id_parte;
                 storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
@@ -181,7 +199,7 @@ public class fragmentCamara extends Fragment {
             }
             storageRef = storage.getReference();
             Uri file = Uri.fromFile(new File("/sdcard/Pictures/PortuGO/"+nombreFoto+".jpg"));
-            StorageReference riversRef = storageRef.child("r_g1/ejer4/"+file.getLastPathSegment());
+            StorageReference riversRef = storageRef.child(carpetaGrupo+"/ejer"+(id_juego+1)+"/"+file.getLastPathSegment());
             UploadTask uploadTask = riversRef.putFile(file);
 
             // Register observers to listen for when the download is done or if it fails
@@ -189,11 +207,12 @@ public class fragmentCamara extends Fragment {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
                     // Handle unsuccessful uploads
+                    System.out.println("el almacenamiento de la fotografia a fallado");
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    System.out.println("hola");
+                    System.out.println("Foto almacenada de forma correcta");
                 }
             });
 

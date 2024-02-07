@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gr5_1500_1501"
+    tools:context=".vista.ActivitySeleccion">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:elevation="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="30dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:orientation="vertical"
+            android:padding="4sp">
+
+            <TextView
+                android:id="@+id/bienvenido"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:text="Bienvenido"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textoPregunta"
+                android:layout_width="match_parent"
+                android:layout_height="103sp"
+                android:text="¿Eres un profesor o alumno?"
+                android:layout_marginTop="24sp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <Button
+                style="@style/BotonTransparenteConBordes"
+                android:id="@+id/btnProfesor"
+                android:layout_width="match_parent"
+                android:layout_height="55sp"
+                android:layout_marginTop="30sp"
+                android:text="PROFESOR"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:cornerRadius="3sp"
+                />
+
+            <Button
+                android:id="@+id/btnAlumno"
+                android:layout_width="match_parent"
+                android:layout_height="55sp"
+                android:layout_marginTop="30sp"
+                android:textColor="@color/white"
+                android:text="ALUMNO"
+                style="@style/BotonTransparenteConBordes"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                app:cornerRadius="3sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

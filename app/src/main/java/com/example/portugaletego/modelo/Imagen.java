@@ -3,53 +3,64 @@ package com.example.portugaletego.modelo;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.util.List;
-@Entity
-public class Imagen extends Contenido{
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @NonNull
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(@NonNull String nombre) {
-        this.nombre = nombre;
-    }
+@Entity(foreignKeys = {@ForeignKey( entity = Enunciados.class,
+        parentColumns = "id_enunciado",
+        childColumns = "id_enunciado",
+        onDelete = ForeignKey.CASCADE)})
+public class Imagen{
 
 
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name="Id")
-    private int id;
+    @ColumnInfo(name="id_imagen")
+    private int id_imagen;
 
     @NonNull
-    @ColumnInfo(name="Nombre")
-    private String nombre;
+    @ColumnInfo(name="Ruta")
+    private String Ruta;
 
-    /*
-    @NonNull
-    public Respuesta getRespuesta() {
-        return respuesta;
-    }
-
-    public void setRespuesta(@NonNull Respuesta respuesta) {
-        this.respuesta = respuesta;
+    public Imagen() {
+        
     }
 
     @NonNull
-    @ColumnInfo(name="Respuesta")
-    private Respuesta respuesta;
-*/
+    public String getId_enunciado() {
+        return id_enunciado;
+    }
+
+    public void setId_enunciado(@NonNull String id_enunciado) {
+        this.id_enunciado = id_enunciado;
+    }
+
+    @NonNull
+    @ColumnInfo(name="id_enunciado")
+    private String id_enunciado;
+
+    public Imagen(int id_imagen, @NonNull String ruta, @NonNull String id_enunciado) {
+        this.id_imagen = id_imagen;
+        Ruta = ruta;
+        this.id_enunciado = id_enunciado;
+    }
+
+    public int getId_imagen() {
+        return id_imagen;
+    }
+
+    public void setId_imagen(int id_imagen) {
+        this.id_imagen = id_imagen;
+    }
+
+    @NonNull
+    public String getRuta() {
+        return Ruta;
+    }
+    public void setRuta(@NonNull String Ruta) {
+        this.Ruta = Ruta;
+    }
 
 }

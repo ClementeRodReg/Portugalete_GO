@@ -1,74 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/portu_red"
+    android:orientation="vertical"
+    android:background="@color/azul_oscuro"
     tools:context=".vista.ActivityJuegos">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentJuegos"
-        android:layout_width="413dp"
-        android:layout_height="675dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
 
-    <Button
-        android:id="@+id/btnvolver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="Volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnSiguiente"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/btnSiguiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/portu_yellow"
-        android:text="Siguiente"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageButton
-        android:id="@+id/btnMute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSiguiente"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/btnvolver"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/baseline_volume_off_24" />
-
-    <ImageButton
-        android:id="@+id/btnUnmute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSiguiente"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/btnvolver"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/baseline_volume_mute_24" />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentJuegos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="90"
+            android:background="@drawable/gr5_1500_1501"
+        />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        >
+
+        <Button
+            android:id="@+id/btnvolver"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/BotonTransparenteConBordes"
+            android:text="Volver"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
+        <ImageButton
+            android:id="@+id/btnMute"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/baseline_volume_off_24" />
+
+        <ImageButton
+            android:id="@+id/btnUnmute"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:srcCompat="@drawable/baseline_volume_mute_24" />
+        
+        <Button
+            android:id="@+id/btnFin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/portu_blue"
+            android:text="Fin"
+            android:clickable="false"
+            android:visibility="gone"
+            />
+        <Button
+            android:id="@+id/btnSiguiente"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/BotonTransparenteConBordes"
+            android:text="Siguiente"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -3,53 +3,69 @@ package com.example.portugaletego.modelo;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.util.List;
 
-@Entity
+@Entity(foreignKeys = {@ForeignKey( entity = Enunciados.class,
+        parentColumns = "id_enunciado",
+        childColumns = "id_enunciado",
+        onDelete = ForeignKey.CASCADE)})
 public class Pregunta {
+
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name="Id")
-    private int id;
+    @ColumnInfo(name="id_pregunta")
+    private int id_pregunta;
 
     @NonNull
-    @ColumnInfo(name="Nombre")
-    private String nombre;
-
-    /*
-    @NonNull
-    @ColumnInfo(name="Respuestas")
-    private List<Respuesta> respuestas;
+    @ColumnInfo(name="textoPregunta")
+    private String textoPregunta;
 
     @NonNull
-    public List<Respuesta> getRespuestas() {
-        return respuestas;
+    @ColumnInfo(name="id_enunciado")
+    private int id_enunciado;
+
+    public Pregunta(int id_pregunta, String textoPregunta, int id_enunciado){
+        this.id_pregunta = id_pregunta;
+        this.textoPregunta = textoPregunta;
+        this.id_enunciado = id_enunciado;
     }
 
-    public void setRespuestas(@NonNull List<Respuesta> respuestas) {
-        this.respuestas = respuestas;
+    @NonNull
+    public String getTextoPregunta() {
+        return textoPregunta;
     }
-    */
 
+    public void setTextoPregunta(@NonNull String textoPregunta) {
+        this.textoPregunta = textoPregunta;
+    }
+
+    public int getId_pregunta() {
+        return id_pregunta;
+    }
+
+    public void setId_pregunta(int id_pregunta) {
+        this.id_pregunta = id_pregunta;
+    }
+
+    @NonNull
+    public int getId_enunciado() {
+        return id_enunciado;
+    }
+
+    public void setId_enunciado(@NonNull int id_enunciado) {
+        this.id_enunciado = id_enunciado;
+    }
+
+    @NonNull
     public int getId() {
-        return id;
+        return id_pregunta;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(@NonNull int id_pregunta) {
+        this.id_pregunta = id_pregunta;
     }
-
-    @NonNull
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(@NonNull String nombre) {
-        this.nombre = nombre;
-    }
-
-
 }

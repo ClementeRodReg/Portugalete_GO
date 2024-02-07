@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent"
+    android:id="@+id/fragment_enunciados">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/gr5_1500_1501">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTexto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/pergamino"
+            app:cardCornerRadius="30sp"
+            >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pergamino"/>
+
+
+            <LinearLayout
+                android:id="@+id/LayoutPreguntas"
+                android:layout_width="350dp"
+                android:layout_height="600dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                app:cardCornerRadius="30sp"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+
+                    android:src="@drawable/escudoarmas"/>
+
+                <TextView
+                    android:id="@+id/textoJuegos"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:text="ENUNCIADO"
+                    android:textSize="40sp"
+                    android:fontFamily="sans-serif-black"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</LinearLayout>

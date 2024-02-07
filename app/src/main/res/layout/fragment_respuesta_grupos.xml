@@ -1,15 +1,688 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/portu_red"
+    android:background="@drawable/gr5_1500_1501"
     tools:context=".vista.RespuestaGrupos">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/portu_red"
-        android:orientation="vertical" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</ScrollView>
+        <LinearLayout
+            android:id="@+id/layoutg1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/textvG1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Grupo 1"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textvG6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejercicio 3"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer3parte1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada31"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones31"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc31"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn31"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn31"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer3parte2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada32"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones32"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc32"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn32"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn32"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer3parte3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada33"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones33"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc33"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn33"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn33"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer3parte4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada34"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones34"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc34"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn34"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn34"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer3parte5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada35"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones35"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc35"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn35"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn35"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejercicio 4"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer4parte1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada1"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc1"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer4parte2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada2"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc2"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer4parte3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada3"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc3"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer4parte4"
+                android:layout_width="match_parent"
+                android:layout_height="193dp"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada4"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc4"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textvG5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/portu_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutejer4parte5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fotoSacada5"
+                    android:layout_width="204dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.86"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.067"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/layoutdescbotones5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/desc5"
+                        android:layout_width="match_parent"
+                        android:layout_height="101dp"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/portu_white" />
+
+                    <Button
+                        android:id="@+id/Aprobarbtn5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Aprobar"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/Pencarbtn5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/portu_blue"
+                        android:text="Pencar"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
