@@ -1,5 +1,6 @@
 package com.example.portugaletego.vista;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.portugaletego.R;
+import com.example.portugaletego.controlador.BBDD;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +33,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,6 +55,8 @@ public class RespuestaGrupos extends Fragment {
     LinearLayout layoutGrande;
     FirebaseStorage storage;
     StorageReference storageRef;
+
+    BBDD AppDataBase;
 
     public RespuestaGrupos() {
         // Required empty public constructor
@@ -89,6 +96,9 @@ public class RespuestaGrupos extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
         ngrupo = view.findViewById(R.id.textvG1);
+
+        Context ctx = getContext();
+        AppDataBase = BBDD.getDatabase(ctx.getApplicationContext());
 
         LinearLayout ll1 = view.findViewById(R.id.layoutg1);
         LinearLayout ll41 = view.findViewById(R.id.layoutejer4parte1);
@@ -213,6 +223,7 @@ public class RespuestaGrupos extends Fragment {
                 @Override
                 public void onClick(View v) {
                     avisoA(1);
+                    aprobarEjercicio(ngrupo.getText().toString());
                     ll41.setVisibility(View.GONE);
                 }
             });
@@ -296,5 +307,17 @@ public class RespuestaGrupos extends Fragment {
 
     public void avisoP(int parte) {
         Toast.makeText(getView().getContext(), ngrupo.getText() + " ha pencado el ejercicio 4 parte " + parte, Toast.LENGTH_SHORT).show();
+    }
+
+    public void aprobarEjercicio(String grupo) {
+        String puntuacionId = grupo + "_" + obtenerFechaActual(); // Asume la existencia de obtenerFechaActual()
+        // Incrementar puntos en 1 (o el valor deseado)
+        AppDataBase.daoPuntuacion().incrementarPuntos(puntuacionId, 1);
+        // Puedes llamar a avisoA(parte) aquí si quieres mantener la notificación
+    }
+
+    public String obtenerFechaActual() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return sdf.format(new Date());
     }
 }

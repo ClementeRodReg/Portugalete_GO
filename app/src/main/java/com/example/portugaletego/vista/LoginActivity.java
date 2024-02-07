@@ -21,6 +21,7 @@ import android.widget.Spinner;
 
 import com.example.portugaletego.controlador.BBDD;
 import com.example.portugaletego.modelo.Grupo;
+import com.example.portugaletego.modelo.Puntuacion;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 //import com.google.firebase.auth.AuthResult;
@@ -32,8 +33,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -110,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cambio(0);
+
             }
         });
 
@@ -118,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cambio(3);
+
             }
         });
 
@@ -175,6 +181,7 @@ public class LoginActivity extends AppCompatActivity {
             //Acceso como alumnado, depende del grupo que escojas, mandara un id u otro
             case 2: cambio = new Intent(LoginActivity.this, VistaMapa.class);
                 cambio.putExtra("idGrupo",spinner.getSelectedItemPosition());
+         //       appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion(spinner.getSelectedItem().toString()+obtenerFechaActual(),0));
                 System.out.println(spinner.getSelectedItemPosition());
                 startActivity(cambio);
                 break;
@@ -212,5 +219,10 @@ public class LoginActivity extends AppCompatActivity {
                 dialog = builder.create();
                 dialog.show();
         }
+    }
+
+    public String obtenerFechaActual() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return sdf.format(new Date());
     }
 }

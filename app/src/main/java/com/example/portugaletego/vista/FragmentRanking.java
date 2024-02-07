@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.portugaletego.R;
 import com.example.portugaletego.controlador.BBDD;
+import com.example.portugaletego.controlador.DAOPuntuacion;
 import com.example.portugaletego.modelo.Puntuacion;
 import java.util.List;
 
@@ -101,30 +102,82 @@ public class FragmentRanking extends Fragment {
         pos8_pt = view.findViewById(R.id.posicion1_puntos8);
 
         appDatabase = BBDD.getDatabase(ctx.getApplicationContext());
+        DAOPuntuacion puntuacionDao = appDatabase.daoPuntuacion();
+
         List<Puntuacion> ranking = appDatabase.daoPuntuacion().obtenerRanking();
 
+        puntuacionDao.obtenerTop8Puntuaciones().observe(getViewLifecycleOwner(), puntuaciones -> {
+            TextView[] grupos = {pos1_gr, pos2_gr, pos3_gr, pos4_gr, pos5_gr, pos6_gr, pos7_gr, pos8_gr};
+            TextView[] puntos = {pos1_pt, pos2_pt, pos3_pt, pos4_pt, pos5_pt, pos6_pt, pos7_pt, pos8_pt};
+
+            for (int i = 0; i < puntuaciones.size(); i++) {
+                Puntuacion puntuacion = puntuaciones.get(i);
+                if (i < grupos.length) {
+                    // Aquí asumimos que tienes una manera de extraer el grupo de tu puntuacion_id
+                    // y que tu puntuacion_id es algo como "grupo_fecha"
+                    String grupo = puntuacion.getPuntuacion_id().split("_")[0];
+                    grupos[i].setText(grupo);
+                    puntos[i].setText(String.valueOf(puntuacion.getPuntos()));
+                }
+            }
+
+            // Si hay menos de 8 puntuaciones, limpia los TextViews restantes
+            for (int i = puntuaciones.size(); i < grupos.length; i++) {
+                grupos[i].setText("");
+                puntos[i].setText("");
+            }
+        });
+
+        /*
         pos1_gr.setText(ranking.get(0).getPuntuacion_id());
-        pos1_pt.setText(ranking.get(0).getPuntos());
+        pos1_pt.setText(Integer.toString(ranking.get(0).getPuntos()));
 
         pos2_gr.setText(ranking.get(1).getPuntuacion_id());
-        pos2_pt.setText(ranking.get(1).getPuntos());
+        pos2_pt.setText(Integer.toString(ranking.get(1).getPuntos()));
 
         pos3_gr.setText(ranking.get(2).getPuntuacion_id());
-        pos3_pt.setText(ranking.get(2).getPuntos());
+        pos3_pt.setText(Integer.toString(ranking.get(2).getPuntos()));
 
         pos4_gr.setText(ranking.get(3).getPuntuacion_id());
-        pos4_pt.setText(ranking.get(3).getPuntos());
+        pos4_pt.setText(Integer.toString(ranking.get(3).getPuntos()));
 
         pos5_gr.setText(ranking.get(4).getPuntuacion_id());
-        pos5_pt.setText(ranking.get(4).getPuntos());
+        pos5_pt.setText(Integer.toString(ranking.get(4).getPuntos()));
 
         pos6_gr.setText(ranking.get(5).getPuntuacion_id());
-        pos6_pt.setText(ranking.get(5).getPuntos());
+        pos6_pt.setText(Integer.toString(ranking.get(5).getPuntos()));
 
         pos7_gr.setText(ranking.get(6).getPuntuacion_id());
-        pos7_pt.setText(ranking.get(6).getPuntos());
+        pos7_pt.setText(Integer.toString(ranking.get(6).getPuntos()));
 
         pos8_gr.setText(ranking.get(7).getPuntuacion_id());
-        pos8_pt.setText(ranking.get(7).getPuntos());
+        pos8_pt.setText(Integer.toString(ranking.get(7).getPuntos()));
+    */
+
     }
+
+
+
+
+    /*
+    private void insertarYLimpiarPuntuaciones(DAOPuntuacion dao, Puntuacion nuevaPuntuacion) {
+        // Obtener las 8 puntuaciones más altas
+        List<Puntuacion> topPuntuaciones = dao.obtenerTop8Puntuaciones();
+
+        if (topPuntuaciones.size() < 8) {
+            // Si hay menos de 8 puntuaciones, simplemente insertamos la nueva puntuación.
+            dao.insertarPuntuacion(nuevaPuntuacion);
+        } else {
+            // Verificar si la nueva puntuación es mayor que la más baja de las 8 más altas
+            Puntuacion minimaDeLasTop = topPuntuaciones.get(topPuntuaciones.size() - 1); // Debido a que están ordenadas de mayor a menor
+            if (nuevaPuntuacion.getPuntos() > minimaDeLasTop.getPuntos()) {
+                dao.insertarPuntuacion(nuevaPuntuacion);
+                // Eliminar puntuaciones fuera del top 8
+                dao.eliminarPuntuacionesBajas();
+            }
+        }
+    }
+
+
+     */
 }
