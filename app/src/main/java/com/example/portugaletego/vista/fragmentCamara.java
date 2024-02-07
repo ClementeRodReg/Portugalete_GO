@@ -151,7 +151,7 @@ public class fragmentCamara extends Fragment {
             String nombreFoto = "";
             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
             if (id_juego == 2) {
-                nombreFoto = "RespuestaEjer3parte"+id_parte;
+                nombreFoto = carpetaGrupo+"RespuestaEjer3parte"+id_parte;
                 storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {
@@ -166,7 +166,7 @@ public class fragmentCamara extends Fragment {
                     }
                 }
             } else if (id_juego == 3) {
-                nombreFoto = "RespuestaEjer4parte"+id_parte;
+                nombreFoto = carpetaGrupo+"RespuestaEjer4parte"+id_parte;
                 storage = FirebaseStorage.getInstance("gs://portugo-614ca.appspot.com");
                 File[] files = path.listFiles();
                 for (int i = 0; i < files.length; i++) {

@@ -110,7 +110,6 @@ public class RespuestaGrupos extends Fragment {
 
         if (grupo.equals("r_g1")) {
 
-
             ImageView ejerfoto1 = view.findViewById(R.id.fotoSacada1);
             ImageView ejerfoto2 = view.findViewById(R.id.fotoSacada2);
             ImageView ejerfoto3 = view.findViewById(R.id.fotoSacada3);
@@ -118,11 +117,11 @@ public class RespuestaGrupos extends Fragment {
             ImageView ejerfoto5 = view.findViewById(R.id.fotoSacada5);
             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
 
-            String nombreFoto1 = "RespuestaEjer4parte1";
-            String nombreFoto2 = "RespuestaEjer4parte2";
-            String nombreFoto3 = "RespuestaEjer4parte3";
-            String nombreFoto4 = "RespuestaEjer4parte4";
-            String nombreFoto5 = "RespuestaEjer4parte5";
+            String nombreFoto1 = grupo+"RespuestaEjer4parte1";
+            String nombreFoto2 = grupo+"RespuestaEjer4parte2";
+            String nombreFoto3 = grupo+"RespuestaEjer4parte3";
+            String nombreFoto4 = grupo+"RespuestaEjer4parte4";
+            String nombreFoto5 = grupo+"RespuestaEjer4parte5";
 
             File[] files = path.listFiles();
 
@@ -191,7 +190,6 @@ public class RespuestaGrupos extends Fragment {
                     }
                 }
             }
-
 
             TextView descejer1 = view.findViewById(R.id.desc1);
             descejer1.setText("ejercicio 4 parte 1");
@@ -285,7 +283,6 @@ public class RespuestaGrupos extends Fragment {
                     ll45.setVisibility(View.GONE);
                 }
             });
-
 
         }
     }
