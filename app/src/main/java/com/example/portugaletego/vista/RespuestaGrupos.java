@@ -114,11 +114,11 @@ public class RespuestaGrupos extends Fragment {
         if (grupo != null) {
 
             if (grupo.equals("r_g1"))
-                ngrupo.setText("GRUPO 1");
+                ngrupo.setText("Grupo 1");
             else if (grupo.equals("r_g2"))
-                ngrupo.setText("GRUPO 2");
+                ngrupo.setText("Grupo 2");
             else
-                ngrupo.setText("GRUPO 3");
+                ngrupo.setText("Grupo 3");
         } else {
             grupo = "nada";
         }

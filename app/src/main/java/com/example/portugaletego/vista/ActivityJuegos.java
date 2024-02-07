@@ -25,7 +25,7 @@ public class ActivityJuegos extends AppCompatActivity {
     Fragment f2 = new FragmentJuego2();
     Fragment f1 = new FragmentJuego1();
     int contadorSaltos = 0;
-    int idGrupo = 0;
+    int idGrupo;
     int id;
 
     @Override
@@ -45,6 +45,7 @@ public class ActivityJuegos extends AppCompatActivity {
         id = getIntent().getIntExtra("id", 0);
         idGrupo = getIntent().getIntExtra("idGrupo", 0);
         System.out.println(id);
+        System.out.println(idGrupo);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -353,6 +354,10 @@ public class ActivityJuegos extends AppCompatActivity {
 
     public int getId() {
         return id;
+    }
+
+    public int getIdGrupo(){
+        return idGrupo;
     }
 
     public int getContadorSaltos() {

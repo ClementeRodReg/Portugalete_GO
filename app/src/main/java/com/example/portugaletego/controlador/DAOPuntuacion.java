@@ -25,8 +25,6 @@ public interface DAOPuntuacion {
     @Query("SELECT * from puntuacion")
     List<Puntuacion> obtenerRanking();
 
-
-
     @Query("DELETE FROM Puntuacion WHERE puntuacion_id NOT IN (SELECT puntuacion_id FROM Puntuacion ORDER BY puntos DESC LIMIT 8)")
     void eliminarPuntuacionesBajas();
 

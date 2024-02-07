@@ -181,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
             case 2: cambio = new Intent(LoginActivity.this, VistaMapa.class);
                 cambio.putExtra("idGrupo",spinner.getSelectedItemPosition());
                 try {
-                    appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion(spinner.getSelectedItem().toString() + obtenerFechaActual(), 0));
+                    appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion(spinner.getSelectedItem().toString()+"_" + obtenerFechaActual(), 0));
                 }catch(Exception ex){}
                 System.out.println(spinner.getSelectedItemPosition());
                 startActivity(cambio);

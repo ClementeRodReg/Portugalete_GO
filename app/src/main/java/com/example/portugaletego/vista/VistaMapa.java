@@ -33,6 +33,7 @@ public class VistaMapa extends AppCompatActivity {
         if(bundle != null){
             if(bundle.containsKey("idGrupo")){
                 idGrupo = bundle.getInt("idGrupo");
+                System.out.println("idGrupo, "+ idGrupo);
                 switch(idGrupo){
                     case 0: nombreGrupo.setText("G1"); break;
                     case 1: nombreGrupo.setText("G2"); break;

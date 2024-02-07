@@ -260,6 +260,7 @@ public class FragmentJuego2 extends Fragment {
 
         String puntuacionId = grupo + "_" + obtenerFechaActual(); // Asume la existencia de obtenerFechaActual()
         // Incrementar puntos en 1 (o el valor deseado)
+        System.out.println(puntuacionId);
         AppDataBase.daoPuntuacion().incrementarPuntos(puntuacionId, score);
         // Puedes llamar a avisoA(parte) aquí si quieres mantener la notificación
     }
@@ -271,8 +272,20 @@ public class FragmentJuego2 extends Fragment {
 
     //Metodo para salir del activity desde el propio fragment -> solo se accede desde un AlertDialog
     private void salir() {
-        aprobarEjercicio(mParam1);
+
         Activity a = getActivity();
+        int idGrupo = ((ActivityJuegos) a).getIdGrupo();
+        System.out.println(idGrupo);
+        switch(idGrupo){
+            case 0:aprobarEjercicio("Grupo 1");
+            break;
+            case 1:aprobarEjercicio("Grupo 2");
+            break;
+            case 2:
+                aprobarEjercicio("Grupo 3");break;
+        }
+
+
         MediaPlayer mp2 = ((ActivityJuegos) a).getMp();
         ((ActivityJuegos) a).volver(mp2);
     }
