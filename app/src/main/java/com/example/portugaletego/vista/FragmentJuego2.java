@@ -1,6 +1,7 @@
 package com.example.portugaletego.vista;
 
 import android.app.Activity;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -14,6 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.portugaletego.R;
+import com.example.portugaletego.controlador.BBDD;
+import com.example.portugaletego.modelo.Pregunta;
+import com.example.portugaletego.modelo.Respuesta;
 import com.example.portugaletego.modelo.Respuestas;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +30,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -40,19 +47,20 @@ public class FragmentJuego2 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM1 = "idGrupo";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    List<Respuesta> lstRespuestas;
+    List<Respuesta> lstRespuestasCorrectas;
     TextView totalQuestionsTextView;
     TextView questionTextView;
     Button ansA, ansB, ansC, ansD;
     Button submitBtn;
-
-    int score=0;
+    BBDD AppDataBase;
+    int score = 0;
     int totalQuestion = Respuestas.question.length;
     int currentQuestionIndex = 0;
     String selectedAnswer = "";
@@ -92,15 +100,17 @@ public class FragmentJuego2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vista= inflater.inflate(R.layout.fragment_juego2, container, false);
+        vista = inflater.inflate(R.layout.fragment_juego2, container, false);
         return vista;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
-
+        Context ctx = getContext();
+        AppDataBase = BBDD.getDatabase(ctx.getApplicationContext());
         totalQuestionsTextView = view.findViewById(R.id.total_question);
+        lstRespuestasCorrectas=AppDataBase.daoRespuesta().obtenerRespuestasCorrectas();
         questionTextView = view.findViewById(R.id.question);
         ansA = view.findViewById(R.id.ans_A);
         ansB = view.findViewById(R.id.ans_B);
@@ -115,7 +125,7 @@ public class FragmentJuego2 extends Fragment {
         ansD.setOnClickListener(this::onClick);
         submitBtn.setOnClickListener(this::onClick);
 
-        totalQuestionsTextView.setText("Preguntas totales : "+totalQuestion);
+        totalQuestionsTextView.setText("Preguntas totales : " + totalQuestion);
 
         nuevaPregunta();
     }
@@ -123,8 +133,8 @@ public class FragmentJuego2 extends Fragment {
     public void onClick(View view) {
         Button btnClick = (Button) view;
         if (btnClick.getId() == R.id.submit_btn) {
-            Button btnCorrecto = findButtonWithAnswer(Respuestas.correctAnswers[currentQuestionIndex]);
-            boolean respuestaCorrecta = selectedAnswer.equals(Respuestas.correctAnswers[currentQuestionIndex]);
+            Button btnCorrecto = findButtonWithAnswer(lstRespuestasCorrectas.get(currentQuestionIndex).getTexto());
+            boolean respuestaCorrecta = selectedAnswer.equals(lstRespuestasCorrectas.get(currentQuestionIndex).getTexto());
 
             if (btnCorrecto != null) {
                 btnCorrecto.setBackgroundColor(Color.GREEN);
@@ -194,10 +204,16 @@ public class FragmentJuego2 extends Fragment {
     void nuevaPregunta() {
         resetearPreguntas();
 
-        String[] opcionesActuales = Respuestas.choices[currentQuestionIndex];
+        Pregunta pregunta = AppDataBase.daoPregunta().obtenerPregunta(currentQuestionIndex);
+        lstRespuestas = AppDataBase.daoRespuesta().obtenerRespuestasporPregunta(currentQuestionIndex);
+        String[] opcionesActuales = new String[lstRespuestas.size()];
+
+        for (int i = 0; i < lstRespuestas.size(); i++)
+            opcionesActuales[i] = lstRespuestas.get(currentQuestionIndex).getTexto();
+
         List<String> opcionesBarajadas = barajarRespuestas(opcionesActuales);
 
-        questionTextView.setText(Respuestas.question[currentQuestionIndex]);
+        questionTextView.setText(pregunta.getTextoPregunta());
         ansA.setText(opcionesBarajadas.get(0));
         ansB.setText(opcionesBarajadas.get(1));
         ansC.setText(opcionesBarajadas.get(2));
@@ -221,33 +237,47 @@ public class FragmentJuego2 extends Fragment {
     }
 
     //Solo sale cuando completamos las preguntas ->  Da dos botones para reiniciar o salir del juego
-    void finQuiz(){
+    void finQuiz() {
         String passStatus = "";
-        if(score > totalQuestion*0.60){
+        if (score > totalQuestion * 0.60) {
             passStatus = "Has superado el juego!";
-        }else{
+        } else {
             passStatus = "Has fallado :(";
         }
 
         new AlertDialog.Builder(getContext())
                 .setTitle(passStatus)
-                .setMessage("Puntuación "+ score+" de "+ totalQuestion)
-                .setPositiveButton("Reiniciar",(dialogInterface, i) -> restartQuiz() )
-                .setNegativeButton("Salir",(dialogInterface, i) -> salir())
+                .setMessage("Puntuación " + score + " de " + totalQuestion)
+                .setPositiveButton("Reiniciar", (dialogInterface, i) -> restartQuiz())
+                .setNegativeButton("Salir", (dialogInterface, i) -> salir())
                 .setCancelable(false)
                 .show();
     }
 
+    public void aprobarEjercicio(String grupo) {
+
+        String puntuacionId = grupo + "_" + obtenerFechaActual(); // Asume la existencia de obtenerFechaActual()
+        // Incrementar puntos en 1 (o el valor deseado)
+        AppDataBase.daoPuntuacion().incrementarPuntos(puntuacionId, score);
+        // Puedes llamar a avisoA(parte) aquí si quieres mantener la notificación
+    }
+
+    public String obtenerFechaActual() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return sdf.format(new Date());
+    }
+
     //Metodo para salir del activity desde el propio fragment -> solo se accede desde un AlertDialog
     private void salir() {
+        aprobarEjercicio(mParam1);
         Activity a = getActivity();
         MediaPlayer mp2 = ((ActivityJuegos) a).getMp();
         ((ActivityJuegos) a).volver(mp2);
     }
 
-    void restartQuiz(){
+    void restartQuiz() {
         score = 0;
-        currentQuestionIndex =0;
+        currentQuestionIndex = 0;
         nuevaPregunta();
     }
 }

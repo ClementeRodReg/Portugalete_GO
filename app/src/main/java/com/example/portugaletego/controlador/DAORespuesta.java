@@ -16,6 +16,12 @@ public interface DAORespuesta {
     @Query("Select * from respuesta where id = :id")
     Respuesta obtenerRespuesta(int id);
 
+    @Query("Select * from respuesta where id_pregunta = :id_pregunta")
+    List<Respuesta> obtenerRespuestasporPregunta(int id_pregunta);
+
+    @Query("Select * from respuesta where EsCorrecto = 1")
+    List<Respuesta> obtenerRespuestasCorrectas();
+
     @Insert
     void insertarRespuesta(Respuesta respuesta);
 

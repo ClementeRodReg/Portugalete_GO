@@ -313,6 +313,7 @@ public class ActivityJuegos extends AppCompatActivity {
                 break;
             case 1: //vamos al juego 2
                 nuevoFragment = new Fragment_Enunciado();
+                bundle.putInt("idGrupo", idGrupo);
                 fragmentTransaction.replace(R.id.fragmentJuegos, nuevoFragment);
                 btnSiguiente.setVisibility(View.VISIBLE);
                 mp = MediaPlayer.create(this, R.raw.rialia_eta_nikolas_deuna);

@@ -314,6 +314,7 @@ public class RespuestaGrupos extends Fragment {
                 @Override
                 public void onClick(View v) {
                     avisoA(2, 4);
+                    aprobarEjercicio(ngrupo.getText().toString());
                     ll42.setVisibility(View.GONE);
                 }
             });
@@ -321,6 +322,7 @@ public class RespuestaGrupos extends Fragment {
                 @Override
                 public void onClick(View v) {
                     avisoA(3, 4);
+                    aprobarEjercicio(ngrupo.getText().toString());
                     ll43.setVisibility(View.GONE);
                 }
             });
@@ -328,6 +330,7 @@ public class RespuestaGrupos extends Fragment {
                 @Override
                 public void onClick(View v) {
                     avisoA(4, 4);
+                    aprobarEjercicio(ngrupo.getText().toString());
                     ll44.setVisibility(View.GONE);
                 }
             });
@@ -335,6 +338,7 @@ public class RespuestaGrupos extends Fragment {
                 @Override
                 public void onClick(View v) {
                     avisoA(5, 4);
+                    aprobarEjercicio(ngrupo.getText().toString());
                     ll45.setVisibility(View.GONE);
                 }
             });
@@ -351,6 +355,7 @@ public class RespuestaGrupos extends Fragment {
                 @Override
                 public void onClick(View v) {
                     avisoA(2, 3);
+                    aprobarEjercicio(ngrupo.getText().toString());
                     ll32.setVisibility(View.GONE);
                 }
             });
@@ -358,6 +363,7 @@ public class RespuestaGrupos extends Fragment {
                 @Override
                 public void onClick(View v) {
                     avisoA(3, 3);
+                    aprobarEjercicio(ngrupo.getText().toString());
                     ll33.setVisibility(View.GONE);
                 }
             });
@@ -372,6 +378,7 @@ public class RespuestaGrupos extends Fragment {
                 @Override
                 public void onClick(View v) {
                     avisoA(5, 3);
+                    aprobarEjercicio(ngrupo.getText().toString());
                     ll35.setVisibility(View.GONE);
                 }
             });
