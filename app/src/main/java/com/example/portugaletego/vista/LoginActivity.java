@@ -181,7 +181,9 @@ public class LoginActivity extends AppCompatActivity {
             //Acceso como alumnado, depende del grupo que escojas, mandara un id u otro
             case 2: cambio = new Intent(LoginActivity.this, VistaMapa.class);
                 cambio.putExtra("idGrupo",spinner.getSelectedItemPosition());
-                appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion(spinner.getSelectedItem().toString()+obtenerFechaActual(),0));
+                try {
+                    appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion(spinner.getSelectedItem().toString() + obtenerFechaActual(), 0));
+                }catch(Exception ex){}
                 System.out.println(spinner.getSelectedItemPosition());
                 startActivity(cambio);
                 break;

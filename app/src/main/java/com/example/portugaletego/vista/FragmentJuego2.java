@@ -110,7 +110,7 @@ public class FragmentJuego2 extends Fragment {
         Context ctx = getContext();
         AppDataBase = BBDD.getDatabase(ctx.getApplicationContext());
         totalQuestionsTextView = view.findViewById(R.id.total_question);
-        lstRespuestasCorrectas=AppDataBase.daoRespuesta().obtenerRespuestasCorrectas();
+        lstRespuestasCorrectas = AppDataBase.daoRespuesta().obtenerRespuestasCorrectas();
         questionTextView = view.findViewById(R.id.question);
         ansA = view.findViewById(R.id.ans_A);
         ansB = view.findViewById(R.id.ans_B);
@@ -205,11 +205,13 @@ public class FragmentJuego2 extends Fragment {
         resetearPreguntas();
 
         Pregunta pregunta = AppDataBase.daoPregunta().obtenerPregunta(currentQuestionIndex);
-        lstRespuestas = AppDataBase.daoRespuesta().obtenerRespuestasporPregunta(currentQuestionIndex);
+        lstRespuestas = AppDataBase.daoRespuesta().obtenerRespuestasporPregunta(currentQuestionIndex+1);
         String[] opcionesActuales = new String[lstRespuestas.size()];
 
+        System.out.println(lstRespuestas.size());
+
         for (int i = 0; i < lstRespuestas.size(); i++)
-            opcionesActuales[i] = lstRespuestas.get(currentQuestionIndex).getTexto();
+            opcionesActuales[i] = lstRespuestas.get(i).getTexto();
 
         List<String> opcionesBarajadas = barajarRespuestas(opcionesActuales);
 
