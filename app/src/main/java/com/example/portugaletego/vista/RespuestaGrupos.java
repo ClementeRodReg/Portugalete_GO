@@ -282,15 +282,15 @@ public class RespuestaGrupos extends Fragment {
             descejer5.setText("ejercicio 4 parte 5");
 
             TextView descejer31 = view.findViewById(R.id.desc31);
-            descejer1.setText("ejercicio 3 parte 1");
+            descejer31.setText("ejercicio 3 parte 1");
             TextView descejer32 = view.findViewById(R.id.desc32);
-            descejer2.setText("ejercicio 3 parte 2");
+            descejer32.setText("ejercicio 3 parte 2");
             TextView descejer33 = view.findViewById(R.id.desc33);
-            descejer3.setText("ejercicio 3 parte 3");
+            descejer33.setText("ejercicio 3 parte 3");
             TextView descejer34 = view.findViewById(R.id.desc34);
-            descejer4.setText("ejercicio 3 parte 4");
+            descejer34.setText("ejercicio 3 parte 4");
             TextView descejer35 = view.findViewById(R.id.desc35);
-            descejer5.setText("ejercicio 3 parte 5");
+            descejer35.setText("ejercicio 3 parte 5");
 
             Button aprobar1 = view.findViewById(R.id.Aprobarbtn1);
             Button aprobar2 = view.findViewById(R.id.Aprobarbtn2);
