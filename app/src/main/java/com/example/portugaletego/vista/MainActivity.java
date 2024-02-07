@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         appDatabase = BBDD.getDatabase(getApplicationContext()); //obtenemos la base de datos
 
-        if(!existeBaseDeDatos(this, "bd_portu4")){
+        if(!existeBaseDeDatos(this, "bd_portu6")){
             INSERTS();
         }
 
@@ -102,40 +102,45 @@ public class MainActivity extends AppCompatActivity {
         appDatabase.daoPregunta().insertarPregunta(new Pregunta(6, "¿Qué ciudad no es de la margen izquierda?",1));
         appDatabase.daoPregunta().insertarPregunta(new Pregunta(7, "¿Cual fue la industra principal en la margen izquierda?",1));
         //insert Respuestas[0]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(0,"La persona que daba las instrucciones fuera del agua",false,1));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(1,"La persona que estaba en la parte trasera de la trainera, corrigiendo el rumbo",true,1));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(2,"La persona que va al lado de la trainera en un bote",false,1));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(3,"El mas anciano de los remeros",false,1));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(0,"La persona que daba las instrucciones fuera del agua",false,0));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(1,"La persona que estaba en la parte trasera de la trainera, corrigiendo el rumbo",true,0));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(2,"La persona que va al lado de la trainera en un bote",false,0));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(3,"El mas anciano de los remeros",false,0));
         //insert Respuestas[1]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(4,"11",false,2));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(5,"16",false,2));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(6,"14",false,2));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(7,"13",true,2));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(4,"11",false,1));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(5,"16",false,1));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(6,"14",false,1));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(7,"13",true,1));
         //Insert Respuestas[2]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(8,"Nikolas Deuna",false,3));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(9,"Portugaletetarrak",false,3));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(10,"Jarrillera",true,3));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(11,"Piratas de Sombrero de Paja",false,3));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(8,"Urdaibai",true,2));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(9,"Sotera",false,2));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(10,"Orio",false,2));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(11,"Zierbena",false,2));
         //Insert Respuestas[3]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(12,"Ballenas",true,4));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(13,"Sardinas",false,4));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(14,"Merluzas",false,4));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(15,"Bacalao",false,4));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(12,"Nikolas Deuna",false,3));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(13,"Portugaletetarrak",false,3));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(14,"Jarrillera",true,3));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(15,"Piratas de Sombrero de Paja",false,3));
         //Insert REspuestas[4]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(16,"1790-1800",false,5));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(17,"1850-1900",false,5));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(18,"1800-1850",true,5));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(19,"1900+",false,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(16,"Ballenas",true,4));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(17,"Sardinas",false,4));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(18,"Merluzas",false,4));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(19,"Bacalao",false,4));
         //Insert REspuestas[5]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(20,"Trapagaran",true,6));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(21,"Barakaldo",false,6));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(22,"Sestao",false,6));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(23,"Bilbao",false,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(20,"1790-1800",false,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(21,"1850-1900",false,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(22,"1800-1850",true,5));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(23,"1900+",false,5));
         //Insert REspuestas[6]
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(24,"Pesca",false,7));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(25,"Astilleros",false,7));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(26,"Siderurgia",true,7));
-        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(27,"Mercaderia",false,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(24,"Trapagaran",true,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(25,"Barakaldo",false,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(26,"Sestao",false,6));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(27,"Bilbao",false,6));
+        //Insert REspuestas[7]
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(28,"Pesca",false,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(29,"Astilleros",false,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(30,"Siderurgia",true,7));
+        appDatabase.daoRespuesta().insertarRespuesta(new Respuesta(31,"Mercaderia",false,7));
         //Insert Puntuaciones de BASE
         appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo1_06_02_2024",20));
         appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion("Grupo2_06_02_2024",19));

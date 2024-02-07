@@ -205,7 +205,7 @@ public class FragmentJuego2 extends Fragment {
         resetearPreguntas();
 
         Pregunta pregunta = AppDataBase.daoPregunta().obtenerPregunta(currentQuestionIndex);
-        lstRespuestas = AppDataBase.daoRespuesta().obtenerRespuestasporPregunta(currentQuestionIndex+1);
+        lstRespuestas = AppDataBase.daoRespuesta().obtenerRespuestasporPregunta(currentQuestionIndex);
         String[] opcionesActuales = new String[lstRespuestas.size()];
 
         System.out.println(lstRespuestas.size());

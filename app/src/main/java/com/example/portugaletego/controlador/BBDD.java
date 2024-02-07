@@ -40,7 +40,7 @@ public abstract class BBDD extends RoomDatabase {
                 if (INSTANCE == null) {
                         synchronized (BBDD.class) {
                                 if (INSTANCE == null) {
-                                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(), BBDD.class, "bd_portu4").allowMainThreadQueries().build();
+                                        INSTANCE = Room.databaseBuilder(context.getApplicationContext(), BBDD.class, "bd_portu6").allowMainThreadQueries().build();
                                 }
                         }
                 }
