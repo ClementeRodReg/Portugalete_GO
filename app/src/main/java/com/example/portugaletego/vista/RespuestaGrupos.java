@@ -106,6 +106,11 @@ public class RespuestaGrupos extends Fragment {
         LinearLayout ll43 = view.findViewById(R.id.layoutejer4parte3);
         LinearLayout ll44 = view.findViewById(R.id.layoutejer4parte4);
         LinearLayout ll45 = view.findViewById(R.id.layoutejer4parte5);
+        LinearLayout ll31 = view.findViewById(R.id.layoutejer3parte1);
+        LinearLayout ll32 = view.findViewById(R.id.layoutejer3parte2);
+        LinearLayout ll33 = view.findViewById(R.id.layoutejer3parte3);
+        LinearLayout ll34 = view.findViewById(R.id.layoutejer3parte4);
+        LinearLayout ll35 = view.findViewById(R.id.layoutejer3parte5);
         if (grupo != null) {
 
             if (grupo.equals("r_g1"))
@@ -125,6 +130,11 @@ public class RespuestaGrupos extends Fragment {
             ImageView ejerfoto3 = view.findViewById(R.id.fotoSacada3);
             ImageView ejerfoto4 = view.findViewById(R.id.fotoSacada4);
             ImageView ejerfoto5 = view.findViewById(R.id.fotoSacada5);
+            ImageView ejerfoto31 = view.findViewById(R.id.fotoSacada31);
+            ImageView ejerfoto32 = view.findViewById(R.id.fotoSacada32);
+            ImageView ejerfoto33 = view.findViewById(R.id.fotoSacada33);
+            ImageView ejerfoto34 = view.findViewById(R.id.fotoSacada34);
+            ImageView ejerfoto35 = view.findViewById(R.id.fotoSacada35);
             File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
 
             String nombreFoto1 = grupo+"RespuestaEjer4parte1";
@@ -132,7 +142,11 @@ public class RespuestaGrupos extends Fragment {
             String nombreFoto3 = grupo+"RespuestaEjer4parte3";
             String nombreFoto4 = grupo+"RespuestaEjer4parte4";
             String nombreFoto5 = grupo+"RespuestaEjer4parte5";
-
+            String nombreFoto31 = grupo+"RespuestaEjer3parte1";
+            String nombreFoto32 = grupo+"RespuestaEjer3parte2";
+            String nombreFoto33 = grupo+"RespuestaEjer3parte3";
+            String nombreFoto34 = grupo+"RespuestaEjer3parte4";
+            String nombreFoto35 = grupo+"RespuestaEjer3parte5";
             File[] files = path.listFiles();
 
             for (int o = 0; o < files.length; o++) {
@@ -195,6 +209,61 @@ public class RespuestaGrupos extends Fragment {
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
+                        }else if (filesInDir[num].getName().contains(nombreFoto31)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto31.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }else if (filesInDir[num].getName().contains(nombreFoto32)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto32.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }else if (filesInDir[num].getName().contains(nombreFoto33)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto33.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }else if (filesInDir[num].getName().contains(nombreFoto34)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto34.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }else if (filesInDir[num].getName().contains(nombreFoto35)) {
+                            try {
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    byte[] bytes = Files.readAllBytes(Paths.get(filesInDir[num].getAbsolutePath()));
+                                    Bitmap bitmapimg = (bytes == null || bytes.length == 0) ? null : BitmapFactory
+                                            .decodeByteArray(bytes, 0, bytes.length);
+                                    ejerfoto35.setImageBitmap(bitmapimg);
+                                }
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
 
                     }
@@ -212,15 +281,31 @@ public class RespuestaGrupos extends Fragment {
             TextView descejer5 = view.findViewById(R.id.desc5);
             descejer5.setText("ejercicio 4 parte 5");
 
+            TextView descejer31 = view.findViewById(R.id.desc31);
+            descejer1.setText("ejercicio 3 parte 1");
+            TextView descejer32 = view.findViewById(R.id.desc32);
+            descejer2.setText("ejercicio 3 parte 2");
+            TextView descejer33 = view.findViewById(R.id.desc33);
+            descejer3.setText("ejercicio 3 parte 3");
+            TextView descejer34 = view.findViewById(R.id.desc34);
+            descejer4.setText("ejercicio 3 parte 4");
+            TextView descejer35 = view.findViewById(R.id.desc35);
+            descejer5.setText("ejercicio 3 parte 5");
+
             Button aprobar1 = view.findViewById(R.id.Aprobarbtn1);
             Button aprobar2 = view.findViewById(R.id.Aprobarbtn2);
             Button aprobar3 = view.findViewById(R.id.Aprobarbtn3);
             Button aprobar4 = view.findViewById(R.id.Aprobarbtn4);
             Button aprobar5 = view.findViewById(R.id.Aprobarbtn5);
+            Button aprobar31 = view.findViewById(R.id.Aprobarbtn31);
+            Button aprobar32 = view.findViewById(R.id.Aprobarbtn32);
+            Button aprobar33 = view.findViewById(R.id.Aprobarbtn33);
+            Button aprobar34 = view.findViewById(R.id.Aprobarbtn34);
+            Button aprobar35 = view.findViewById(R.id.Aprobarbtn35);
             aprobar1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoA(1);
+                    avisoA(1, 4);
                     aprobarEjercicio(ngrupo.getText().toString());
                     ll41.setVisibility(View.GONE);
                 }
@@ -228,29 +313,66 @@ public class RespuestaGrupos extends Fragment {
             aprobar2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoA(2);
+                    avisoA(2, 4);
                     ll42.setVisibility(View.GONE);
                 }
             });
             aprobar3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoA(3);
+                    avisoA(3, 4);
                     ll43.setVisibility(View.GONE);
                 }
             });
             aprobar4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoA(4);
+                    avisoA(4, 4);
                     ll44.setVisibility(View.GONE);
                 }
             });
             aprobar5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoA(5);
+                    avisoA(5, 4);
                     ll45.setVisibility(View.GONE);
+                }
+            });
+
+            aprobar31.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(1, 3);
+                    aprobarEjercicio(ngrupo.getText().toString());
+                    ll31.setVisibility(View.GONE);
+                }
+            });
+            aprobar32.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(2, 3);
+                    ll32.setVisibility(View.GONE);
+                }
+            });
+            aprobar33.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(3, 3);
+                    ll33.setVisibility(View.GONE);
+                }
+            });
+            aprobar34.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(4, 3);
+                    ll34.setVisibility(View.GONE);
+                }
+            });
+            aprobar35.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoA(5, 3);
+                    ll35.setVisibility(View.GONE);
                 }
             });
 
@@ -259,51 +381,90 @@ public class RespuestaGrupos extends Fragment {
             Button pencar3 = view.findViewById(R.id.Pencarbtn3);
             Button pencar4 = view.findViewById(R.id.Pencarbtn4);
             Button pencar5 = view.findViewById(R.id.Pencarbtn5);
+            Button pencar31 = view.findViewById(R.id.Pencarbtn31);
+            Button pencar32 = view.findViewById(R.id.Pencarbtn32);
+            Button pencar33 = view.findViewById(R.id.Pencarbtn33);
+            Button pencar34 = view.findViewById(R.id.Pencarbtn34);
+            Button pencar35 = view.findViewById(R.id.Pencarbtn35);
             pencar1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoP(1);
+                    avisoP(1, 4);
                     ll41.setVisibility(View.GONE);
                 }
             });
             pencar2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoP(2);
+                    avisoP(2, 4);
                     ll42.setVisibility(View.GONE);
                 }
             });
             pencar3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoP(3);
+                    avisoP(3, 4);
                     ll43.setVisibility(View.GONE);
                 }
             });
             pencar4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoP(4);
+                    avisoP(4, 4);
                     ll44.setVisibility(View.GONE);
                 }
             });
             pencar5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    avisoP(5);
+                    avisoP(5, 4);
                     ll45.setVisibility(View.GONE);
                 }
             });
-
+            pencar31.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(1, 3);
+                    ll31.setVisibility(View.GONE);
+                }
+            });
+            pencar32.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(2, 3);
+                    ll32.setVisibility(View.GONE);
+                }
+            });
+            pencar33.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(3, 3);
+                    ll33.setVisibility(View.GONE);
+                }
+            });
+            pencar34.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(4, 3);
+                    ll34.setVisibility(View.GONE);
+                }
+            });
+            pencar35.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    avisoP(5, 3);
+                    ll35.setVisibility(View.GONE);
+                }
+            });
         }
     }
 
-    public void avisoA(int parte) {
-        Toast.makeText(getView().getContext(), ngrupo.getText() + " ha aprobado el ejercicio 4 parte " + parte, Toast.LENGTH_SHORT).show();
+    public void avisoA(int parte, int ejer) {
+        Toast.makeText(getView().getContext(), ngrupo.getText() + " ha aprobado el ejercicio "+ejer+" parte " + parte, Toast.LENGTH_SHORT).show();
     }
 
-    public void avisoP(int parte) {
-        Toast.makeText(getView().getContext(), ngrupo.getText() + " ha pencado el ejercicio 4 parte " + parte, Toast.LENGTH_SHORT).show();
+    public void avisoP(int parte, int ejer) {
+        Toast.makeText(getView().getContext(), ngrupo.getText() + " ha pencado el ejercicio "+ejer+" parte " + parte, Toast.LENGTH_SHORT).show();
     }
 
     public void aprobarEjercicio(String grupo) {
