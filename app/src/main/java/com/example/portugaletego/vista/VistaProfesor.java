@@ -29,7 +29,6 @@ public class VistaProfesor extends AppCompatActivity {
         setContentView(R.layout.activity_vista_profesor);
 
         layoutRespuestas = findViewById(R.id.fragmentRespuestasGrupos);
-        layoutRespuestas.setVisibility(View.INVISIBLE);
         g1 = findViewById(R.id.g1Button);
         g2 = findViewById(R.id.g2Button);
         g3 = findViewById(R.id.g3Button);
@@ -38,6 +37,19 @@ public class VistaProfesor extends AppCompatActivity {
         btnRanking = findViewById(R.id.btnRanking);
         btnGrupos = findViewById(R.id.btnGrupos);
         linearLayout = findViewById(R.id.layoutBotonesProfesor);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        //Fragment fragment1 = fragmentManager.findFragmentById(R.id.fragmentRespuestasGrupos);
+        Fragment nuevoFragment1 = new RespuestaGrupos();
+
+        Bundle datos = new Bundle();
+        datos.putString("nombre carpeta", "r_g1");
+        nuevoFragment1.setArguments(datos);
+
+        fragmentTransaction.replace(R.id.fragmentRespuestasGrupos, nuevoFragment1);
+        fragmentTransaction.commit();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

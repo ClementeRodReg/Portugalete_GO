@@ -218,11 +218,12 @@ public class fragmentCamara extends Fragment {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
                     // Handle unsuccessful uploads
+                    System.out.println("el almacenamiento de la fotografia a fallado");
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    System.out.println("hola");
+                    System.out.println("Foto almacenada de forma correcta");
                 }
             });
 

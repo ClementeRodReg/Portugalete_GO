@@ -118,7 +118,7 @@ public class RespuestaGrupos extends Fragment {
             grupo = "nada";
         }
 
-        if (grupo.equals("r_g1")) {
+        if (grupo.equals("r_g1") || grupo.equals("r_g2") || grupo.equals("r_g3")) {
 
             ImageView ejerfoto1 = view.findViewById(R.id.fotoSacada1);
             ImageView ejerfoto2 = view.findViewById(R.id.fotoSacada2);
