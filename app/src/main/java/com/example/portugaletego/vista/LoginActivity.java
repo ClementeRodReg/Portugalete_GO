@@ -19,7 +19,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.portugaletego.modelo.Usuario;
+import com.example.portugaletego.controlador.BBDD;
+import com.example.portugaletego.modelo.Grupo;
+import com.example.portugaletego.modelo.Puntuacion;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 //import com.google.firebase.auth.AuthResult;
@@ -31,7 +33,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //Variables de uso comun
     String email, pass;
-    ArrayList<Usuario> usuarios;
+    ArrayList<Grupo> grupos;
     Intent cambio;
     AlertDialog.Builder builder;
     AlertDialog dialog;
@@ -49,15 +55,32 @@ public class LoginActivity extends AppCompatActivity {
     Spinner spinner;
     EditText txtUsuario, password;
     Button volver, mapa, confirmar, accederEstudiante;
+    List<Grupo> gruposRoom;
+
+    BBDD appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        //valores
         card1 = findViewById(R.id.card1);
         card2 = findViewById(R.id.card2);
+        password = findViewById(R.id.editTextContrasenna);
+        confirmar = findViewById(R.id.buttonConfirmar);
+        txtUsuario = findViewById(R.id.TextImputNombre);
+        mapa = findViewById(R.id.Map);
+        spinner = findViewById(R.id.spinner);
+        volver = findViewById(R.id.volveraInicio);
+        accederEstudiante = findViewById(R.id.AccesoMapasEstudiante);
 
+
+        appDatabase = BBDD.getDatabase(getApplicationContext()); //obtenemos la base de datos
+
+        //Recoge el numero del Activity anterior, si es 1, mostrara la tarjeta de login del profesor
+        //Si es un 2, la de seleccion de grupo para alumnos
         Bundle bundle =  getIntent().getExtras();
         if(bundle != null){
             if(bundle.containsKey("num")){
@@ -72,6 +95,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
+        //recogemos los grupos disponibles  <!!!!!!!>
+        gruposRoom = appDatabase.daoGrupo().obtenerGrupos();
+
         //sharedPreferences crear
         Context context = LoginActivity.this;
 
@@ -79,24 +105,8 @@ public class LoginActivity extends AppCompatActivity {
         //sharedPreferences leer
         String defaultUser = "";
 
-
-        //declaramos auth con firebase.getInstance
-        // mAuth = FirebaseAuth.getInstance();
-
-        //valores
-        password = findViewById(R.id.editTextContrasenna);
-        confirmar = findViewById(R.id.buttonConfirmar);
-        txtUsuario = findViewById(R.id.TextImputNombre);
-        mapa = findViewById(R.id.Map);
-        spinner = findViewById(R.id.spinner);
-        volver = findViewById(R.id.volveraInicio);
-        accederEstudiante = findViewById(R.id.AccesoMapasEstudiante);
-
-        //rellenamos el array
-        usuarios = RellenarArray();
-
         //creamos el adaptador para el spinner
-        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, usuarios);
+        ArrayAdapter<Grupo> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, gruposRoom);
         spinner.setAdapter(adapter);
 
         //BOTON PARA IR AL MAPA
@@ -104,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cambio(0);
+
             }
         });
 
@@ -112,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cambio(3);
+
             }
         });
 
@@ -154,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
+    //CAMBIAMOS DE ACTIVITY EN FUNCION DE LA ELECCION
     private void cambio(int check) {
         switch(check){
             //acceso simple al mapa
@@ -169,6 +181,7 @@ public class LoginActivity extends AppCompatActivity {
             //Acceso como alumnado, depende del grupo que escojas, mandara un id u otro
             case 2: cambio = new Intent(LoginActivity.this, VistaMapa.class);
                 cambio.putExtra("idGrupo",spinner.getSelectedItemPosition());
+         //       appDatabase.daoPuntuacion().insertarPuntuacion(new Puntuacion(spinner.getSelectedItem().toString()+obtenerFechaActual(),0));
                 System.out.println(spinner.getSelectedItemPosition());
                 startActivity(cambio);
                 break;
@@ -178,17 +191,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(cambio);
                 break;
         }
-    }
-
-    private ArrayList<Usuario> RellenarArray(){
-        ArrayList<Usuario> opciones = new ArrayList<Usuario>();
-        //Añadimos 3 clases provisionales para añadir luego a room (TO DO)
-
-        opciones.add(new Usuario(1,"Grupo 1"));
-        opciones.add(new Usuario(2, "Grupo 2"));
-        opciones.add(new Usuario(3, "Grupo 3"));
-
-        return opciones;
     }
 
     private void MostrarAlertDialog(int check){
@@ -217,5 +219,10 @@ public class LoginActivity extends AppCompatActivity {
                 dialog = builder.create();
                 dialog.show();
         }
+    }
+
+    public String obtenerFechaActual() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return sdf.format(new Date());
     }
 }

@@ -1,6 +1,66 @@
 package com.example.portugaletego.modelo;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(foreignKeys = {@ForeignKey( entity = Lugar.class,
+        parentColumns = "id_lugar",
+        childColumns = "id_lugar",
+        onDelete = ForeignKey.CASCADE)})
 public class Enunciados {
+
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="id_enunciado")
+    private int id_enunciado;
+
+    @NonNull
+    @ColumnInfo(name="texto")
+    private String texto;
+
+    @NonNull
+    @ColumnInfo(name="id_lugar")
+    private int id_lugar;
+
+    @NonNull
+    public int getId_lugar() {
+        return id_lugar;
+    }
+
+    public void setId_lugar(@NonNull int id_lugar) {
+        this.id_lugar = id_lugar;
+    }
+
+
+    public int getId_enunciado() {
+        return id_enunciado;
+    }
+
+    public void setId_enunciado(int id_enunciado) {
+        this.id_enunciado = id_enunciado;
+    }
+
+    @NonNull
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(@NonNull String texto) {
+        this.texto = texto;
+    }
+
+    public Enunciados(int id_enunciado, String texto, @NonNull int idLugar){
+        this.id_enunciado = id_enunciado;
+        this.texto = texto;
+        id_lugar = idLugar;
+    }
+
+    public Enunciados(){
+
+    }
 
     public static String textos[] ={
           "Ejercicio 1: Empareja las palabras con las fotos correspondientes",
@@ -24,18 +84,4 @@ public class Enunciados {
             "La ultima reconstrucción fue en 2003, con el objetivo que puso el ayuntamiento para utilizarla de centro cultural"
     };
 
-
-/*
-    testu 1: Salazar dorrea izen bereko leinuak 1380 inguruan Portugaleten eraikitako dorretxea da.
-    testu 2: 1934an anarkistek erre ondoren, hondakinak besterik ez ziren geratu eta liburutegia galdu zen.
-    testu 3: 1958 eta 1959. urteetan Joaquín Irizar arkitektoak berreraiki zuen.
-    testu 4: Bi zatik osatzen dute multzoa: alde batetik, dorrea, eta bestetik, harresiaren zati bat, garai batean eraikina inguratzen zuen harresirena zena.
-    testu 5: Azken berreraiketa 2003. urtean izan zen udaletxeak helburu kulturaletarako ireki zuenean.
-*/
-
-    // Personaje 1 -> 1,2,3,4,5
-    // Personaje 2 -> 2,3,4,5,1
-    // Personaje 3 -> 3,4,5,1,2
-    // Personaje 4 -> 4,5,1,2,3
-    // Personaje 5 -> 5,1,2,3,4
 }

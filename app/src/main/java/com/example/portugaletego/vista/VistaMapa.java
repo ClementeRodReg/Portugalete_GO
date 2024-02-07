@@ -17,7 +17,7 @@ public class VistaMapa extends AppCompatActivity {
 
     Button btnLogin;
     TextView nombreGrupo;
-    int num=0;
+    int idGrupo=0;
     Fragment fragment;
 
     @Override
@@ -32,8 +32,8 @@ public class VistaMapa extends AppCompatActivity {
         Bundle bundle =  getIntent().getExtras();
         if(bundle != null){
             if(bundle.containsKey("idGrupo")){
-                num = bundle.getInt("idGrupo");
-                switch(num){
+                idGrupo = bundle.getInt("idGrupo");
+                switch(idGrupo){
                     case 0: nombreGrupo.setText("G1"); break;
                     case 1: nombreGrupo.setText("G2"); break;
                     case 2: nombreGrupo.setText("G3"); break;
@@ -55,17 +55,7 @@ public class VistaMapa extends AppCompatActivity {
 
         fragment = fragmentManager.findFragmentById(R.id.fragmentCV);
         Fragment nuevoFragment1 = new MapFragment();
-/*
-        Fragment fragment2 = fragmentManager.findFragmentById(R.id.fcvCamara);
-        Fragment nuevoFragment2 = new fragmentCamara();
 
-        Bundle datos = new Bundle();
-        datos.putString("nombre carpeta", "r_g3");
-        datos.putString("ejer", "ejer3");
-        nuevoFragment2.setArguments(datos);
-
-        fragmentTransaction.replace(R.id.fcvCamara, nuevoFragment2);
-*/
         fragmentTransaction.replace(R.id.fragmentCV, nuevoFragment1);
 
         fragmentTransaction.commit();
@@ -75,7 +65,7 @@ public class VistaMapa extends AppCompatActivity {
     public void mandar(int id){
         Intent mandar = new Intent(this, ActivityJuegos.class);
         mandar.putExtra("id",id); //revisar con clemen, mandamos un id segun el pulsador que utilicemos
-        mandar.putExtra("grupo",num);
+        mandar.putExtra("grupo",idGrupo);
         startActivity(mandar);
     }
 

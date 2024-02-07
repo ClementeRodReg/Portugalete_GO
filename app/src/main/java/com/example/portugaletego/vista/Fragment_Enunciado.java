@@ -1,6 +1,7 @@
 package com.example.portugaletego.vista;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.portugaletego.R;
+import com.example.portugaletego.controlador.BBDD;
 import com.example.portugaletego.modelo.Enunciados;
 import com.example.portugaletego.modelo.Respuestas;
 
@@ -37,7 +39,11 @@ public class Fragment_Enunciado extends Fragment {
     private View vista;
     private LinearLayout LayoutPreguntas, LayoutEleccion;
     private TextView enunciado;
+
+    BBDD appDatabase;
     private Button pj1, pj2, pj3, pj4, pj5;
+
+    int id;
 
     public Fragment_Enunciado() {
         // Required empty public constructor
@@ -83,9 +89,25 @@ public class Fragment_Enunciado extends Fragment {
         super.onViewCreated(view, savedInstance);
         LayoutPreguntas = view.findViewById(R.id.LayoutPreguntas);
         enunciado = view.findViewById(R.id.textoJuegos);
+        Context ctx = getContext();
 
-        int id = obtenerId();
+
+        appDatabase = BBDD.getDatabase(ctx.getApplicationContext());
+
+
+        id= obtenerId();
         int contadorSaltos = obtenerContador();
+        if(id == 2){
+            System.out.println(contadorSaltos);
+            switch(contadorSaltos){
+                case 0: escribirEnunciadosEjer3(enunciado, contadorSaltos); break;
+                case 2: escribirEnunciadosEjer3(enunciado, 1); break;
+                case 4: escribirEnunciadosEjer3(enunciado, 2); break;
+                case 6: escribirEnunciadosEjer3(enunciado, 3); break;
+                case 8: escribirEnunciadosEjer3(enunciado, 4); break;
+            }
+
+        }
         if(id == 3){
             System.out.println(contadorSaltos);
             switch(contadorSaltos){
@@ -118,8 +140,14 @@ public class Fragment_Enunciado extends Fragment {
         enunciado.setText(opcionActual);
     }
 
+    //RELLENAR PARA EL EJER 4
     void escribirEnunciadosEjer4(TextView enunciado, int contador){
-        String opcionActual = Enunciados.juego4[contador];
+        String opcionActual = appDatabase.daoEnunciados().obtenerEnunciadosPorIdLugar(3).get(contador).getTexto();
+        enunciado.setText(opcionActual);
+    }
+
+    void escribirEnunciadosEjer3(TextView enunciado, int contador){
+        String opcionActual = appDatabase.daoEnunciados().obtenerEnunciadosPorIdLugar(2).get(contador).getTexto();
         enunciado.setText(opcionActual);
     }
 

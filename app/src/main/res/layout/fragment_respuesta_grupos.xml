@@ -29,7 +29,7 @@
                 android:text="Grupo 1"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="@color/azul_oscuro"
+                android:textColor="@color/portu_white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
                 android:id="@+id/layoutejer4parte1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/portu_white"
+                android:background="@android:color/transparent"
                 android:orientation="horizontal"
                 android:visibility="visible">
 
@@ -65,7 +65,7 @@
                         android:layout_height="101dp"
                         android:layout_weight="1"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/portu_blue" />
+                        android:textColor="@color/portu_white" />
 
                     <Button
                         android:id="@+id/Aprobarbtn1"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="@color/azul_oscuro"
+                android:textColor="@color/portu_white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -102,7 +102,7 @@
                 android:id="@+id/layoutejer4parte2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/portu_white"
+                android:background="@android:color/transparent"
                 android:orientation="horizontal"
                 android:visibility="visible">
 
@@ -130,7 +130,7 @@
                         android:layout_height="101dp"
                         android:layout_weight="1"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/portu_blue" />
+                        android:textColor="@color/portu_white" />
 
                     <Button
                         android:id="@+id/Aprobarbtn2"
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="@color/azul_oscuro"
+                android:textColor="@color/portu_white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -167,7 +167,7 @@
                 android:id="@+id/layoutejer4parte3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/portu_white"
+                android:background="@android:color/transparent"
                 android:orientation="horizontal"
                 android:visibility="visible">
 
@@ -195,7 +195,7 @@
                         android:layout_height="101dp"
                         android:layout_weight="1"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/portu_blue" />
+                        android:textColor="@color/portu_white" />
 
                     <Button
                         android:id="@+id/Aprobarbtn3"
@@ -224,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="@color/azul_oscuro"
+                android:textColor="@color/portu_white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -232,7 +232,7 @@
                 android:id="@+id/layoutejer4parte4"
                 android:layout_width="match_parent"
                 android:layout_height="193dp"
-                android:background="@color/portu_white"
+                android:background="@android:color/transparent"
                 android:orientation="horizontal"
                 android:visibility="visible">
 
@@ -260,7 +260,7 @@
                         android:layout_height="101dp"
                         android:layout_weight="1"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/portu_blue" />
+                        android:textColor="@color/portu_white" />
 
                     <Button
                         android:id="@+id/Aprobarbtn4"
@@ -289,7 +289,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="@color/azul_oscuro"
+                android:textColor="@color/portu_white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -297,7 +297,7 @@
                 android:id="@+id/layoutejer4parte5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/portu_white"
+                android:background="@android:color/transparent"
                 android:orientation="horizontal"
                 android:visibility="visible">
 
@@ -325,7 +325,7 @@
                         android:layout_height="101dp"
                         android:layout_weight="1"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/portu_blue" />
+                        android:textColor="@color/portu_white" />
 
                     <Button
                         android:id="@+id/Aprobarbtn5"

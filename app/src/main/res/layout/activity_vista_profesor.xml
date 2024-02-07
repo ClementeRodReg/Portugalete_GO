@@ -12,35 +12,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
         android:layout_gravity="center"
-        android:gravity="center">
+        android:layout_weight="8"
+        android:gravity="center"
+        android:id="@+id/layoutBotonesProfesor"
+        >
+
         <Button
             android:id="@+id/g1Button"
+            style="@style/BotonAzulOscuro"
             android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="G1" />
+
+        <Button
+            android:id="@+id/g2Button"
             style="@style/BotonAzulOscuro"
-            android:text="G1"
-            />
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="G2" />
 
-    <Button
-        android:id="@+id/g2Button"
-        android:layout_width="0sp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        style="@style/BotonAzulOscuro"
-        android:text="G2"
-       />
-
-    <Button
-        android:id="@+id/g3Button"
-        android:layout_width="0sp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        style="@style/BotonAzulOscuro"
-        android:text="G3"
-        />
+        <Button
+            android:id="@+id/g3Button"
+            style="@style/BotonAzulOscuro"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="G3" />
 
 
     </LinearLayout>
@@ -62,8 +62,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
         android:layout_gravity="center"
+        android:layout_weight="8"
         android:gravity="center">
 
         <Button
@@ -71,8 +71,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/portu_blue"
-            android:text="Login"
-            />
+            android:text="Login" />
+
+        <Button
+            android:id="@+id/btnRanking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/portu_white"
+            android:text="Ranking"
+            android:textColor="@color/azul_oscuro" />
+
+        <Button
+            android:id="@+id/btnGrupos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/portu_white"
+            android:text="Grupos"
+            android:textColor="@color/azul_oscuro"
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>
