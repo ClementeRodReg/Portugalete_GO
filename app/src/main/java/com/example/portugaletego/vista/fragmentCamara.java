@@ -54,8 +54,6 @@ public class fragmentCamara extends Fragment {
     private int id_parte;
     Button btnCamara;
     ImageView imagen;
-
-    TextView texto;
     private FirebaseAuth mAuth;
     FirebaseStorage storage;
     StorageReference storageRef;
@@ -104,25 +102,13 @@ public class fragmentCamara extends Fragment {
         btnCamara = view.findViewById(R.id.btnCamara);
         imagen = view.findViewById(R.id.fotoSacada);
 
-        switch(id_parte){
-            case 1: break;
-            case 2: break;
-            case 3: break;
-            case 4: break;
-            case 5: break;
-        }
-
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 abrirCamara();
-                enseñarTexto();
             }
         });
 
-    }
-
-    private void enseñarTexto() {
     }
 
     private void abrirCamara() {
@@ -132,9 +118,12 @@ public class fragmentCamara extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
+            //obtiene la foto y la coloca en un ImageView
             Bundle extras = data.getExtras();
             Bitmap imgBitmap = (Bitmap) extras.get("data");
             imagen.setImageBitmap(imgBitmap);
+
+            //procede a guardar la foto en firebase
             mAuth = FirebaseAuth.getInstance();
             String carpetaGrupo="";
 

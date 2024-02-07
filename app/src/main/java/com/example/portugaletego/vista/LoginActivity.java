@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
 
     //Variables de uso comun
     String email, pass;
-    ArrayList<Grupo> grupos;
     Intent cambio;
     AlertDialog.Builder builder;
     AlertDialog dialog;

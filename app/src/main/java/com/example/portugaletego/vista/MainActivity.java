@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     Intent mandar;
     final Handler handler = new Handler();
     final int delay = 50;
-
     BBDD appDatabase;
 
     @Override
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         if(!existeBaseDeDatos(this, "bd_portu6")){
             INSERTS();
         }
-
 
         handler.postDelayed(new Runnable() {
             public void run() {

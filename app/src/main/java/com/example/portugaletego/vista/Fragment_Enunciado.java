@@ -35,14 +35,11 @@ public class Fragment_Enunciado extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private View vista;
-    private LinearLayout LayoutPreguntas, LayoutEleccion;
+    private LinearLayout LayoutPreguntas;
     private TextView enunciado;
-
+    String opcionActual;
     BBDD appDatabase;
-    private Button pj1, pj2, pj3, pj4, pj5;
-
     int id;
 
     public Fragment_Enunciado() {
@@ -80,7 +77,7 @@ public class Fragment_Enunciado extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        vista= inflater.inflate(R.layout.fragment_enunciados, container, false);
+        vista = inflater.inflate(R.layout.fragment_enunciados, container, false);
         return vista;
     }
 
@@ -91,64 +88,58 @@ public class Fragment_Enunciado extends Fragment {
         enunciado = view.findViewById(R.id.textoJuegos);
         Context ctx = getContext();
 
-
         appDatabase = BBDD.getDatabase(ctx.getApplicationContext());
 
-
-        id= obtenerId();
+        id = obtenerId();
         int contadorSaltos = obtenerContador();
-        if(id == 2){
+        if (id == 3 || id == 2) {
             System.out.println(contadorSaltos);
-            switch(contadorSaltos){
-                case 0: escribirEnunciadosEjer3(enunciado, contadorSaltos); break;
-                case 2: escribirEnunciadosEjer3(enunciado, 1); break;
-                case 4: escribirEnunciadosEjer3(enunciado, 2); break;
-                case 6: escribirEnunciadosEjer3(enunciado, 3); break;
-                case 8: escribirEnunciadosEjer3(enunciado, 4); break;
+            switch (contadorSaltos) {
+                case 0:
+                    escribirEnunciadosEjer(enunciado, contadorSaltos);
+                    break;
+                case 2:
+                    escribirEnunciadosEjer(enunciado, 1);
+                    break;
+                case 4:
+                    escribirEnunciadosEjer(enunciado, 2);
+                    break;
+                case 6:
+                    escribirEnunciadosEjer(enunciado, 3);
+                    break;
+                case 8:
+                    escribirEnunciadosEjer(enunciado, 4);
+                    break;
             }
 
-        }
-        if(id == 3){
-            System.out.println(contadorSaltos);
-            switch(contadorSaltos){
-                case 0: escribirEnunciadosEjer4(enunciado, contadorSaltos); break;
-                case 2: escribirEnunciadosEjer4(enunciado, 1); break;
-                case 4: escribirEnunciadosEjer4(enunciado, 2); break;
-                case 6: escribirEnunciadosEjer4(enunciado, 3); break;
-                case 8: escribirEnunciadosEjer4(enunciado, 4); break;
-            }
-
-        }
-        else{
+        } else {
             escribirEnunciados(enunciado, id);
         }
     }
 
-    public int obtenerId(){
+    public int obtenerId() {
         Activity a = getActivity();
         int id = ((ActivityJuegos) a).getId();
         return id;
     }
 
-    public int obtenerContador(){
+    public int obtenerContador() {
         Activity a = getActivity();
         int contador = ((ActivityJuegos) a).getContadorSaltos();
         return contador;
     }
-    void escribirEnunciados(TextView enunciado, int id){
-        String opcionActual = Enunciados.textos[id];
+
+    public void escribirEnunciados(TextView enunciado, int id) {
+        opcionActual = Enunciados.textos[id];
         enunciado.setText(opcionActual);
     }
 
     //RELLENAR PARA EL EJER 4
-    void escribirEnunciadosEjer4(TextView enunciado, int contador){
-        String opcionActual = appDatabase.daoEnunciados().obtenerEnunciadosPorIdLugar(3).get(contador).getTexto();
+    public void escribirEnunciadosEjer(TextView enunciado, int contador) {
+        opcionActual = appDatabase.daoEnunciados().obtenerEnunciadosPorIdLugar(id).get(contador).getTexto();
         enunciado.setText(opcionActual);
     }
 
-    void escribirEnunciadosEjer3(TextView enunciado, int contador){
-        String opcionActual = appDatabase.daoEnunciados().obtenerEnunciadosPorIdLugar(2).get(contador).getTexto();
-        enunciado.setText(opcionActual);
-    }
+
 
 }
